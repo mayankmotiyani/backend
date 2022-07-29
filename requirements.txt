@@ -9,3 +9,6 @@ Pillow
 psycopg2
 django-cors-headers
 django-ckeditor
+dj-database-url
+python-dotenv
+whitenoise

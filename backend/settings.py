@@ -9,8 +9,14 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import  os
 from pathlib import Path
+import dj_database_url
+import os
+from datetime import timedelta
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v_7je1sg3uc0^ah-#dej)=_6h#h57dgnme0w2sxc8-07z8be*q'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['infograinsbackend.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -178,8 +184,12 @@ STATIC_URL = '/static/'
 # ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-MEDIA_URL = '/images/'
-MEDIA_ROOT  = 'static/images'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+# MEDIA_URL = '/images/'
+# MEDIA_ROOT  = 'static/images'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'front-end/build/images')
 
 # Default primary key field type
