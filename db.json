@@ -45,14 +45,6 @@
 },
 {
   "model": "sessions.session",
-  "pk": "e2kix61lebkfqhkkgru0k18za6k1mxhw",
-  "fields": {
-    "session_data": ".eJxVjDsOwyAQBe9CHSEWbFhSpvcZ0PILTiKQjF1FuXtsyUXSvpl5b-ZoW4vbelrcHNmVSXb53TyFZ6oHiA-q98ZDq-sye34o_KSdTy2m1-10_w4K9bLXqBWRBC1k1iZAFFpFMjF42IFHlccEXmZMGshKi-gtGCEBcBjNgIF9vtVRNw8:1oHN6N:R-u-EzmtnFoNoTYR4F0BhyAYcPqJjmhBdEe-MyMnDqc",
-    "expire_date": "2022-08-12T10:20:15.215Z"
-  }
-},
-{
-  "model": "sessions.session",
   "pk": "kxsh1m2lh6e5yknau3i7f7eqrmxvh8qu",
   "fields": {
     "session_data": ".eJxVjDsOwyAQBe9CHSEWbFhSpvcZ0PILTiKQjF1FuXtsyUXSvpl5b-ZoW4vbelrcHNmVSXb53TyFZ6oHiA-q98ZDq-sye34o_KSdTy2m1-10_w4K9bLXqBWRBC1k1iZAFFpFMjF42IFHlccEXmZMGshKi-gtGCEBcBjNgIF9vtVRNw8:1oFx5b:T28h90ag9IxpO-9JIkMgTjHXS8BgcM-wy4_UC6-NYTg",
@@ -293,85 +285,6 @@
   }
 },
 {
-  "model": "homepage.whychooseus",
-  "pk": 1,
-  "fields": {
-    "service_name": "Ethereum Consulting",
-    "icon": "why_choose_us/blank-profile-picture-g2f05db5c1_1280.png",
-    "content": "We conduct a thorough audit of your existing smart contracts so you enhance them in a better way. We also give you the most reliable advice so you can implement Ethereum successfully.",
-    "created_at": "2022-07-29T10:49:26.284Z",
-    "updated_at": "2022-07-29T10:49:26.284Z"
-  }
-},
-{
-  "model": "homepage.whychooseus",
-  "pk": 2,
-  "fields": {
-    "service_name": "Ethereum Blockchain",
-    "icon": "why_choose_us/blank-profile-picture-g2f05db5c1_1280_gsLYRKj.png",
-    "content": "Get the opportunity to build the most advanced Ethereum Blockchain development leveraging the latest features. Our solutions help enhance your business processes and bring more transparency.",
-    "created_at": "2022-07-29T10:50:42.062Z",
-    "updated_at": "2022-07-29T10:50:42.062Z"
-  }
-},
-{
-  "model": "homepage.whychooseus",
-  "pk": 3,
-  "fields": {
-    "service_name": "Ethereum dApps",
-    "icon": "why_choose_us/blank-profile-picture-g2f05db5c1_1280_luDn1Sk.png",
-    "content": "Ethereum Decentralized applications are built on a code that executes on Blockchain technology so no unwanted user can monitor them and are only accessible to those within the system.",
-    "created_at": "2022-07-29T10:50:57.139Z",
-    "updated_at": "2022-07-29T10:50:57.139Z"
-  }
-},
-{
-  "model": "homepage.whychooseus",
-  "pk": 4,
-  "fields": {
-    "service_name": "Ethereum Smart Contracts",
-    "icon": "why_choose_us/blank-profile-picture-g2f05db5c1_1280_6EXf8n2.png",
-    "content": "Ethereum is an open-source Blockchain-powered platform that incorporates the smart contract functionality, and that’s why it can be highly used in building decentralized apps.",
-    "created_at": "2022-07-29T10:51:10.286Z",
-    "updated_at": "2022-07-29T10:51:10.286Z"
-  }
-},
-{
-  "model": "homepage.whychooseus",
-  "pk": 5,
-  "fields": {
-    "service_name": "Ethereum Wallet",
-    "icon": "why_choose_us/blank-profile-picture-g2f05db5c1_1280_mfhCNKQ.png",
-    "content": "We also build powerful Ethereum wallets for the secure hold of Ether and other crypto assets. The addition offers high-end security for financial trading when making the use of wallets.",
-    "created_at": "2022-07-29T10:51:27.361Z",
-    "updated_at": "2022-07-29T10:51:27.361Z"
-  }
-},
-{
-  "model": "homepage.whychooseus",
-  "pk": 6,
-  "fields": {
-    "service_name": "Ethereum Testing",
-    "icon": "why_choose_us/blank-profile-picture-g2f05db5c1_1280_VooXpoG.png",
-    "content": "Before the final delivery of Ethereum apps, our team follows the thorough testing procedure, so apps work fast and smoothly on wide devices and platforms like Android, iOS, etc.",
-    "created_at": "2022-07-29T10:51:44.021Z",
-    "updated_at": "2022-07-29T10:51:44.021Z"
-  }
-},
-{
-  "model": "blog.blog",
-  "pk": 1,
-  "fields": {
-    "title": "In 2022, NFT Will Be The Best Business Model We Can Give to Achieve Endless Win",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    "content": "<h2><strong>2022 NFT Business Concepts</strong></h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Many new discoveries and centered advancements have occurred throughout the world, but one good, well-established technology that has made an impact on the digital and financial architecture of the entire world is crypto. The present world&#39;s market is being influenced with maximum efficiency by digitally encrypted tokens with various qualities. Many new examples and new ideas underlying NFTs are startling the traditional world at an ever-increasing rate.NFTs are influencing the financial sector as well as being a technology in the digital era. A long time ago, the predictions went beyond billions. Every instance of the NFTs is now heading towards Billions in strike rate.</p>\r\n\r\n<p>This year, the NFTs have set a goal of making a hundred million dollars in single trades, surpassing the 50 million mark achieved by their predecessors. Fintech specialists are amused to see such a prospective token kind, them. The crypto era&#39;s two most important tokens are gradually influencing the decade. NFTs, in particular, we&#39;re able to get the upper hand quickly thanks to their blockchain and smart contract designs.It may be anything, but starting a business on NFTs in 2022 will be the greatest option because NFTs have a plethora of future possibilities up their sleeves.</p>\r\n\r\n<p>Here are some of the top NFT-based business ideas to help you carve out a niche in the crypto market. We never know how long it will take for it to become extinct, but we do know that they will continue to dominate the digital era for a long time. Not simply as another fintech, but as a potentially significant technology innovation that simplifies many of the difficult processes we face today.</p>\r\n\r\n<h3><strong>NFT Marketplace</strong></h3>\r\n\r\n<p>The NFT marketplace is always changing, and it created the foundations and foundation for the NFT&#39;s current status in the modern world. Even now, the ideal NFT marketplace has the potential to quickly grow into a billion-dollar market. Many NFT marketplaces continue to emerge into the NFT arena on a regular basis, but the demand for the correct flawless NFT marketplaces remains unmet. If you can establish the greatest NFT marketplace that meets the want and needs of the scarcity, then that NFT marketplace will truly carve its own route to the world&#39;s tier 1 business model.</p>\r\n\r\n<p>There are various sorts of NFT marketplaces that can have a significant impact on the business landscape in 2022. The following are the most important new marketplaces.</p>\r\n\r\n<h3><strong>The NFT Art Marketplace</strong></h3>\r\n\r\n<p>The phrase &quot;art&quot; has a tremendous amount of eternal power, which is why it is always carried forward, even after millennia. The NFT art marketplace will be the best and most secure business model ever. A marketplace is a place where various revenue methods, from minting to listing, can be found. The NFT marketplace does indeed have a multi-revenue system, which includes ad revenue.</p>\r\n\r\n<h3><strong>Sports Marketplace at NFT</strong></h3>\r\n\r\n<p>Sports, like the arts and movies, have a dedicated following and an NFT sports business. In the crypto era, NFT sports marketplaces have already proven their worth. In the NFT market, NBA Top Shots, Sorare, has exhibited considerable sales. The NFT sports marketplace will be an unstoppable and inevitable marketplace category with adequate conceptualization and asset planning. In addition, in the crypto era, the greatest business model.</p>\r\n\r\n<h3><strong>The NFT Real Estate Marketplace</strong></h3>\r\n\r\n<p>The NFT Realestate Marketplace is another excellent option for a successful business concept in 2022. Real estate is a never-ending process of expanding space. Introducing NFT to the real estate market will put an end to the most noisy and serious challenge that the industry is now facing. The most substantial difficulty of the real estate market is solved because NFTs are well renowned for ownership authenticity. And total opulence is a given.</p>\r\n\r\n<h3><strong>NFT Platform for Cross-Chain Transactions</strong></h3>\r\n\r\n<p>NFTs are becoming a big and strong part of the crypto era, but their wider growth and utility are constrained by the NFTs they have. As a result, demand for a cross-chain NFT platform will increase in 2022. The low fees for linking the NFTs will prevent asset duplication and various blockchain dependencies. Both as a business model and as the best innovations, this will be a better fit.</p>\r\n\r\n<h3><strong>Metaverse</strong></h3>\r\n\r\n<p>After all of the buzz around the META, the Metaverse NFT Metaverse platform is rocketing to the top. In the best commercial NFT model, an NFT metaverse platform is a better fit. Users can interact and explore a Sandbox or an open environment in the Metaverse. The theme can be perfect in terms of the real world, or it can have its own identity. The most significant element is that the NFT metaverses are restricted to the future. In the NFT Metaverse concepts, there are many alternative ways to achieve wealth.</p>\r\n\r\n<h3><strong>NFTs with a Generative Component</strong></h3>\r\n\r\n<p>We&#39;ve already seen the pinnacle of the NFT Punks, which reached millions of dollars, and there are several sorts of generative NFTs in the crypto world. This is an excellent example of a business model that should be examined for implementation in the year 2022. The generative NFTs are talking about legacies, from Marvel superheroes to superstars of other entities. This will provide the ideal blend of reach and surge.</p>\r\n\r\n<h3><strong>NFT Launchpad</strong></h3>\r\n\r\n<p>A site where users can launch NFTs or markets on various blockchain platforms while on the road. This is an excellent method to engage the market, and the NFTs are lining up at a faster rate. A platform that can handle and launch them immediately would be in high demand. As a result, the NFT launchpad is the finest business idea.</p>\r\n\r\n<h3><strong>There&#39;s still &quot;N&quot; more to go.</strong></h3>\r\n\r\n<p>Any business that uses NFTs will reap substantial rewards for the person who takes the step. In contrast to the centralized period, many new people are turning their attention to NFTs with decentralized systems. We, Infograins Software Solutions&nbsp;are still well-established in developing the best business model ever devised. Our NFT stack lists are massive, and the possibilities are still limitless. As one of the greatest NFT development providers, we prefer to make changes rather than create affluent marketplaces.</p>",
-    "image": "blog/blank-profile-picture-g2f05db5c1_1280.png",
-    "slug": "in-2022-nft-will-be-the-best-business-model-we-can-give-to-achieve-endless-win",
-    "created_at": "2022-07-29T10:20:35.073Z",
-    "updated_at": "2022-07-29T10:20:35.073Z"
-  }
-},
-{
   "model": "company.team",
   "pk": 1,
   "fields": {
@@ -417,4 +330,5 @@
     "updated_at": "2022-07-26T05:51:32.959Z"
   }
 }
+
 ]
