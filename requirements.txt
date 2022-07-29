@@ -1,0 +1,11 @@
+django
+django_rest_framework
+django-extensions
+pandas
+phone-iso3166
+phonenumbers
+pycountry
+Pillow
+psycopg2
+django-cors-headers
+django-ckeditor

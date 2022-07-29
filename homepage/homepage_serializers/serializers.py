@@ -1,0 +1,26 @@
+from rest_framework import serializers
+from homepage.models import (
+    OurMastery,
+    HeroSection,
+    NotableBlockchainPlatforms
+)
+
+class OurMasterySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OurMastery
+        fields = ["name","image","content"]
+
+class HeroSectionSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = HeroSection
+        fields = ["id","title","content","image"]
+    
+    def to_representation(self,obj):
+        instance = super(HeroSectionSerializers,self).to_representation(obj)
+        instance['title'] = instance['title'].title()
+        return instance
+
+class NotableBlockchainPlatformsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NotableBlockchainPlatforms
+        fields = ['name','image','content']

@@ -1,0 +1,334 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$uVYIybQMWjvIIfr7895BoS$8yLGoUc82xzufmTuSLaKDXvVPjktr4cbsmJstn5106g=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@infograins.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2022-07-25T12:05:26.708Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$8uHXQGyJuPjW3sUmnLEWYN$9UrlR2S9m06abRDYYzIlTU+mm+nMtk8J9NGNOF++aFo=",
+    "last_login": "2022-07-25T12:54:43.279Z",
+    "is_superuser": true,
+    "username": "infograins",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@infograins.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2022-07-25T12:21:24.673Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "5gexp9a4l20wchq2dklikk8stfsfkkm5",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQBe9CHSEWbFhSpvcZ0PILTiKQjF1FuXtsyUXSvpl5b-ZoW4vbelrcHNmVSXb53TyFZ6oHiA-q98ZDq-sye34o_KSdTy2m1-10_w4K9bLXqBWRBC1k1iZAFFpFMjF42IFHlccEXmZMGshKi-gtGCEBcBjNgIF9vtVRNw8:1oFxbf:hgKuTcRg58sfLHZKVhRT5UvqdZuzYn3m3FXQZ3rUS0c",
+    "expire_date": "2022-08-08T12:54:43.280Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "kxsh1m2lh6e5yknau3i7f7eqrmxvh8qu",
+  "fields": {
+    "session_data": ".eJxVjDsOwyAQBe9CHSEWbFhSpvcZ0PILTiKQjF1FuXtsyUXSvpl5b-ZoW4vbelrcHNmVSXb53TyFZ6oHiA-q98ZDq-sye34o_KSdTy2m1-10_w4K9bLXqBWRBC1k1iZAFFpFMjF42IFHlccEXmZMGshKi-gtGCEBcBjNgIF9vtVRNw8:1oFx5b:T28h90ag9IxpO-9JIkMgTjHXS8BgcM-wy4_UC6-NYTg",
+    "expire_date": "2022-08-08T12:21:35.795Z"
+  }
+},
+{
+  "model": "blockchain.blockchaincategory",
+  "pk": 1,
+  "fields": {
+    "blockchain_category": "Core Blockchain",
+    "created_at": "2022-07-25T12:22:07.717Z",
+    "updated_at": "2022-07-25T12:22:07.717Z"
+  }
+},
+{
+  "model": "blockchain.blockchaincategory",
+  "pk": 2,
+  "fields": {
+    "blockchain_category": "Crypto",
+    "created_at": "2022-07-25T12:22:14.678Z",
+    "updated_at": "2022-07-25T12:22:14.678Z"
+  }
+},
+{
+  "model": "blockchain.blockchaincategory",
+  "pk": 3,
+  "fields": {
+    "blockchain_category": "dApps",
+    "created_at": "2022-07-25T12:22:21.855Z",
+    "updated_at": "2022-07-25T12:22:21.855Z"
+  }
+},
+{
+  "model": "blockchain.blockchain",
+  "pk": 1,
+  "fields": {
+    "blockchainCategory": 1,
+    "blockchain_name": "Web3 Development Company",
+    "blockchain_slug": "web3-development-company",
+    "blockchain_content": "",
+    "created_at": "2022-07-25T12:22:35.564Z",
+    "updated_at": "2022-07-25T12:22:35.564Z"
+  }
+},
+{
+  "model": "blockchain.blockchain",
+  "pk": 2,
+  "fields": {
+    "blockchainCategory": 1,
+    "blockchain_name": "Metaverse Development",
+    "blockchain_slug": "metaverse-development",
+    "blockchain_content": "",
+    "created_at": "2022-07-25T12:23:29.385Z",
+    "updated_at": "2022-07-25T12:23:29.385Z"
+  }
+},
+{
+  "model": "blockchain.blockchain",
+  "pk": 3,
+  "fields": {
+    "blockchainCategory": 1,
+    "blockchain_name": "Hybrid blockchain",
+    "blockchain_slug": "hybrid-blockchain",
+    "blockchain_content": "<p>Infograins offers organizations an adaptable, Hybrid Blockchain platform that allows for the quick deployment of cutting-edge applications.</p>\r\n\r\n<p><strong>Background associated with Hybrid Blockchain</strong></p>\r\n\r\n<p>The term &quot;hybrid&quot; has a lot of potential. Nearly all hybrid technologies, including metal alloys, hybrid animals, and hybrid autos, have gained significant popularity and adoption. Similarly, Blockchain hybrids have a lot of potential and should be developed. It can become more clear through an analysis of their capacities. A hybrid Blockchain essentially has two interfaces: a Public Blockchain that aids in the verification of data kept between the ledgers of the Private Blockchain.</p>\r\n\r\n<p>While offering Blockchain properties like integrity, transparency, and security, hybrid blockchain architecture can be distinguished by the fact that it is not accessible to all users. This offers a scalable method of transaction validation that is carried out using a decentralized consensus mechanism. Data and transactions are frequently private. Nevertheless, they may be verified when required, for example, when granting access using a smart contract. The network stores confidential information, yet it may still be checked. The hybrid Blockchain cannot be altered by a private entity, even if it owns it.</p>\r\n\r\n<p>The degree of decentralization, transparency, and security demanded by the Blockchain may, in a sense, always be changed. In comparison to Private Blockchains, Hybrid Blockchains allow slightly more latitude in terms of security and offer stricter data security protocols as compared to Public Blockchain. Compared to Public Blockchains, Hybrid Blockchains offer high-speed operations and are considerably simpler to manage than Private Blockchains.</p>\r\n\r\n<p><strong>The Perks of Hybrid Blockchain</strong></p>\r\n\r\n<p>Change will always occur. The fact that people and organizations must adapt to that change cannot be denied. The new transformation that businesses require is Hybrid Blockchain technology. Companies can connect with shareholders and the general public while operating in a closed ecosystem if necessary. Rules can be changed because this setup is less rigid. Since they won&#39;t have access to the blockchain network, the probability of a hacker attack is minimized. Additionally, because only a small number of nodes are needed to verify the transaction, this specific version of Blockchain has low transaction costs.</p>\r\n\r\n<p>While Hybrid Blockchain technology may appear to be a thing of the now, it is undoubtedly a part of the future as it continues to develop.</p>\r\n\r\n<p>Contact us to learn more about the Hybrid Blockchain services we provide.</p>",
+    "created_at": "2022-07-25T12:23:44.227Z",
+    "updated_at": "2022-07-26T05:32:49.008Z"
+  }
+},
+{
+  "model": "blockchain.blockchain",
+  "pk": 4,
+  "fields": {
+    "blockchainCategory": 2,
+    "blockchain_name": "White Label Crypto Exchange",
+    "blockchain_slug": "white-label-crypto-exchange",
+    "blockchain_content": "",
+    "created_at": "2022-07-25T12:24:23.353Z",
+    "updated_at": "2022-07-25T12:24:23.353Z"
+  }
+},
+{
+  "model": "blockchain.blockchain",
+  "pk": 5,
+  "fields": {
+    "blockchainCategory": 3,
+    "blockchain_name": "Launchpad Development Company",
+    "blockchain_slug": "launchpad-development-company",
+    "blockchain_content": "",
+    "created_at": "2022-07-25T12:24:46.658Z",
+    "updated_at": "2022-07-25T12:24:46.658Z"
+  }
+},
+{
+  "model": "blockchain.blockchain",
+  "pk": 6,
+  "fields": {
+    "blockchainCategory": 1,
+    "blockchain_name": "Public Blockchain Development",
+    "blockchain_slug": "public-blockchain-development",
+    "blockchain_content": "<p><strong>Public Blockchain</strong></p>\r\n\r\n<p>Infograins specializes in developing public Blockchains. We can give you advice and help you choose the best network for your needs based on the specifics of your business. We build our products using EOS and Ethereum, the two most well-known and widely-used public Blockchain networks.\\</p>\r\n\r\n<p><strong>Let&#39;s explore Public Blockchain in more detail</strong></p>\r\n\r\n<p>A public Blockchain is an open network where anybody may read, write, or join. Since there is no centralized authority, the data on the network will be unchangeable. Although it can seem like a drawback, this is actually one of the public Blockchains&#39; largest benefits and exemplifies the true power of decentralization. The network is maintained using a distributed system where each user has a copy of the ledger rather than a single central platform. The network cannot be manipulated by anyone. Any user who wishes to alter the block must begin a brand-new, independent chain.</p>\r\n\r\n<p>Every platform that is a component of the public Blockchain is created to function with the highest level of security. The anonymity of the public Blockchain is one of the factors that has attracted so many supporters. It is not necessary to reveal your identity or true name in order to take part. Nobody can monitor your network activities if your identity is securely protected. Preserving historical and current data</p>\r\n\r\n<p>To acquire the best Blockchain solutions for your organization, work with one of our incredibly competent Blockchain developers.</p>\r\n\r\n<p><strong>Why Should You Pick Infograins as your Blockchain Development Company?</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>No matter how complicated your job is, we always guarantee our work. We deliver on our promises and live up to our words. Even after the Blockchain has been deployed on your primary network, our skilled developers offer end-to-end support for your project.</p>\r\n\r\n<p>To find out how public Blockchains can help your business, get in touch with us.</p>\r\n\r\n<p>&nbsp;</p>",
+    "created_at": "2022-07-25T12:25:35.474Z",
+    "updated_at": "2022-07-26T05:39:53.080Z"
+  }
+},
+{
+  "model": "blockchain.blockchain",
+  "pk": 7,
+  "fields": {
+    "blockchainCategory": 1,
+    "blockchain_name": "Private Blockchain Development",
+    "blockchain_slug": "private-blockchain-development",
+    "blockchain_content": "<p><strong>Get Infograins&#39; Top-Notch, Vastly Innovative Private Blockchains Solution.</strong></p>\r\n\r\n<p>A private blockchain is a peer-to-peer network that has been made centralised by linking every node to a hub that controls the entire system. Banks and enterprises mostly employ private blockchains to support efficient operations. It is often established by the network validator, and each participant has the final say over who can and cannot join the network and execute transactions. When a member seeks to participate, a private blockchain requests permission from the centre point that appears the network. When compared to the Bitcoin blockchain, private blockchain transactions are quicker and simpler.</p>\r\n\r\n<p>A global consulting firm called Infograins offers solutions and has assembled the greatest team to create and build all the services, from basic Blockchain architecture to more complex ones.</p>\r\n\r\n<p>In order to satisfy your company needs, our developers are prepared to examine, work on, and educate you with the possibilities of blockchain technology.</p>\r\n\r\n<p><strong>Learn About the Benefits of Private Blockchains</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li>Auditing Cryptography Enhanced Efficiency</li>\r\n\t<li>Glorified databases have environmental control.</li>\r\n\t<li>transaction speeds and costs</li>\r\n\t<li>Large data and file storage capacities are available.</li>\r\n\t<li>Transactions with a low risk due to KYC authentication</li>\r\n\t<li>higher scalability and stability</li>\r\n</ul>\r\n\r\n<p><strong>How Does A Private Blockchain Operate?</strong></p>\r\n\r\n<p>The network initiator must give permission for the private blockchain network to operate. It&#39;s not open to everyone in order to grant third parties control over access or transaction rights. The financial, healthcare, and legal sectors mostly use the private blockchain for enterprise-level applications where security, scalability, and greater TPS are critical requirements.</p>\r\n\r\n<p><strong>Why Opt for Private Blockchain Development Services from Infograins Software Solutions?</strong></p>\r\n\r\n<p>Globally, Infograins Software Solutions offers the top blockchain development services. Given that we offer a highly secure private blockchain infrastructure with shared peers, we can be the best option for your private blockchain development requirements.</p>\r\n\r\n<p><strong>We Make A Promise To You:</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li>Options that are wholly decentralised</li>\r\n\t<li>Purchase some cryptocurrency</li>\r\n\t<li>transaction speeds and costs</li>\r\n\t<li>Automatic creation of public keys</li>\r\n\t<li>Obtain guidance on investing</li>\r\n\t<li>Create several identity and key value databases.</li>\r\n\t<li>tracking network-wide accessibility</li>\r\n\t<li>control over all transactions that is dynamic</li>\r\n</ul>",
+    "created_at": "2022-07-25T12:25:45.578Z",
+    "updated_at": "2022-07-26T05:38:47.218Z"
+  }
+},
+{
+  "model": "talk_to_us.contactus",
+  "pk": 1,
+  "fields": {
+    "fullName": "Mayank Motiyani",
+    "email": "mayankmotiyani8@gmail.com",
+    "contactNumber": "+918560025508",
+    "countryName": "India",
+    "projectDescription": "..........",
+    "created_at": "2022-07-26T11:50:54.997Z",
+    "updated_at": "2022-07-26T11:50:54.997Z"
+  }
+},
+{
+  "model": "games.game",
+  "pk": 1,
+  "fields": {
+    "name": "Unity Game Development",
+    "created_at": "2022-07-26T05:44:26.613Z",
+    "updated_at": "2022-07-26T05:44:26.613Z"
+  }
+},
+{
+  "model": "games.game",
+  "pk": 2,
+  "fields": {
+    "name": "AlienWorlds Clone",
+    "created_at": "2022-07-26T05:44:44.399Z",
+    "updated_at": "2022-07-26T05:44:44.399Z"
+  }
+},
+{
+  "model": "games.game",
+  "pk": 3,
+  "fields": {
+    "name": "P2E Game Development",
+    "created_at": "2022-07-26T05:45:11.905Z",
+    "updated_at": "2022-07-26T05:45:11.905Z"
+  }
+},
+{
+  "model": "nft.nft",
+  "pk": 1,
+  "fields": {
+    "name": "OpenSea Like Marketplace",
+    "created_at": "2022-07-26T05:46:10.800Z",
+    "updated_at": "2022-07-26T05:46:10.800Z"
+  }
+},
+{
+  "model": "nft.nft",
+  "pk": 2,
+  "fields": {
+    "name": "Decentraland Clone Portal",
+    "created_at": "2022-07-26T05:46:36.307Z",
+    "updated_at": "2022-07-26T05:46:36.307Z"
+  }
+},
+{
+  "model": "nft.nft",
+  "pk": 3,
+  "fields": {
+    "name": "NFT Marketplace For Memes",
+    "created_at": "2022-07-26T05:46:39.880Z",
+    "updated_at": "2022-07-26T05:46:39.880Z"
+  }
+},
+{
+  "model": "homepage.ourmastery",
+  "pk": 1,
+  "fields": {
+    "name": "DeFi",
+    "image": "niche_images/blank-profile-picture-g2f05db5c1_1280_TrwKfrK.png",
+    "content": "Thrive in the emerging future of the decentralized finance world with our robust DeFi development services and solutions.",
+    "created_at": "2022-07-25T12:26:58.840Z",
+    "updated_at": "2022-07-26T05:45:58.542Z"
+  }
+},
+{
+  "model": "homepage.ourmastery",
+  "pk": 2,
+  "fields": {
+    "name": "dApp",
+    "image": "niche_images/blank-profile-picture-g2f05db5c1_1280_EQnOeRS.png",
+    "content": "Harness the power of advanced dApp solutions and transform your ideas into MVP to create your project in action for supreme outcomes.",
+    "created_at": "2022-07-25T12:27:19.180Z",
+    "updated_at": "2022-07-26T05:45:53.236Z"
+  }
+},
+{
+  "model": "homepage.ourmastery",
+  "pk": 3,
+  "fields": {
+    "name": "NFTs",
+    "image": "niche_images/blank-profile-picture-g2f05db5c1_1280.png",
+    "content": "We are the providers of robust Whitelabel NFT marketplace development solutions designed by a crew of tech experts at pocket-pleasant costs.",
+    "created_at": "2022-07-25T12:27:41.101Z",
+    "updated_at": "2022-07-26T05:45:47.532Z"
+  }
+},
+{
+  "model": "homepage.herosection",
+  "pk": 1,
+  "fields": {
+    "title": "Services That Fit Well With Your Business",
+    "content": "A team of growth enablers crafting digital solutions that let clients take a sip of success.",
+    "image": "hero_section_images/blank-profile-picture-g2f05db5c1_1280_SSexlEi.png",
+    "created_at": "2022-07-25T12:28:17.268Z",
+    "updated_at": "2022-07-26T05:45:36.100Z"
+  }
+},
+{
+  "model": "homepage.herosection",
+  "pk": 2,
+  "fields": {
+    "title": "Your Business Needs Our DeFi Solutions",
+    "content": "We provide straightforward DeFi solutions to complex business challenges. We create unique solutions with our deep technical knowledge and business understanding that power enterprises, their employees, and customers.",
+    "image": "hero_section_images/blank-profile-picture-g2f05db5c1_1280.png",
+    "created_at": "2022-07-25T12:28:42.196Z",
+    "updated_at": "2022-07-26T05:45:28.779Z"
+  }
+},
+{
+  "model": "company.team",
+  "pk": 1,
+  "fields": {
+    "member_unique_id": 1,
+    "member_name": "Ajay Shukla",
+    "member_avatar": "team_avatar/blank-profile-picture-g2f05db5c1_1280_zmp3Fw6.png",
+    "member_profile": "Founder",
+    "member_bio": "Founder of Infograins Software Solutions PVT. LTD. and Technology Consultant - Blockchain and Distributed Infrastructure",
+    "created_at": "2022-07-26T05:41:29.293Z",
+    "updated_at": "2022-07-26T05:43:52.450Z"
+  }
+},
+{
+  "model": "company.team",
+  "pk": 2,
+  "fields": {
+    "member_unique_id": 2,
+    "member_name": "Rahul Jain",
+    "member_avatar": "team_avatar/blank-profile-picture-g2f05db5c1_1280.png",
+    "member_profile": "Project Manager & Blockchain Consultant",
+    "member_bio": "Project manager with 6 years of experience.",
+    "created_at": "2022-07-26T05:43:38.826Z",
+    "updated_at": "2022-07-26T05:43:46.392Z"
+  }
+},
+{
+  "model": "company.testimonial",
+  "pk": 1,
+  "fields": {
+    "client_name": "Darlina",
+    "client_feedback": "Infograins is one of the leading offshore software development company routed from Portland, Oregon USA and having its delivery center in Indore, India.",
+    "created_at": "2022-07-26T05:51:21.213Z",
+    "updated_at": "2022-07-26T07:08:27.281Z"
+  }
+},
+{
+  "model": "company.testimonial",
+  "pk": 2,
+  "fields": {
+    "client_name": "Raymond N.",
+    "client_feedback": "The freelancer was great, he listened to all our problems and help us find a solution that works best for everyone. I would definitely work with him again!",
+    "created_at": "2022-07-26T05:51:32.959Z",
+    "updated_at": "2022-07-26T05:51:32.959Z"
+  }
+}
+
+]
