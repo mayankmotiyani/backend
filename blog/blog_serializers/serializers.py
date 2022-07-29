@@ -7,14 +7,13 @@ from blog.models import (
 
 
 class BlogSerializer(serializers.ModelSerializer):
-    blog_url = serializers.SerializerMethodField()
+    # blog_url = serializers.SerializerMethodField()
     class Meta:
         model = Blog
-        fields = ['id','title','description','slug','blog_url']
+        fields = ['id','title','description','slug']
     
-    def get_blog_url(self,obj):
-        print(obj)
-        return obj.get_absolute_url()
+    # def get_blog_url(self,obj):
+    #     return obj.get_absolute_url()
 
     def to_representation(self, obj):
         instance = super(BlogSerializer, self).to_representation(obj)
