@@ -12,3 +12,4 @@ django-ckeditor
 dj-database-url
 python-dotenv
 whitenoise
+gunicorn
