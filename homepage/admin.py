@@ -4,6 +4,7 @@ from .models import (
     OurMastery,
     HeroSection,
     NotableBlockchainPlatforms,
+    WhyChooseUs
 )
 # Register your models here.
 
@@ -59,6 +60,20 @@ class NotableBlockchainPlatformsAdmin(admin.ModelAdmin):
 
     list_display  = ['name','image','display_content','admin_created_at','admin_updated_at']
 
+
+class WhyChooseUsAdmin(admin.ModelAdmin):
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdateDate')
+    def admin_updated_at(self,obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    list_display = ['service_name','admin_created_at','admin_updated_at']
+
+
 admin.site.register(OurMastery, OurMasteryAdmin)
 admin.site.register(NotableBlockchainPlatforms, NotableBlockchainPlatformsAdmin)
 admin.site.register(HeroSection, HeroSectionAdmin)
+admin.site.register(WhyChooseUs,WhyChooseUsAdmin)

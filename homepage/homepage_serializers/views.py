@@ -5,13 +5,15 @@ from django.db.models import F
 from homepage.models import (
     OurMastery,
     HeroSection,
-    NotableBlockchainPlatforms
+    NotableBlockchainPlatforms,
+    WhyChooseUs
 )
 
 from .serializers import (
     OurMasterySerializer,
     HeroSectionSerializers,
-    NotableBlockchainPlatformsSerializer
+    NotableBlockchainPlatformsSerializer,
+    WhyChooseUsSerializer
 
 )
 class OurMasteryAPI(APIView):
@@ -58,6 +60,26 @@ class NotableBlockchainPlatformsAPI(APIView):
         try:
             get_notable_blockchain_platform = NotableBlockchainPlatforms.objects.all()
             serializer = NotableBlockchainPlatformsSerializer(get_notable_blockchain_platform,many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+    
+
+class WhyChooseUsAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            get_why_we_choose_instance = WhyChooseUs.objects.all()
+            serializer = WhyChooseUsSerializer(get_whatweoffer, many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,

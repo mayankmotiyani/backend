@@ -63,7 +63,16 @@ class BlockchainService(models.Model):
 
 
 
-
+# class WhatWeOffer(models.Model):
+#     blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE)
+#     blockchain_name = models.CharField(_("blockchainName"), max_length=250)
+#     icon = models.ImageField(_("icon"), upload_to="icon")
+#     content = models.TextField(_("content"))
+#     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+#     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+    
+#     def __str__(self) :
+#         return self.blockchain_name
 
     
 

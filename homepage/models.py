@@ -35,3 +35,17 @@ class NotableBlockchainPlatforms(models.Model):
     class Meta:
         verbose_name_plural = "High-End Expertise In Blockchain"
         
+
+class WhyChooseUs(models.Model):
+    service_name = models.CharField(_("chooseServiceName"), max_length=250)
+    icon = models.ImageField(_("icon"), upload_to="why_choose_us")
+    content = models.TextField(_("content"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "Why Choose Us"    
+        
+    def __str__(self) :
+        return self.service_name
+    

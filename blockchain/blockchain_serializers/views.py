@@ -76,3 +76,21 @@ class DashboardNichesAPI(APIView):
 
 
 
+# class WhatweofferAPI(APIView):
+#     def get(self, request, *args, **kwargs):
+#         try:
+#             get_whatweoffer = WhatWeOffer.objects.all()
+#             serializer = WhatWeOfferSerializer(get_whatweoffer, many=True)
+#             context = {
+#                 "status":status.HTTP_200_OK,
+#                 "success":True,
+#                 "response":serializer.data
+#             }
+#             return Response(context,status=status.HTTP_200_OK)
+#         except Exception as exception:
+#             context = {
+#                 "status":status.HTTP_400_BAD_REQUEST,
+#                 "success":False,
+#                 "response":str(exception)
+#             }
+#             return Response(context,status=status.HTTP_400_BAD_REQUEST)
