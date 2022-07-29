@@ -79,7 +79,7 @@ class WhyChooseUsAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
             get_why_we_choose_instance = WhyChooseUs.objects.all()
-            serializer = WhyChooseUsSerializer(get_whatweoffer, many=True)
+            serializer = WhyChooseUsSerializer(get_why_we_choose_instance, many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
