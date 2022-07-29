@@ -24,8 +24,8 @@ class Blog(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Blog, self).save(*args, **kwargs)
-        
-    def __str__(self):
-        return self.title
+
+    def get_absolute_url(self):
+        return reverse('blog',kwargs={'blog_url':self.slug})
 
 
