@@ -76,12 +76,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ALLOWED_ORIGINS = [
-    "https://infograinsdevelopment.herokuapp.com",
-    "http://infograinsdevelopment.herokuapp.com"
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "https://infograinsdevelopment.herokuapp.com",
+#     "http://infograinsdevelopment.herokuapp.com"
+# ]
 
 ROOT_URLCONF = 'backend.urls'
 
