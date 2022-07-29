@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 
@@ -30,10 +31,10 @@ class Careers(models.Model):
     opening_designation = models.CharField(_("openingDesignation"),max_length=500,null=True)
     # designation_Image = models.ImageField(_("designationImage"),upload_to='designation_images')
     designation_brief = models.TextField(_("designationBrief"),null=True)
-    experience = models.CharField(_("experience"),max_length=250,null=True)
+    experience = models.CharField(_("experience"),max_length=250,null=True,help_text="for example : 6 Months - 1 Year")
     location = models.CharField(_("location"),max_length=250,null=True)
-    skills = models.CharField(max_length=300,null=True,blank=True),
-    responsibilities = models.TextField(null=True,blank=True),
+    skills = RichTextUploadingField(_("careerSkills"),blank=True,null=True)
+    responsibilities = RichTextUploadingField(_("careerResponsibilities"),blank=True,null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
@@ -59,22 +60,7 @@ class Testimonial(models.Model):
     def __str__(self):
         return "{}".format(self.client_name)
 
-
-
-
-# class ContactInformation(models.Model):
-#     country = models.CharField(_("country"),max_length=250,default="")
-#     address = models.TextField(_("address"))
-#     phone_number = models.IntegerField(_("phone_number"))
-#     email = models.EmailField(_("email"), max_length=254)
-#     image = models.ImageField(_("image"), upload_to='CountryFlags')
-#     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
-#     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
     
-#     def __str__(self):
-#         return self.country
-        
-
 class SiteMap(models.Model):
     pass
 

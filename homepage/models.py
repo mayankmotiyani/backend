@@ -24,6 +24,9 @@ class HeroSection(models.Model):
 
     class Meta:
         verbose_name_plural = "Hero Section"
+    
+    def __str__(self):
+        return "{}".format(self.title)
 
 class NotableBlockchainPlatforms(models.Model):
     name = models.CharField(_("name"),max_length=250)
@@ -31,6 +34,10 @@ class NotableBlockchainPlatforms(models.Model):
     content = models.TextField(_("content"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+
+    def __str__(self):
+        return "{}".format(self.name)
 
     class Meta:
         verbose_name_plural = "High-End Expertise In Blockchain"
@@ -44,7 +51,7 @@ class WhyChooseUs(models.Model):
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
     class Meta:
-        verbose_name_plural = "Why Choose Us"    
+        verbose_name_plural = "Why Choose Us"
         
     def __str__(self) :
         return self.service_name

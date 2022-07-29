@@ -9,7 +9,8 @@ from about_us.models import(
 
 from .serializers import (
     AboutUsSerializer,
-    OfficeAddressSerializer
+    OfficeAddressSerializer,
+    HeaderOfficeAddressSerializer
    
 )
 
@@ -55,3 +56,22 @@ class OfficeAddressAPI(APIView):
             }
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
             
+class HeaderOfficeAddressAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            get_contact_address_instance = ContactAddress.objects.all()
+            serializer = HeaderOfficeAddressSerializer(get_contact_address_instance,many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+

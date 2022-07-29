@@ -29,4 +29,4 @@ class NotableBlockchainPlatformsSerializer(serializers.ModelSerializer):
 class WhyChooseUsSerializer(serializers.ModelSerializer):
     class Meta:
         model = WhyChooseUs
-        fields = "__all__"
+        fields = ['service_name','icon','content']

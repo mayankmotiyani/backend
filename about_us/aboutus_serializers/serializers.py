@@ -30,3 +30,7 @@ class OfficeAddressSerializer(serializers.ModelSerializer):
         instance['phone'] = instance['phone'].replace(",","|")
         return instance
             
+class HeaderOfficeAddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactAddress
+        fields = ['office','phone']
