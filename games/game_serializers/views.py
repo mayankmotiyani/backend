@@ -3,28 +3,26 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from games.models import (
-    Game
+    GameCategory
 )
 
 from .serializers import (
-    GameSerializer
+    GameCategorySerializer
 )
 
 
-class GameAPI(APIView):
+class GameCategoryAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            get_games = Game.objects.all()
-            serializer = GameSerializer(get_games,many=True)
-            games = json.loads(json.dumps(serializer.data))
-            list_of_games = [game['name'] for game in games]
+            get_games = GameCategory.objects.all()
+            serializer = GameCategorySerializer(get_games,many=True)
+            # games = json.loads(json.dumps(serializer.data))
+            # list_of_games = [game['name'] for game in games]
         
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
-                "response": {
-                    "Games":list_of_games
-                }
+                "response": serializer.data
             }
             return Response(context,status=status.HTTP_200_OK)
         except Exception as exception:
@@ -34,3 +32,7 @@ class GameAPI(APIView):
                 "response":str(exception)
             }
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
+        
+    
+class GameAPI(APIView):
+    pass

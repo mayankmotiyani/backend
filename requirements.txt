@@ -13,3 +13,4 @@ dj-database-url
 python-dotenv
 whitenoise
 gunicorn
+drf-api-logger
