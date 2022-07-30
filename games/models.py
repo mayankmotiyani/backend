@@ -24,14 +24,14 @@ class Game(models.Model):
     def get_absolute_url(self):
         return reverse("game",kwargs={"game_slug":self.slug})
 
-# class GameContent(models.Model):
-#     game = models.ForeignKey(Game,on_delete=models.CASCADE)
-#     game_content = RichTextUploadingField(_("gameContent"),blank=True,null=True)
-#     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
-#     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+class GameContent(models.Model):
+    game = models.ForeignKey(Game,on_delete=models.CASCADE)
+    game_content = RichTextUploadingField(_("gameContent"),blank=True,null=True)
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
-#     def __str__(self):
-#         return "{}".format(self.name)
+    def __str__(self):
+        return "{}".format(self.name)
 
 
 
