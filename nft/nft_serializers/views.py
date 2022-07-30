@@ -15,14 +15,10 @@ class NftAPI(APIView):
         try:
             get_games = NFT.objects.all()
             serializer = NftSerializer(get_games,many=True)
-            nfts = json.loads(json.dumps(serializer.data))
-            list_of_nft = [nft['name'] for nft in nfts]
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
-                "response":{
-                    "NFT":list_of_nft
-                }
+                "response":serializer.data
             }
             return Response(context,status=status.HTTP_200_OK)
         except Exception as exception:
@@ -33,4 +29,5 @@ class NftAPI(APIView):
             }
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
         
-    
+class NftContentAPI(APIView):
+    pass

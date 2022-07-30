@@ -3,19 +3,19 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from games.models import (
-    GameCategory
+    Game
 )
 
 from .serializers import (
-    GameCategorySerializer
+    GameSerializer
 )
 
 
-class GameCategoryAPI(APIView):
+class GameAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            get_games = GameCategory.objects.all()
-            serializer = GameCategorySerializer(get_games,many=True)
+            get_games = Game.objects.all()
+            serializer = GameSerializer(get_games,many=True)
             # games = json.loads(json.dumps(serializer.data))
             # list_of_games = [game['name'] for game in games]
         
@@ -34,5 +34,5 @@ class GameCategoryAPI(APIView):
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
         
     
-class GameAPI(APIView):
+class GameContentAPI(APIView):
     pass

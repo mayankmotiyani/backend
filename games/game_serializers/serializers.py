@@ -1,13 +1,13 @@
 from rest_framework import serializers
 from games.models import (
-    GameCategory
+    Game
 )
 
 
-class GameCategorySerializer(serializers.ModelSerializer):
+class GameSerializer(serializers.ModelSerializer):
     game_slug = serializers.SerializerMethodField()
     class Meta:
-        model = GameCategory
+        model = Game
         fields = ['name','game_slug']
     
     def get_game_slug(self,obj):
