@@ -5,11 +5,9 @@ from .models import (
     Testimonial,
     Help,
     Careers,
-    
-   
 )
-# Register your models here.
 
+# Register your models here.
 class TeamAdmin(admin.ModelAdmin):
     @admin.display(description='CreationDate')
     def admin_created_at(self, obj):
@@ -80,22 +78,12 @@ class CareerAdmin(admin.ModelAdmin):
             obj.designation_brief)
 
     list_display  = ['opening_designation','display_designation_brief','experience','location','responsibilities','skills','admin_created_at','admin_updated_at']
-    
-# class ContactInformationAdmin(admin.ModelAdmin):
-#     @admin.display(description='CreationDate')
-#     def admin_created_at(self, obj):
-#         return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
-    
-#     @admin.display(description='UpdatedDate')
-#     def admin_updated_at(self, obj):
-#         return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
-    
-#     list_display = ['country','email','image','admin_created_at','admin_updated_at']
+
 
 admin.site.register(Team, TeamAdmin)
 admin.site.register(Testimonial,TestimonialAdmin)
 admin.site.register(Help,HelpAdmin)
 admin.site.register(Careers,CareerAdmin)
-# admin.site.register(ContactInformation,ContactInformationAdmin)
+
 
 

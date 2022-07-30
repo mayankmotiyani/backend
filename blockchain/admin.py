@@ -21,6 +21,7 @@ class BlockchainCategoryAdmin(admin.ModelAdmin):
 
 
 class BlockchainAdmin(admin.ModelAdmin):
+    exclude = ('blockchain_slug',)
     @admin.display(description='CreationDate')
     def admin_created_at(self, obj):
         return obj.created_at.strftime('%Y-%m-%d %I:%M %p')

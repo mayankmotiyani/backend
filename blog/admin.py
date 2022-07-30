@@ -5,6 +5,7 @@ from django.utils.html import format_html
 # Register your models here.
 
 class BlogAdmin(admin.ModelAdmin):
+    exclude = ('slug',)
     @admin.display(description='CreationDate')
     def admin_created_at(self, obj):
         return obj.created_at.strftime('%Y-%m-%d %I:%M %p')

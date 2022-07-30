@@ -24,6 +24,8 @@ class GetCompanyModelsAPI(APIView):
             company_dict = {}
             get_all_models_from_company = [i.__name__ for i in apps.all_models['company'].values()]
             company_dict['Company'] = get_all_models_from_company
+            company_dict['Services'] = ['Node JS Development','PHP Website Development','CakePHP Development','WordPress Development'] 
+            company_dict['About'] = ['About Company','Vision & Mission','Become Our Partner','Our Technology Partners']
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
