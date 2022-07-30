@@ -1,1 +1,11 @@
-virtualenv
+.Python
+virtualenv/
+env/
+*.sqlite3
+.idea/
+media/
+db.sqlite3
+.idea
+__pycache__/
+*.py[cod]
+*$py.class

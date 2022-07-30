@@ -14,6 +14,7 @@ import dj_database_url
 import os
 from datetime import timedelta
 from dotenv import load_dotenv, find_dotenv
+import django_heroku
 
 load_dotenv(find_dotenv())
 
@@ -29,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['infograinsbackend.herokuapp.com','127.0.0.1']
 
@@ -117,11 +118,11 @@ CKEDITOR_IMAGE_BACKEND = 'pillow'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'infograinsbackend',
+        }
     }
-}
 
 # DATABASES = {
 #     'default': {
@@ -182,16 +183,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'front-end/build/static'),
-# ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
+
+django_heroku.settings(locals())
 
 # MEDIA_URL = '/images/'
 # MEDIA_ROOT  = 'static/images'
