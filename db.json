@@ -176,33 +176,6 @@
   }
 },
 {
-  "model": "games.game",
-  "pk": 1,
-  "fields": {
-    "name": "Unity Game Development",
-    "created_at": "2022-07-26T05:44:26.613Z",
-    "updated_at": "2022-07-26T05:44:26.613Z"
-  }
-},
-{
-  "model": "games.game",
-  "pk": 2,
-  "fields": {
-    "name": "AlienWorlds Clone",
-    "created_at": "2022-07-26T05:44:44.399Z",
-    "updated_at": "2022-07-26T05:44:44.399Z"
-  }
-},
-{
-  "model": "games.game",
-  "pk": 3,
-  "fields": {
-    "name": "P2E Game Development",
-    "created_at": "2022-07-26T05:45:11.905Z",
-    "updated_at": "2022-07-26T05:45:11.905Z"
-  }
-},
-{
   "model": "nft.nft",
   "pk": 1,
   "fields": {
