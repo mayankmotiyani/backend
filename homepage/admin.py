@@ -4,7 +4,8 @@ from .models import (
     OurMastery,
     HeroSection,
     NotableBlockchainPlatforms,
-    WhyChooseUs
+    WhyChooseUs,
+    DevelopmentProcess
 )
 # Register your models here.
 
@@ -73,7 +74,26 @@ class WhyChooseUsAdmin(admin.ModelAdmin):
     list_display = ['service_name','admin_created_at','admin_updated_at']
 
 
+class DevelopmentProcessAdmin(admin.ModelAdmin):
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+
+    @admin.display(description='content')
+    def display_content(self, obj):
+        return format_html(
+            '<textarea cols="60" rows="4" readonly>{}</textarea>',
+            obj.content)
+
+    list_display  = ['process','image','display_content','admin_created_at','admin_updated_at']
+
+
 admin.site.register(OurMastery, OurMasteryAdmin)
 admin.site.register(NotableBlockchainPlatforms, NotableBlockchainPlatformsAdmin)
 admin.site.register(HeroSection, HeroSectionAdmin)
 admin.site.register(WhyChooseUs,WhyChooseUsAdmin)
+admin.site.register(DevelopmentProcess, DevelopmentProcessAdmin)
