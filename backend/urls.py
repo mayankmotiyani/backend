@@ -35,6 +35,7 @@ urlpatterns = [
     path('about_us/',include('about_us.aboutus_serializers.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('product/',include('product.product_serializers.urls')),
+    path('resource/',include('resources.resource_serializers.urls')),
 ]
 
 if settings.DEBUG:

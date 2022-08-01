@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
+from django.urls import reverse
 
 # Create your models here.
 
@@ -18,6 +19,8 @@ class Resource(models.Model):
         return "{}".format(self.name)
 
     def save(self, *args, **kwargs):
-        self.name = slugify(self.slug)
+        self.slug = slugify(self.name)
         super(Resource,self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse("resource",kwargs={"resource_url":self.slug})
