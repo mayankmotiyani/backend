@@ -67,5 +67,5 @@ class DevelopmentProcess(models.Model):
         verbose_name_plural = "Blockchain Development Process"
     
     def __str__(self):
-        return "{}".format(self.process)
+        return "{}".format(self.title)
 
