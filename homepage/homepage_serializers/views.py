@@ -99,7 +99,7 @@ class WhyChooseUsAPI(APIView):
 class BlockchainDevelopmentProcessAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            get_blockchain_process_instance = DevelopmentProcess.objects.all()
+            get_blockchain_process_instance = DevelopmentProcess.objects.all().order_by('created_at')
             serializer = BlockchainDevelopmentProcessSerializer(get_blockchain_process_instance, many=True)
             context = {
                 "status":status.HTTP_200_OK,
