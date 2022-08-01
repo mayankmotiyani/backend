@@ -34,6 +34,7 @@ urlpatterns = [
     path('blog/',include('blog.blog_serializers.urls')),
     path('about_us/',include('about_us.aboutus_serializers.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('product/',include('product.product_serializers.urls')),
 ]
 
 if settings.DEBUG:
