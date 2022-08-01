@@ -35,6 +35,26 @@ class ContactAddress(models.Model):
     class Meta:
         verbose_name_plural = "Contact Address"
 
+class BecomeOurPartner(models.Model):
+    first_name = models.CharField(_("firstName"),max_length=250)
+    last_name = models.CharField(_("lastName"),max_length=250)
+    email = models.EmailField(_("email"),max_length=250)
+    contact = models.CharField(_("contactNumber"),max_length=250)
+    address = models.TextField(_("address"),max_length=250)
+    state = models.CharField(_("state"),max_length=250)
+    city = models.CharField(_("city"),max_length=250)
+    source = models.CharField(_("How did you hear from us "),max_length=250)
+    source_optional = models.TextField(_("sourceOptional"),max_length=250,help_text="Optional")
+    notes = models.TextField(_("notesOptional"),max_length=250,help_text="Optional")
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "{},{}".format(self.first_name, self.last_name)
+    
+    class Meta:
+        verbose_name_plural = "Become Our Partner"
+
 
     
 
