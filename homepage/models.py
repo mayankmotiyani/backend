@@ -57,7 +57,7 @@ class WhyChooseUs(models.Model):
         return self.service_name
 
 class DevelopmentProcess(models.Model):
-    process = models.CharField(_("blockchainProcessTitle"),max_length=500)
+    title = models.CharField(_("blockchainProcessTitle"),max_length=500)
     content = models.TextField(_("blockchainProcessContent"))
     image = models.ImageField(_("blockchainProcessImage"),upload_to="blockchain_process")
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)

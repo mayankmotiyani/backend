@@ -89,7 +89,7 @@ class DevelopmentProcessAdmin(admin.ModelAdmin):
             '<textarea cols="60" rows="4" readonly>{}</textarea>',
             obj.content)
 
-    list_display  = ['process','image','display_content','admin_created_at','admin_updated_at']
+    list_display  = ['title','image','display_content','admin_created_at','admin_updated_at']
 
 
 admin.site.register(OurMastery, OurMasteryAdmin)

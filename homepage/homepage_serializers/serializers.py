@@ -3,7 +3,8 @@ from homepage.models import (
     OurMastery,
     HeroSection,
     NotableBlockchainPlatforms,
-    WhyChooseUs
+    WhyChooseUs,
+    DevelopmentProcess
 )
 
 class OurMasterySerializer(serializers.ModelSerializer):
@@ -30,3 +31,8 @@ class WhyChooseUsSerializer(serializers.ModelSerializer):
     class Meta:
         model = WhyChooseUs
         fields = ['service_name','icon','content']
+
+class BlockchainDevelopmentProcessSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DevelopmentProcess
+        fields = ["title","content"]

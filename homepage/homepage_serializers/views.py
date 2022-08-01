@@ -6,14 +6,16 @@ from homepage.models import (
     OurMastery,
     HeroSection,
     NotableBlockchainPlatforms,
-    WhyChooseUs
+    WhyChooseUs,
+    DevelopmentProcess
 )
 
 from .serializers import (
     OurMasterySerializer,
     HeroSectionSerializers,
     NotableBlockchainPlatformsSerializer,
-    WhyChooseUsSerializer
+    WhyChooseUsSerializer,
+    BlockchainDevelopmentProcessSerializer
 
 )
 class OurMasteryAPI(APIView):
@@ -80,6 +82,25 @@ class WhyChooseUsAPI(APIView):
         try:
             get_why_we_choose_instance = WhyChooseUs.objects.all()
             serializer = WhyChooseUsSerializer(get_why_we_choose_instance, many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+class BlockchainDevelopmentProcessAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            get_blockchain_process_instance = DevelopmentProcess.objects.all()
+            serializer = BlockchainDevelopmentProcessSerializer(get_blockchain_process_instance, many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
