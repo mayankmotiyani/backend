@@ -22,6 +22,7 @@ class Blockchain(models.Model):
     blockchainCategory = models.ForeignKey(BlockchainCategory,on_delete=models.CASCADE)
     blockchain_name = models.CharField(_("blockchainName"),max_length=250,default="")
     blockchain_slug = models.SlugField(_("blockchainSlug"),max_length=250,blank=True,null=True,default="")
+    blockchain_description = models.TextField(_("blockchainDescription"),blank=True,null=True)
     blockchain_content = RichTextUploadingField(_("blockchainContent"),blank=True,null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)

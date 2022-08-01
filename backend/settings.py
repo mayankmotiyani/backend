@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'company.apps.CompanyConfig',
     'about_us.apps.AboutUsConfig',
+    'resources.apps.ResourcesConfig',
     #dependencies  
     'rest_framework',
     'django_extensions',
@@ -68,7 +69,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'drf_api_logger',
-    'whitenoise.runserver_nostatic'
+    'whitenoise.runserver_nostatic',
+    'django_filters',
 ]
 
 

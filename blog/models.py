@@ -12,6 +12,7 @@ class Blog(models.Model):
     content = RichTextUploadingField(_("blogContent"),blank=True,null=True)
     image = models.ImageField(_("blogImage"),upload_to="blog")
     slug = models.SlugField(_("blogSlug"),max_length=500,blank=True)
+    latest = models.BooleanField(_("latestBlog"),default=False,null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 

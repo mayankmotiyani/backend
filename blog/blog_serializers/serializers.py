@@ -25,4 +25,5 @@ class SingleBlogSerializer(serializers.ModelSerializer):
         model = Blog
         fields = ['id','title','content']
 
- 
+
+

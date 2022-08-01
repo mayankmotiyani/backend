@@ -1,6 +1,5 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
 from blog.models import (
     Blog
 )
@@ -8,6 +7,13 @@ from .serializers import (
     BlogSerializer,
     SingleBlogSerializer
 )
+
+from rest_framework import (
+    generics,
+    filters,
+    status,
+)
+
 
 
 class BlogAPI(APIView):
@@ -51,3 +57,11 @@ class SingleBlogAPI(APIView):
                 "response":str(exception)
             }
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+class BlogSearchAPI(generics.ListCreateAPIView):
+    search_fields = ['title']
+    filter_backends = (filters.SearchFilter,)
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
+
+ 
