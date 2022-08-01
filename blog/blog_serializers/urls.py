@@ -8,5 +8,5 @@ from .views import (
 urlpatterns = [
     path('blog_list/',BlogAPI.as_view()),
     path('<slug:blog_url>/',SingleBlogAPI.as_view(),name='blog'),
-    path("blog_search/",BlogSearchAPI.as_view(),name='blog-search')
+    path("search_query/title/",BlogSearchAPI.as_view(),name='blog-search')
 ]   

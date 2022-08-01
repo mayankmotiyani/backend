@@ -58,10 +58,25 @@ class SingleBlogAPI(APIView):
             }
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
 
-class BlogSearchAPI(generics.ListCreateAPIView):
-    search_fields = ['title']
-    filter_backends = (filters.SearchFilter,)
-    queryset = Blog.objects.all()
-    serializer_class = BlogSerializer
+
+class BlogSearchAPI(APIView):
+     def get(self, request, *args, **kwargs):
+        try:
+            get_blog_query = request.GET.get("blog")
+            get_blog_instance = Blog.objects.filter(title__icontains = get_blog_query)
+            serializer = BlogSerializer(get_blog_instance,many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
 
  
