@@ -71,7 +71,6 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'drf_api_logger',
     'whitenoise.runserver_nostatic',
-    'django_filters',
 ]
 
 
