@@ -16,3 +16,4 @@ gunicorn
 django-heroku
 python-decouple
 drf-api-logger
+django_filters

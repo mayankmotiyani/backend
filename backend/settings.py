@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'company.apps.CompanyConfig',
     'about_us.apps.AboutUsConfig',
     'resources.apps.ResourcesConfig',
+    'product.apps.ProductConfig',
     #dependencies  
     'rest_framework',
     'django_extensions',
