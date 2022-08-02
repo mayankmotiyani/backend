@@ -30,15 +30,14 @@ class CareerSerializer(serializers.ModelSerializer):
     
     def to_representation(self, obj):
         instance = super(CareerSerializer, self).to_representation(obj)
-        instance['designation_brief'] = Truncator(instance['designation_brief']).words(30)
+        instance['designation_brief'] = Truncator(instance['designation_brief']).words(20)
         return instance
  
 class SingleCareerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Careers
-        fields = "__all__"
+        fields = ['opening_designation','designation_brief','experience','location','opening','join_duration','skills','responsibilities']
     
-
     def to_representation(self, obj):
         instance = super(CareerSerializer, self).to_representation(obj)
         instance['skills'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['skills'])
