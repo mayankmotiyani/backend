@@ -77,7 +77,7 @@ class CareerAdmin(admin.ModelAdmin):
             '<textarea cols="60" rows="4" readonly>{}</textarea>',
             obj.designation_brief)
 
-    list_display  = ['opening_designation','display_designation_brief','experience','location','responsibilities','skills','admin_created_at','admin_updated_at']
+    list_display  = ['opening_designation','display_designation_brief','opening','experience','location','admin_created_at','admin_updated_at','opening_available']
 
 
 admin.site.register(Team, TeamAdmin)
