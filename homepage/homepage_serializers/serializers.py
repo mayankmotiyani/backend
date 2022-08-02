@@ -42,3 +42,8 @@ class WhatWeDoSerializer(serializers.ModelSerializer):
     class Meta:
         model = WhatWeDo
         fields = "__all__"
+
+    
+    # def to_representation(self, obj):
+    #     instance = super(WhatWeDoSerializer, self).to_representation(obj)
+    #     return instance

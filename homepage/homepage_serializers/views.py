@@ -7,7 +7,8 @@ from homepage.models import (
     HeroSection,
     NotableBlockchainPlatforms,
     WhyChooseUs,
-    DevelopmentProcess
+    DevelopmentProcess,
+    WhatWeDo
 )
 
 from .serializers import (
@@ -119,8 +120,8 @@ class BlockchainDevelopmentProcessAPI(APIView):
 class WhatWeDoAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            get_what_we_dp_instance = WhatWeDo.objects.all()
-            serializer = WhatWeDoSerializer(get_what_we_dp_instance,many=True)
+            get_what_we_do_instance = WhatWeDo.objects.all()
+            serializer = WhatWeDoSerializer(get_what_we_do_instance,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
