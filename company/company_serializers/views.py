@@ -102,7 +102,7 @@ class SingleCareerAPI(APIView):
     def get(self, request, career_slug, *args, **kwargs):
         try:
             get_career = Careers.objects.get(slug=career_slug)
-            serializer = CareerSerializer(get_career)
+            serializer = SingleCareerSerializer(get_career)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
