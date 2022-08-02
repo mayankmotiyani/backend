@@ -69,3 +69,15 @@ class DevelopmentProcess(models.Model):
     def __str__(self):
         return "{}".format(self.title)
 
+class WhatWeDo(models.Model):
+    title = models.CharField(_("whatWeDoTitle"),max_length=500)
+    content = models.TextField(_("whatWeDoContent"))
+    image = models.ImageField(_("whatWeDoImage"),upload_to="what_we_do")
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    class Meta:
+        verbose_name_plural = "What We Do"
+    
+    def __str__(self):
+        return "{}".format(self.title)

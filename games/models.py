@@ -24,22 +24,28 @@ class Game(models.Model):
     def get_absolute_url(self):
         return reverse("game",kwargs={"game_slug":self.slug})
 
-class GameContent(models.Model):
+# class GameContent(models.Model):
+#     game = models.ForeignKey(Game,on_delete=models.CASCADE)
+#     game_content = RichTextUploadingField(_("gameContent"),blank=True,null=True)
+#     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+#     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+#     def __str__(self):
+#         return "{}".format(self.name)
+
+
+class ModernSolutionForVariousPlatform(models.Model):
     game = models.ForeignKey(Game,on_delete=models.CASCADE)
-    game_content = RichTextUploadingField(_("gameContent"),blank=True,null=True)
+    title = models.CharField(_("modernSolutionGameTitle"),max_length=500)
+    content = models.TextField(_("modernSolutionGameContent"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
+    class Meta:
+        verbose_name_plural = "Modern Solution For Various Platform"
+    
     def __str__(self):
-        return "{}".format(self.name)
-
-
-
-
-
-    
-
-    
+        return "{}".format(self.title.upper())
 
 
 
