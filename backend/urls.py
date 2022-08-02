@@ -30,7 +30,7 @@ urlpatterns = [
     path('game/',include('games.game_serializers.urls')),
     path('nft/',include('nft.nft_serializers.urls')),
     path('portfolio/',include('portfolio.portfolio_serializers.urls')),
-    path('company/',include('company.company_serializers.urls')),
+    path('',include('company.company_serializers.urls')),
     path('blog/',include('blog.blog_serializers.urls')),
     path('about_us/',include('about_us.aboutus_serializers.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),

@@ -8,7 +8,7 @@ from .views import (
 )
 urlpatterns = [
 
-    path('team-members/',TeamAPI.as_view(),name='team-members'),
+    path('team/',TeamAPI.as_view(),name='team-members'),
     path('testimonial/',TestimonialAPI.as_view(),name='testimonial'),
     path('career/',CareerAPI.as_view()),
     path('career/<slug:career_slug>/',SingleCareerAPI.as_view(),name='career'),

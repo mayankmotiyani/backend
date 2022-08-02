@@ -15,7 +15,8 @@ from .serializers import (
     HeroSectionSerializers,
     NotableBlockchainPlatformsSerializer,
     WhyChooseUsSerializer,
-    BlockchainDevelopmentProcessSerializer
+    BlockchainDevelopmentProcessSerializer,
+    WhatWeDoSerializer
 
 )
 class OurMasteryAPI(APIView):
@@ -101,6 +102,25 @@ class BlockchainDevelopmentProcessAPI(APIView):
         try:
             get_blockchain_process_instance = DevelopmentProcess.objects.all().order_by('created_at')
             serializer = BlockchainDevelopmentProcessSerializer(get_blockchain_process_instance, many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+class WhatWeDoAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            get_what_we_dp_instance = WhatWeDo.objects.all()
+            serializer = WhatWeDoSerializer(get_what_we_dp_instance,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
