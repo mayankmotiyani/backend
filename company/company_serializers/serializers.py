@@ -1,6 +1,7 @@
 import re
 from dataclasses import field
 from rest_framework import serializers
+from django.utils.text import Truncator
 from company.models import (
     Team,
     Testimonial,
@@ -22,7 +23,7 @@ class CareerSerializer(serializers.ModelSerializer):
     career_url = serializers.SerializerMethodField()
     class Meta:
         model = Careers
-        fields = '__all__'
+        fields = ['opening_designation','designation_brief','experience','location','opening','join_duration','career_url']
     
     def get_career_url(self,obj):
         return obj.get_absolute_url()
@@ -31,6 +32,7 @@ class CareerSerializer(serializers.ModelSerializer):
         instance = super(CareerSerializer, self).to_representation(obj)
         instance['skills'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['skills'])
         instance['responsibilities'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['responsibilities'])
+        instance['designation_brief'] = Truncator(instance['designation_brief']).words(30)
         return instance
  
 class SingleCareerSerializer(serializers.ModelSerializer):
