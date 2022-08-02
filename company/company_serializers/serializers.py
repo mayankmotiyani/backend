@@ -39,7 +39,7 @@ class SingleCareerSerializer(serializers.ModelSerializer):
         fields = ['opening_designation','designation_brief','experience','location','opening','join_duration','skills','responsibilities']
     
     def to_representation(self, obj):
-        instance = super(CareerSerializer, self).to_representation(obj)
+        instance = super(SingleCareerSerializer, self).to_representation(obj)
         instance['skills'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['skills'])
         instance['responsibilities'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['responsibilities'])
         return instance
