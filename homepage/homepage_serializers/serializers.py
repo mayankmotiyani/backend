@@ -9,9 +9,13 @@ from homepage.models import (
 )
 
 class OurMasterySerializer(serializers.ModelSerializer):
+    image_url = serializers.SerializerMethodField()
     class Meta:
         model = OurMastery
-        fields = ["name","image","content"]
+        fields = ["name","image","content","image_url"]
+
+    def get_image_url(self, obj):
+        return "https://infograinsbackend.herokuapp.com" + obj.image.url
 
 class HeroSectionSerializers(serializers.ModelSerializer):
     class Meta:
