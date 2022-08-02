@@ -10,6 +10,7 @@ from .models import (
 # Register your models here.
 
 class HeroSectionAdmin(admin.ModelAdmin):
+
     @admin.display(description='CreationDate')
     def admin_created_at(self, obj):
         return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
@@ -28,6 +29,18 @@ class HeroSectionAdmin(admin.ModelAdmin):
 
    
 class OurMasteryAdmin(admin.ModelAdmin):
+
+    # This will help you to disable add functionality
+    def has_add_permission(self, request):
+        get_our_mastery_instance = OurMastery.objects.all()
+        if len(get_our_mastery_instance) >=6:
+            return False
+        return True
+
+    # This will help you to disable delete functionality
+    def has_delete_permission(self, request, obj=None):
+        return False
+        
     @admin.display(description='CreationDate')
     def admin_created_at(self, obj):
         return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
@@ -63,6 +76,18 @@ class NotableBlockchainPlatformsAdmin(admin.ModelAdmin):
 
 
 class WhyChooseUsAdmin(admin.ModelAdmin):
+    
+    # This will help you to disable add functionality
+    def has_add_permission(self, request):
+        get_why_choose_us_instance = WhyChooseUs.objects.all()
+        if len(get_why_choose_us_instance) >=6:
+            return False
+        return True
+
+    # This will help you to disable delete functionality
+    def has_delete_permission(self, request, obj=None):
+        return False
+
     @admin.display(description='CreationDate')
     def admin_created_at(self, obj):
         return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
@@ -75,6 +100,15 @@ class WhyChooseUsAdmin(admin.ModelAdmin):
 
 
 class DevelopmentProcessAdmin(admin.ModelAdmin):
+
+    # This will help you to disable add functionality
+    def has_add_permission(self, request):
+        return False
+
+    # This will help you to disable delete functionality
+    def has_delete_permission(self, request, obj=None):
+        return False
+
     @admin.display(description='CreationDate')
     def admin_created_at(self, obj):
         return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
