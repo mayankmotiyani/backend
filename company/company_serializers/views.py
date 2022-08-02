@@ -98,6 +98,7 @@ class CareerAPI(APIView):
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
         
         
-
+class SingleCareerAPI(APIView):
+    pass
             
             

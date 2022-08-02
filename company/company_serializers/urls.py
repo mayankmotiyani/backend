@@ -3,13 +3,15 @@ from .views import (
     TeamAPI,
     GetCompanyModelsAPI,
     TestimonialAPI,
-    CareerAPI
+    CareerAPI,
+    SingleCareerAPI,
 )
 urlpatterns = [
 
     path('team-members/',TeamAPI.as_view(),name='team-members'),
     path('testimonial/',TestimonialAPI.as_view(),name='testimonial'),
-    path('careers/',CareerAPI.as_view(),name='careers'),
+    path('career/',CareerAPI.as_view()),
+    path('career/<slug:career_slug>/',SingleCareerAPI.as_view(),name='career'),
     path('get-all-models/',GetCompanyModelsAPI.as_view(),name='get-all-models-from-company')
     
 ]

@@ -2,6 +2,8 @@ import uuid
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.text import slugify
+from django.urls import reverse
 
 
 
@@ -38,9 +40,16 @@ class Careers(models.Model):
     join_duration = models.CharField(_("joinDuration"),max_length=250,blank=True,null=True,help_text="for example : 15 Days, 30 Days")
     skills = RichTextUploadingField(_("careerSkills"),blank=True,null=True)
     responsibilities = RichTextUploadingField(_("careerResponsibilities"),blank=True,null=True)
+    slug = models.SlugField(_("careerSlug"),max_length=500,blank=True,null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.opening_designation)
+        super(Careers,self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('career',kwargs={'career_slug':self.slug})
 
     class Meta:
         verbose_name_plural = "Career"

@@ -5,7 +5,6 @@ from company.models import (
     Team,
     Testimonial,
     Careers,
-   
     
 )
 
@@ -20,9 +19,13 @@ class TestimonialSerializer(serializers.ModelSerializer):
         fields = ['client_name','client_feedback']
 
 class CareerSerializer(serializers.ModelSerializer):
+    career_url = serializers.SerializerMethodField()
     class Meta:
         model = Careers
         fields = '__all__'
+    
+    def get_career_url(self,obj):
+        return obj.get_absolute_url()
     
     def to_representation(self, obj):
         instance = super(CareerSerializer, self).to_representation(obj)
@@ -30,5 +33,8 @@ class CareerSerializer(serializers.ModelSerializer):
         instance['responsibilities'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['responsibilities'])
         return instance
  
-        
+class SingleCareerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Careers
+        fields = "__all__"
         
