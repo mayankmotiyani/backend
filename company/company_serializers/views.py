@@ -81,7 +81,7 @@ class TestimonialAPI(APIView):
 class CareerAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            get_career = Careers.objects.all()
+            get_career = Careers.objects.filter(opening_available=True,opening__gt = 0)
             serializer = CareerSerializer(get_career,many=True)
             context = {
                 "status":status.HTTP_200_OK,

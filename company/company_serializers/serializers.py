@@ -1,3 +1,4 @@
+import re
 from dataclasses import field
 from rest_framework import serializers
 from company.models import (
@@ -22,6 +23,12 @@ class CareerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Careers
         fields = '__all__'
+    
+    def to_representation(self, obj):
+        instance = super(CareerSerializer, self).to_representation(obj)
+        instance['skills'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['skills'])
+        instance['responsibilities'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['responsibilities'])
+        return instance
  
         
         
