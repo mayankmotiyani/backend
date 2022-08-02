@@ -15,6 +15,7 @@ from .serializers import (
     TeamSerializer,
     TestimonialSerializer,
     CareerSerializer,
+    SingleCareerSerializer
    
 )
 

@@ -75,6 +75,14 @@ class BlockchainService(models.Model):
 #     def __str__(self) :
 #         return self.blockchain_name
 
-    
+class OurUnparalleledService(models.Model):
+    title = models.CharField(_("UnparalleledServiceTitle"),max_length=500)
+    content = models.TextField(_("UnparalleledServiceContent"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "{}".format(self.title)
+
 
 

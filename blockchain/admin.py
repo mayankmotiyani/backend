@@ -4,6 +4,7 @@ from .models import (
     Blockchain,
     BlockchainCategory,
     BlockchainService,
+    OurUnparalleledService
 )
 # Register your models here.
 
@@ -51,6 +52,26 @@ class BlockchainServiceAdmin(admin.ModelAdmin):
     list_display = ['blockchain','blockchain_service_name','blockchain_service_slug','display_blockchain_content','admin_created_at','admin_updated_at']
 
 
+
+class OurUnparalleledServiceAdmin(admin.ModelAdmin):
+    exclude = ('blockchain_slug',)
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='content')
+    def display_content(self, obj):
+        return format_html(
+            '<textarea cols="60" rows="4" readonly>{}</textarea>',
+            obj.content)
+
+    list_display = ['title','display_content','admin_created_at','admin_updated_at']
+
 admin.site.register(BlockchainCategory, BlockchainCategoryAdmin)
 admin.site.register(BlockchainService, BlockchainServiceAdmin)
+admin.site.register(OurUnparalleledService, OurUnparalleledServiceAdmin)
 admin.site.register(Blockchain, BlockchainAdmin)
