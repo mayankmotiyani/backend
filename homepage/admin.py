@@ -131,7 +131,10 @@ class WhatWeDoAdmin(admin.ModelAdmin):
 
     # This will help you to disable add functionality
     def has_add_permission(self, request):
-        return False
+        get_what_we_do_instance = WhatWeDo.objects.all()
+        if len(get_what_we_do_instance) >=2:
+            return False
+        return True
 
     # This will help you to disable delete functionality
     def has_delete_permission(self, request, obj=None):

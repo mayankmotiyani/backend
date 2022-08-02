@@ -83,6 +83,9 @@ class OurUnparalleledService(models.Model):
 
     def __str__(self):
         return "{}".format(self.title)
+    
+    class Meta:
+        verbose_name_plural = "Our Unparalleled Service"
 
 
 
