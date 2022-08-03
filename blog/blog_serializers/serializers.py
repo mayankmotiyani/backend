@@ -5,9 +5,10 @@ from blog.models import (
     Blog
 )
 class BlogListSerializer(serializers.ModelSerializer):
+    blog_url = serializers.SerializerMethodField()
     class Meta:
         model = Blog
-        fields = ['title','slug']
+        fields = ['title','blog_url']
     
     def get_blog_url(self,obj):
         return obj.get_absolute_url()
