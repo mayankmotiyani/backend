@@ -123,7 +123,6 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 # Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -149,7 +148,6 @@ DATABASES['default'].update(db_from_env)
 
 
 # Password validation
-# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -168,7 +166,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -178,22 +175,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-# CKEDITOR_CONFIGS = {
-#     'default': {
-#         'toolbar': 'Basic',
-#         'enterMode': 2,
-#     },
-#     'awesome_ckeditor':{
-#         'toolbar': 'Custom',
-#         'toolbar_Custom': [
-#             [ 'Bold','Italic','Underline','Strike','-','Link','Unlink','Anchor','-', 'Styles','Format','Font','FontSize','-', 
-# 'Image' ]
-#         ]
-#     },
-# }
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
