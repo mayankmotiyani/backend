@@ -5,6 +5,7 @@ from about_company.models import (
     About,
     ContactAddress,
     PrivacyPolicy,
+    TermsAndCondition
 
 )
 
