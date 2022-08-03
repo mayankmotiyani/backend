@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 from pathlib import Path
-
+import cloudinary
+import cloudinary_storage
 import os
 from datetime import timedelta
 from dotenv import load_dotenv, find_dotenv
@@ -71,6 +72,10 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'drf_api_logger',
     'whitenoise.runserver_nostatic',
+    # Media Cloudinary
+    'cloudinary',
+    'cloudinary_storage',
+
 ]
 
 
@@ -174,6 +179,15 @@ TIME_ZONE = 'Asia/Kolkata'
 USE_I18N = True
 
 USE_TZ = True
+
+# Cloudinary stuff
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ['CLOUD_NAME'],
+    'API_KEY': os.environ['CLOUD_API_KEY'],
+    'API_SECRET': os.environ['CLOUD_API_SECRET_KEY'],
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Static files (CSS, JavaScript, Images)
 
