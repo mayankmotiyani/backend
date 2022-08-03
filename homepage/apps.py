@@ -4,4 +4,4 @@ from django.apps import AppConfig
 class HomepageConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'homepage'
-    verbose_name = "Header & Content"
+    verbose_name = "Infograins Landing Page"

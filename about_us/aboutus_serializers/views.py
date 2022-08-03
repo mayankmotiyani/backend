@@ -4,13 +4,15 @@ from rest_framework import status
 from django.db.models import F
 from about_us.models import(
     About,
-    ContactAddress
+    ContactAddress,
+    PrivacyPolicy
 )
 
 from .serializers import (
     AboutUsSerializer,
     OfficeAddressSerializer,
-    HeaderOfficeAddressSerializer
+    HeaderOfficeAddressSerializer,
+    PrivacyPolicySerializer
    
 )
 
@@ -75,3 +77,21 @@ class HeaderOfficeAddressAPI(APIView):
             }
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
 
+class PrivacyPolicyAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            get_privacy_policy_instance = PrivacyPolicy.objects.all()
+            serializer = PrivacyPolicySerializer(get_privacy_policy_instance,many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)

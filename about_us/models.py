@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.text import slugify
 
 # Create your models here.
@@ -55,7 +56,32 @@ class BecomeOurPartner(models.Model):
     class Meta:
         verbose_name_plural = "Become Our Partner"
 
+class PrivacyPolicy(models.Model):
+    title = models.CharField(_("privacyPolicyTitle"),default="Privacy Policy",max_length=100)
+    description = models.TextField(_("privacyPolicyDescription"))
+    content = RichTextUploadingField(_("privacyPolicyContent"),blank=True,null=True)
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "{}".format(self.title)
+    
+    class Meta:
+        verbose_name_plural = "Privacy Policy"
 
     
+class TermsAndCondition(models.Model):
+    title = models.CharField(_("termAndConditionTitle"),default="Term & Condition",max_length=100)
+    description = models.TextField(_("termAndConditionDescription"))
+    content = RichTextUploadingField(_("termAndConditionContent"),blank=True,null=True)
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+    
+    
+    def __str__(self):
+        return "{}".format(self.title)
+    
+    class Meta:
+        verbose_name_plural = "Terms & Condition"
 
 

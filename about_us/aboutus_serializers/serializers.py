@@ -1,8 +1,10 @@
+import re
 from dataclasses import field
 from rest_framework import serializers
 from about_us.models import (
     About,
-    ContactAddress
+    ContactAddress,
+    PrivacyPolicy
 )
 
 
@@ -34,3 +36,13 @@ class HeaderOfficeAddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactAddress
         fields = ['office','phone']
+    
+class PrivacyPolicySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PrivacyPolicy
+        fields = ['title','description','content']
+    
+    def to_representation(self, obj):
+        instance = super(PrivacyPolicySerializer, self).to_representation(obj)
+        instance['content'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['content'])
+        return instance
