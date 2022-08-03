@@ -4,6 +4,9 @@ from blockchain.models import (
     Blockchain,
     BlockchainCategory,
     BlockchainService,
+    OurUnparalleledService,
+    DummySection2,
+    DummySection3
 )
 
 class BlockChainSerializer(serializers.ModelSerializer):
@@ -31,16 +34,36 @@ class BlockChainCategorySerializer(serializers.ModelSerializer):
         except Exception as exception:
             pass
         return instance
- 
+
+class OurUnparalleledServiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OurUnparalleledService
+        fields = ['title','content']
+
+class DummySection2Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = DummySection2
+        fields = ['title','content']
+    
+class DummySection3Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = DummySection3
+        fields = ['title','content']
+
+
 class SingleBlockchainSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blockchain
-        fields = ['blockchain_content']
+        fields = ['id']
 
     def to_representation(self, obj):
         instance = super(SingleBlockchainSerializer, self).to_representation(obj)
-        instance['blockchain_content'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['blockchain_content'])
+        instance['Section1'] = OurUnparalleledServiceSerializer(OurUnparalleledService.objects.get(blockchain_id=instance['id'])).data
+        instance['Section2'] = DummySection2Serializer(DummySection2.objects.get(blockchain_id=instance['id'])).data
+        instance['Section3'] = DummySection3Serializer(DummySection3.objects.get(blockchain_id=instance['id'])).data
+        del instance['id']
         return instance
+
 
 
 
