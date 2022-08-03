@@ -8,6 +8,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class Game(models.Model):
     name = models.CharField(_("gameName"),max_length=250)
     slug = models.SlugField(_("slug"),max_length=250,blank=True,null=True)
+    description = models.TextField(_("gameDescription"),blank=True,null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 

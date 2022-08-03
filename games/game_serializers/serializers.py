@@ -18,23 +18,23 @@ class GameSerializer(serializers.ModelSerializer):
 class GameSection2Serializer(serializers.ModelSerializer):
     class Meta:
         model = GameSection2
-        fields = "__all__"
+        fields = ['title','content']
 
 class GameSection3Serializer(serializers.ModelSerializer):
     class Meta:
         model = GameSection3
-        fields = "__all__"
+        fields = ['title','content']
 
 class ModernSolutionForVariousPlatformSerializer(serializers.ModelSerializer):
     class Meta:
         model = ModernSolutionForVariousPlatform
-        fields = "__all__"
+        fields = ['title','content']
 
 
 class SingleGameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-        fields = "__all__"
+        fields = ['id','name','description']
     
     def to_representation(self, obj):
         instance = super(SingleGameSerializer, self).to_representation(obj)
