@@ -15,18 +15,23 @@ class CountryDailingCodeAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
             df_country = pd.read_csv('talk_to_us/country_data/country.csv')
-            df_country = df_country.sort_values('ISO4217-currency_name',axis=0,ascending=True)
             df_country = df_country[df_country['Dial'].notna()]
-            df_country['Dial'] = df_country['Dial'].apply(lambda x : '+' + x)
             df_country['Dial'] = df_country['Dial'].apply(lambda x : x.replace("-",""))
             df_country.drop_duplicates(subset=['Dial'],inplace=True)
-            df_country['Dialing Country Code'] = df_country['Dial'].apply(lambda x : x.split(",")[0])
-            get_dialing_code = df_country['Dialing Country Code'].to_list()
+            df_country['Dial'] = df_country['Dial'].apply(lambda x : x.split(",")[0])
+            df_country = df_country[['FIFA','Dial']]
+            new_row = pd.DataFrame({'FIFA':'IND', 'Dial':'91'},index =[0])
+            df_country = pd.concat([new_row, df_country]).reset_index(drop = True)
+            df_country.drop_duplicates(subset=['Dial'],inplace=True)
+            df_country['Dial'] = df_country['Dial'].apply(lambda x : "+" + x)
+            df_country['country_with_dialing_code'] = df_country['FIFA'] + " " + df_country['Dial']
+            df_country = df_country[['country_with_dialing_code','Dial']]
+            country_list = list(df_country.to_dict('index').values())
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
                 "response":{
-                    "country_dialing_code":get_dialing_code
+                    "country_dialing_code":country_list
                     }
             }
             return JsonResponse(context,safe=False,status=status.HTTP_200_OK)
