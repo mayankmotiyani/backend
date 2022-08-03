@@ -1,7 +1,7 @@
 import re
 from dataclasses import field
 from rest_framework import serializers
-from about_us.models import (
+from about_company.models import (
     About,
     ContactAddress,
     PrivacyPolicy

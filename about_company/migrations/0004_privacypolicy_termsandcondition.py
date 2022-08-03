@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('about_us', '0003_alter_becomeourpartner_options'),
+        ('about_company', '0003_alter_becomeourpartner_options'),
     ]
 
     operations = [

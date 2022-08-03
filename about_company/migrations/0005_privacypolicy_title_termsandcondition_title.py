@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('about_us', '0004_privacypolicy_termsandcondition'),
+        ('about_company', '0004_privacypolicy_termsandcondition'),
     ]
 
     operations = [

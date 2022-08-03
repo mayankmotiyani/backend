@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.db.models import F
-from about_us.models import(
+from about_company.models import(
     About,
     ContactAddress,
     PrivacyPolicy

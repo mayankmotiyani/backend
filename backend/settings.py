@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'services.apps.ServicesConfig',
     'blog.apps.BlogConfig',
     'company.apps.CompanyConfig',
-    'about_us.apps.AboutUsConfig',
+    'about_company.apps.AboutCompanyConfig',
     'resources.apps.ResourcesConfig',
     'product.apps.ProductConfig',
     #dependencies  
