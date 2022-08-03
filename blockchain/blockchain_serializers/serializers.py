@@ -19,11 +19,6 @@ class BlockChainSerializer(serializers.ModelSerializer):
     def get_blockchain_api_url(self,obj):
         return obj.get_absolute_url()
 
-    
-    # def to_representation(self, obj):
-    #     instance = super(BlockChainSerializer, self).to_representation(obj)
-    #     return instance
-
 class BlockChainCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = BlockchainCategory
@@ -35,8 +30,6 @@ class BlockChainCategorySerializer(serializers.ModelSerializer):
             instance['array_of_blockchain_category_list'] = BlockChainSerializer(Blockchain.objects.filter(blockchainCategory__blockchain_category=instance['blockchain_category']),many=True).data
         except Exception as exception:
             pass
-        # del instance['id']
-        # del instance['blockchain_category']
         return instance
  
 class SingleBlockchainSerializer(serializers.ModelSerializer):
@@ -48,12 +41,6 @@ class SingleBlockchainSerializer(serializers.ModelSerializer):
         instance = super(SingleBlockchainSerializer, self).to_representation(obj)
         instance['blockchain_content'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['blockchain_content'])
         return instance
-
-
-# class BlockchainServiceSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = BlockchainService
-#         fields = ['blockchain_service_name','blockchain_content','blockchain_service_slug']
 
 
 

@@ -5,6 +5,7 @@ from .models import (
     Testimonial,
     Help,
     Careers,
+    ApplyForJob
 )
 
 # Register your models here.
@@ -81,10 +82,22 @@ class CareerAdmin(admin.ModelAdmin):
     list_display  = ['opening_designation','display_designation_brief','opening','experience','location','admin_created_at','admin_updated_at','opening_available']
 
 
+class ApplyForJobAdmin(admin.ModelAdmin):
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    list_display = ['name','email','contact','skill_set','admin_created_at','admin_updated_at']
+
 admin.site.register(Team, TeamAdmin)
 admin.site.register(Testimonial,TestimonialAdmin)
 admin.site.register(Help,HelpAdmin)
 admin.site.register(Careers,CareerAdmin)
+admin.site.register(ApplyForJob,ApplyForJobAdmin)
 
 
 

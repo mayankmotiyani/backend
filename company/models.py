@@ -93,3 +93,21 @@ class Help(models.Model):
         ordering = ['id']
         verbose_name_plural = "How Can We Help!"
 
+
+class ApplyForJob(models.Model):
+    name = models.CharField(_("candidateName"),max_length=300)
+    email = models.EmailField(_("candidateEmail"), max_length=254)
+    contact = models.CharField(_("candidateContactNumber"),max_length=100)
+    state = models.CharField(_("state"), max_length=200)
+    city = models.CharField(_("city"), max_length=200)
+    address = models.TextField(_("candidateAddress"))
+    skill_set = models.TextField(_("skillSet"))
+    resume = models.FileField(_("candidateResume"), upload_to='resume')    
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+    
+    def __str__(self):
+        return "{}".format(self.name)
+    
+    class Meta:
+        verbose_name_plural = "Apply For Job"

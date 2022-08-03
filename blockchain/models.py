@@ -76,6 +76,7 @@ class BlockchainService(models.Model):
 #         return self.blockchain_name
 
 class OurUnparalleledService(models.Model):
+    blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE,null=True,blank=True)
     title = models.CharField(_("UnparalleledServiceTitle"),max_length=500)
     content = models.TextField(_("UnparalleledServiceContent"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
@@ -86,6 +87,32 @@ class OurUnparalleledService(models.Model):
     
     class Meta:
         verbose_name_plural = "Our Unparalleled Service"
+
+class DummySection2(models.Model):
+    blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE,null=True,blank=True)
+    title = models.CharField(_("dummySectionTitle"),max_length=500)
+    content = models.TextField(_("dummySectionContent"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "{}".format(self.title)
+    
+    class Meta:
+        verbose_name_plural = "Dummy Section 2"
+
+class DummySection3(models.Model):
+    blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE,null=True,blank=True)
+    title = models.CharField(_("dummySectionTitle"),max_length=500)
+    content = models.TextField(_("dummySectionContent"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "{}".format(self.title)
+    
+    class Meta:
+        verbose_name_plural = "Dummy Section 3"
 
 
 

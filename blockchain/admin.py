@@ -4,7 +4,9 @@ from .models import (
     Blockchain,
     BlockchainCategory,
     BlockchainService,
-    OurUnparalleledService
+    OurUnparalleledService,
+    DummySection2,
+    DummySection3
 )
 # Register your models here.
 
@@ -71,7 +73,46 @@ class OurUnparalleledServiceAdmin(admin.ModelAdmin):
 
     list_display = ['title','display_content','admin_created_at','admin_updated_at']
 
+
+class DummySection2Admin(admin.ModelAdmin):
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='content')
+    def display_content(self, obj):
+        return format_html(
+            '<textarea cols="60" rows="4" readonly>{}</textarea>',
+            obj.content)
+
+    list_display = ['blockchain','title','display_content','admin_created_at','admin_updated_at']
+
+
+class DummySection3Admin(admin.ModelAdmin):
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='content')
+    def display_content(self, obj):
+        return format_html(
+            '<textarea cols="60" rows="4" readonly>{}</textarea>',
+            obj.content)
+
+    list_display = ['blockchain','title','display_content','admin_created_at','admin_updated_at']
+
+
 admin.site.register(BlockchainCategory, BlockchainCategoryAdmin)
 admin.site.register(BlockchainService, BlockchainServiceAdmin)
 admin.site.register(OurUnparalleledService, OurUnparalleledServiceAdmin)
 admin.site.register(Blockchain, BlockchainAdmin)
+admin.site.register(DummySection2, DummySection2Admin)
+admin.site.register(DummySection3, DummySection3Admin)
