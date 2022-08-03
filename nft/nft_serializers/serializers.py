@@ -33,6 +33,6 @@ class SingleNFTSerializer(serializers.ModelSerializer):
     def to_representation(self, obj):
         instance = super(SingleNFTSerializer, self).to_representation(obj)
         instance['Section1'] = NFTMarketplaceDevelopmentServiceSerializer(NFTMarketplaceDevelopmentService.objects.filter(nft_id=instance['id']),many=True).data
-        instance['Section2'] = NFTUseCasesSerializer(NFTUseCases.objects.filter(nft_id=instance['id']),many=True).data
+        instance['Section3'] = NFTUseCasesSerializer(NFTUseCases.objects.filter(nft_id=instance['id']),many=True).data
         del instance['id']
         return instance

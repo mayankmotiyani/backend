@@ -7,7 +7,8 @@ from games.models import (
 )
 
 from .serializers import (
-    GameSerializer
+    GameSerializer,
+    SingleGameSerializer
 )
 
 
@@ -16,9 +17,6 @@ class GameAPI(APIView):
         try:
             get_games = Game.objects.all()
             serializer = GameSerializer(get_games,many=True)
-            # games = json.loads(json.dumps(serializer.data))
-            # list_of_games = [game['name'] for game in games]
-        
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
@@ -35,4 +33,21 @@ class GameAPI(APIView):
         
     
 class GameContentAPI(APIView):
-    pass
+    def get(self, request, game_slug, *args, **kwargs):
+        try:
+            get_games = Game.objects.get(slug=game_slug)
+            serializer = SingleGameSerializer(get_games)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response": serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+    

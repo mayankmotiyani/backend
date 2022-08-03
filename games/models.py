@@ -24,16 +24,6 @@ class Game(models.Model):
     def get_absolute_url(self):
         return reverse("game",kwargs={"game_slug":self.slug})
 
-# class GameContent(models.Model):
-#     game = models.ForeignKey(Game,on_delete=models.CASCADE)
-#     game_content = RichTextUploadingField(_("gameContent"),blank=True,null=True)
-#     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
-#     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
-
-#     def __str__(self):
-#         return "{}".format(self.name)
-
-
 class ModernSolutionForVariousPlatform(models.Model):
     game = models.ForeignKey(Game,on_delete=models.CASCADE)
     title = models.CharField(_("modernSolutionGameTitle"),max_length=500)
@@ -48,8 +38,27 @@ class ModernSolutionForVariousPlatform(models.Model):
         return "{}".format(self.title.upper())
 
 
+class GameSection2(models.Model):
+    game = models.ForeignKey(Game,on_delete=models.CASCADE)
+    title = models.CharField(_("GameTitle"),max_length=500)
+    image = models.ImageField(_("image"),upload_to="game")
+    content = models.TextField(_("GameContent"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
+    def __str__(self):
+        return "{}".format(self.title)
     
 
-    
+
+class GameSection3(models.Model):
+    game = models.ForeignKey(Game,on_delete=models.CASCADE)
+    title = models.CharField(_("GameTitle"),max_length=500)
+    image = models.ImageField(_("image"),upload_to="game")
+    content = models.TextField(_("GameContent"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "{}".format(self.title) 
    
