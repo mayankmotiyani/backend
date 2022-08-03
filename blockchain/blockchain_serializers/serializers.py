@@ -54,7 +54,7 @@ class DummySection3Serializer(serializers.ModelSerializer):
 class SingleBlockchainSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blockchain
-        fields = ['id']
+        fields = ['id','blockchain_description']
 
     def to_representation(self, obj):
         instance = super(SingleBlockchainSerializer, self).to_representation(obj)
