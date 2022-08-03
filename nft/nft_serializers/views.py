@@ -7,14 +7,15 @@ from nft.models import (
 )
 
 from .serializers import (
-    NftSerializer
+    NftSerializer,
+    SingleNFTSerializer
 )
 
 class NftAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            get_games = NFT.objects.all()
-            serializer = NftSerializer(get_games,many=True)
+            get_nft = NFT.objects.all()
+            serializer = NftSerializer(get_nft,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
@@ -30,4 +31,20 @@ class NftAPI(APIView):
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
         
 class NftContentAPI(APIView):
-    pass
+    def get(self, request, nft_slug, *args, **kwargs):
+        try:
+            get_nft = NFT.objects.get(slug=nft_slug)
+            serializer = SingleNFTSerializer(get_nft)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
