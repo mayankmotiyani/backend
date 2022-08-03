@@ -5,15 +5,18 @@ from django.db.models import F
 from about_company.models import(
     About,
     ContactAddress,
-    PrivacyPolicy
+    PrivacyPolicy,
+    TermsAndCondition
+
 )
 
 from .serializers import (
     AboutUsSerializer,
     OfficeAddressSerializer,
     HeaderOfficeAddressSerializer,
-    PrivacyPolicySerializer
-   
+    PrivacyPolicySerializer,
+    TermsAndConditionSerializer
+
 )
 
 
@@ -82,6 +85,25 @@ class PrivacyPolicyAPI(APIView):
         try:
             get_privacy_policy_instance = PrivacyPolicy.objects.all()
             serializer = PrivacyPolicySerializer(get_privacy_policy_instance,many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+class TermAndConditionAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            get_term_and_condition_instance = TermsAndCondition.objects.all()
+            serializer = TermsAndConditionSerializer(get_term_and_condition_instance,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
