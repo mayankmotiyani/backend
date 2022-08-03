@@ -4,7 +4,13 @@ from django.utils.text import Truncator
 from blog.models import (
     Blog
 )
-
+class BlogListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Blog
+        fields = ['title','slug']
+    
+    def get_blog_url(self,obj):
+        return obj.get_absolute_url()
 
 class BlogSerializer(serializers.ModelSerializer):
     blog_url = serializers.SerializerMethodField()

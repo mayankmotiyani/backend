@@ -5,7 +5,8 @@ from blog.models import (
 )
 from .serializers import (
     BlogSerializer,
-    SingleBlogSerializer
+    SingleBlogSerializer,
+    BlogListSerializer
 )
 
 from rest_framework import (
@@ -13,6 +14,7 @@ from rest_framework import (
     filters,
     status,
 )
+from django.forms import model_to_dict
 
 
 
@@ -42,11 +44,11 @@ class SingleBlogAPI(APIView):
         try:
             get_blog_instance = Blog.objects.get(slug=blog_url)
             serializer = SingleBlogSerializer(get_blog_instance)
-            blog_list = list(Blog.objects.exclude(slug=blog_url).values_list("title",flat=True))
+            blog_list = BlogListSerializer(Blog.objects.exclude(slug=blog_url),many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
-                "blog_list":blog_list,
+                "blog_list":blog_list.data,
                 "response":serializer.data
             }
             return Response(context,status=status.HTTP_200_OK)
