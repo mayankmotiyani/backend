@@ -43,8 +43,7 @@ class HeroSection(models.Model):
     
     def __str__(self):
         return "{}".format(self.title)
-
-        
+       
 
 class WhyChooseUs(models.Model):
     heading_and_subheading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE,null=True)

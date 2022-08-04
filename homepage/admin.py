@@ -3,7 +3,6 @@ from django.utils.html import format_html
 from .models import (
     OurMastery,
     HeroSection,
-    NotableBlockchainPlatforms,
     WhyChooseUs,
     DevelopmentProcess,
     WhatWeDo,
@@ -72,22 +71,22 @@ class OurMasteryAdmin(admin.ModelAdmin):
 
     list_display  = ['name','image','display_content','admin_created_at','admin_updated_at']
 
-class NotableBlockchainPlatformsAdmin(admin.ModelAdmin):
-    @admin.display(description='CreationDate')
-    def admin_created_at(self, obj):
-        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+# class NotableBlockchainPlatformsAdmin(admin.ModelAdmin):
+#     @admin.display(description='CreationDate')
+#     def admin_created_at(self, obj):
+#         return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
     
-    @admin.display(description='UpdatedDate')
-    def admin_updated_at(self, obj):
-        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+#     @admin.display(description='UpdatedDate')
+#     def admin_updated_at(self, obj):
+#         return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
 
-    @admin.display(description='content')
-    def display_content(self, obj):
-        return format_html(
-            '<textarea cols="60" rows="4" readonly>{}</textarea>',
-            obj.content)
+#     @admin.display(description='content')
+#     def display_content(self, obj):
+#         return format_html(
+#             '<textarea cols="60" rows="4" readonly>{}</textarea>',
+#             obj.content)
 
-    list_display  = ['name','image','display_content','admin_created_at','admin_updated_at']
+#     list_display  = ['name','image','display_content','admin_created_at','admin_updated_at']
 
 
 class WhyChooseUsAdmin(admin.ModelAdmin):
@@ -173,7 +172,7 @@ class WhatWeDoAdmin(admin.ModelAdmin):
 
 admin.site.register(HeadingAndSubheading, HeadingAndSubheadingAdmin)
 admin.site.register(OurMastery, OurMasteryAdmin)
-admin.site.register(NotableBlockchainPlatforms, NotableBlockchainPlatformsAdmin)
+# admin.site.register(NotableBlockchainPlatforms, NotableBlockchainPlatformsAdmin)
 admin.site.register(HeroSection, HeroSectionAdmin)
 admin.site.register(WhyChooseUs,WhyChooseUsAdmin)
 admin.site.register(DevelopmentProcess, DevelopmentProcessAdmin)

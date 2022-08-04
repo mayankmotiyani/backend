@@ -2,7 +2,6 @@ from rest_framework import serializers
 from homepage.models import (
     OurMastery,
     HeroSection,
-    NotableBlockchainPlatforms,
     WhyChooseUs,
     DevelopmentProcess,
     WhatWeDo,
@@ -44,10 +43,10 @@ class HeroSectionSerializers(serializers.ModelSerializer):
         instance['title'] = instance['title'].title()
         return instance
 
-class NotableBlockchainPlatformsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = NotableBlockchainPlatforms
-        fields = ['name','image','content']
+# class NotableBlockchainPlatformsSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = NotableBlockchainPlatforms
+#         fields = ['name','image','content']
     
 class WhyChooseUsSerializer(serializers.ModelSerializer):
     class Meta:
