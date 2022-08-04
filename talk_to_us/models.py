@@ -16,7 +16,6 @@ class ContactUS(models.Model):
     class Meta:
         verbose_name_plural = "Contact Infograins"
     
-
     def __str__(self):
         return "{}".format(self.fullName)
 

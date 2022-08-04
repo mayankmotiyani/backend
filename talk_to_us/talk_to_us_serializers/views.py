@@ -31,7 +31,7 @@ class CountryDailingCodeAPI(APIView):
                 "status":status.HTTP_200_OK,
                 "success":True,
                 "response":{
-                    "country_dialing_code":country_list
+                    "country_dialing_code":json.dumps(country_list)
                     }
             }
             return JsonResponse(context,safe=False,status=status.HTTP_200_OK)
