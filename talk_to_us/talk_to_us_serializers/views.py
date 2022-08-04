@@ -32,7 +32,9 @@ class CountryDailingCodeAPI(APIView):
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
-                "response":country_list
+                "response":{
+                    "country_dialing_code":country_list
+                }
             }
             return Response(context)
         except Exception as exception:

@@ -41,4 +41,43 @@ class Product(models.Model):
         return reverse("product",kwargs={'product_url':self.slug})
 
 
+class Product_goal(models.Model):
+    title = models.CharField(_("tiitle"), max_length=250)
+    subheading = models.CharField(_("subHeading"),max_length=250)
+    content = models.TextField(_("content"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+    
+    def __str__(self):
+        return '{}'.format(self.title)
+    
+class Product_method(models.Model):
+    title = models.CharField(_("title"),max_length=250)
+    subheading = models.CharField(_("subHeading"), max_length=250)
+    content = models.TextFiled(_("content"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+    
+    def __str__(self):
+        return '{}'.format(self.title)
+
+class Product_functionality(models.Model):
+    title = models.CharField(_("title"),max_length=250)
+    subheading = models.CharField(_("subHeading"),max_length=250)
+    content = models.TextField(_("content"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+    
+    def __str__(self):
+        return '{}'.format(self.title)
+
+class Conclusion_section(models.Model):
+    title = models.CharField(_("title"),max_length=250)
+    content = models.TextField(_("content"))
+    image = models.ImageField(_("image"), upload_to="productImages")
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+    
+    def __str__(self):
+        return '{}'.format(self.title)
 
