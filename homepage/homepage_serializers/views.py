@@ -138,13 +138,10 @@ class WhatWeDoAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
             get_what_we_do_instance = WhatWeDo.objects.all()
-            get_heading_and_subheading = list(WhatWeDo.objects.all().values_list("heading_and_subheading_id",flat=True).distinct())[0]
-            get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_and_subheading))
             serializer = WhatWeDoSerializer(get_what_we_do_instance,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
-                "heading_and_subheading":get_heading_and_subheading_serializer.data,
                 "response":serializer.data
             }
             return Response(context,status=status.HTTP_200_OK)

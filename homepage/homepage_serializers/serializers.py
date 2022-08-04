@@ -61,7 +61,7 @@ class BlockchainDevelopmentProcessSerializer(serializers.ModelSerializer):
 class WhatWeDoSerializer(serializers.ModelSerializer):
     class Meta:
         model = WhatWeDo
-        fields = ['title','content','image']
+        fields = ['heading','title','content','image']
 
     
     # def to_representation(self, obj):

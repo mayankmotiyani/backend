@@ -74,7 +74,7 @@ class DevelopmentProcess(models.Model):
         return "{}".format(self.title)
 
 class WhatWeDo(models.Model):
-    heading_and_subheading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE,null=True)
+    heading = models.CharField(_("whatWeDoHeading"),max_length=250,null=True)
     title = models.CharField(_("whatWeDoTitle"),max_length=500)
     content = models.TextField(_("whatWeDoContent"))
     image = models.ImageField(_("whatWeDoImage"),upload_to="what_we_do")
