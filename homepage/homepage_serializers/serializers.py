@@ -15,7 +15,7 @@ class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
 
     def to_representation(self, obj):
         instance = super(HeadingAndSubheadingSerializer,self).to_representation(obj)
-        if instance['heading'] == " ":
+        if instance['heading'] == "":
             del instance['heading']
         return instance
 
