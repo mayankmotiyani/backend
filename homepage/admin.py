@@ -40,7 +40,7 @@ class HeroSectionAdmin(admin.ModelAdmin):
             '<textarea cols="60" rows="4" readonly>{}</textarea>',
             obj.content)
 
-    list_display  = ['heading_and_subheading','title','image','display_content','admin_created_at','admin_updated_at']
+    list_display  = ['title','image','display_content','admin_created_at','admin_updated_at']
 
    
 class OurMasteryAdmin(admin.ModelAdmin):
@@ -87,7 +87,7 @@ class NotableBlockchainPlatformsAdmin(admin.ModelAdmin):
             '<textarea cols="60" rows="4" readonly>{}</textarea>',
             obj.content)
 
-    list_display  = ['heading_and_subheading','name','image','display_content','admin_created_at','admin_updated_at']
+    list_display  = ['name','image','display_content','admin_created_at','admin_updated_at']
 
 
 class WhyChooseUsAdmin(admin.ModelAdmin):
@@ -111,7 +111,7 @@ class WhyChooseUsAdmin(admin.ModelAdmin):
     def admin_updated_at(self,obj):
         return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
     
-    list_display = ['heading_and_subheading','service_name','admin_created_at','admin_updated_at']
+    list_display = ['service_name','admin_created_at','admin_updated_at']
 
 
 class DevelopmentProcessAdmin(admin.ModelAdmin):
@@ -138,7 +138,7 @@ class DevelopmentProcessAdmin(admin.ModelAdmin):
             '<textarea cols="60" rows="4" readonly>{}</textarea>',
             obj.content)
 
-    list_display  = ['heading_and_subheading','title','image','display_content','admin_created_at','admin_updated_at']
+    list_display  = ['title','image','display_content','admin_created_at','admin_updated_at']
 
 
 class WhatWeDoAdmin(admin.ModelAdmin):
@@ -168,7 +168,7 @@ class WhatWeDoAdmin(admin.ModelAdmin):
             '<textarea cols="60" rows="4" readonly>{}</textarea>',
             obj.content)
 
-    list_display  = ['heading_and_subheading','title','image','display_content','admin_created_at','admin_updated_at']
+    list_display  = ['title','image','display_content','admin_created_at','admin_updated_at']
 
 
 admin.site.register(HeadingAndSubheading, HeadingAndSubheadingAdmin)
