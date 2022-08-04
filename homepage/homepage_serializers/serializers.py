@@ -14,6 +14,12 @@ class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
         model = HeadingAndSubheading
         fields = ['subheading','heading']
 
+    def to_representation(self, obj):
+        instance = super(HeadingAndSubheadingSerializer,self).to_representation(obj)
+        if instance['heading'] == " ":
+            del instance['heading']
+        return instance
+
 class OurMasterySerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
     class Meta:

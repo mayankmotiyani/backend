@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 class HeadingAndSubheading(models.Model):
     subheading = models.CharField(_('homepageSubheading'), max_length=500)
-    heading = models.TextField(_('homepageHeading'))
+    heading = models.TextField(_('homepageHeading'),null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
@@ -32,7 +32,6 @@ class OurMastery(models.Model):
         return "{}".format(self.name)
 
 class HeroSection(models.Model):
-    heading_and_subheading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE,null=True)
     title = models.CharField(_("title"),max_length=500)
     content = models.TextField(_("content"))
     image = models.ImageField(_("image"),upload_to='hero_section_images')
@@ -45,20 +44,6 @@ class HeroSection(models.Model):
     def __str__(self):
         return "{}".format(self.title)
 
-class NotableBlockchainPlatforms(models.Model):
-    heading_and_subheading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE,null=True)
-    name = models.CharField(_("name"),max_length=250)
-    image = models.ImageField(_("image"),upload_to='notable_blockchain_platforms')
-    content = models.TextField(_("content"))
-    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
-    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
-
-
-    def __str__(self):
-        return "{}".format(self.name)
-
-    class Meta:
-        verbose_name_plural = "High-End Expertise In Blockchain"
         
 
 class WhyChooseUs(models.Model):
