@@ -33,7 +33,6 @@ class Organization(models.Model):
 
 class Product(models.Model):
     organization = models.ForeignKey(Organization,on_delete=models.CASCADE)
-    heading = models.ForeignKey(HeadingAndSubheading, on_delete=models.CASCADE,null=True)
     name = models.CharField(_("productName"),max_length=500)
     slug = models.SlugField(_("slug"),max_length=500,blank=True,null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)

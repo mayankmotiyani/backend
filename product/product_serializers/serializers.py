@@ -1,8 +1,38 @@
 from rest_framework import serializers
 from product.models import (
     Product,
-    Organization
+    Organization,
+    OurGoal,
+    ProductPaymentMethod,
+    HeadingAndSubheading
+
 )
+
+class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HeadingAndSubheading
+        fields = ['subheading','heading']
+
+    def to_representation(self, obj):
+        instance = super(HeadingAndSubheadingSerializer,self).to_representation(obj)
+        if instance['heading'] == "":
+            del instance['heading']
+        return instance
+
+class OurGoalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OurGoal
+        fields = ['title','content']
+
+
+class ProductPaymentMethodSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductPaymentMethod
+        fields = ['title','content']
+
+    # def to_representation(self, obj):
+    #     instance = super(ProductPaymentMethodSerializer,self).to_representation(obj)
+    #     return instance
 
 class ProductSerializer(serializers.ModelSerializer):
     product_url = serializers.SerializerMethodField()
