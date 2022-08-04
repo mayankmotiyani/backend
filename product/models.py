@@ -89,6 +89,19 @@ class ProductFunctionality(models.Model):
     def __str__(self):
         return '{}'.format(self.title)
 
+class AboutProduct(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    title = models.CharField(_("aboutProductTitle"),max_length=250)
+    content = models.TextField(_("aboutProductContent"))
+    image = models.ImageField(_("aboutProductImage"),upload_to='about_product')
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return '{}'.format(self.title)
+
+
+
 # class Conclusion_section(models.Model):
 #     product = models.ForeignKey(Product,on_delete=models.CASCADE)
 #     title = models.CharField(_("title"),max_length=250)

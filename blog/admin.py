@@ -14,7 +14,7 @@ class BlogAdmin(admin.ModelAdmin):
     def admin_updated_at(self, obj):
         return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
     
-    list_display  = ['title','admin_created_at','admin_updated_at']
+    list_display  = ['title','admin_created_at','admin_updated_at','latest']
 
 
 admin.site.register(Blog,BlogAdmin)

@@ -5,14 +5,19 @@ from .serializers import (
     OrganizationSerializer,
     OurGoalSerializer,
     ProductPaymentMethodSerializer,
-    HeadingAndSubheadingSerializer
+    HeadingAndSubheadingSerializer,
+    ProductFunctionalitySerializer,
+    AboutProductSerializer
 )
 from product.models import (
     Product,
     Organization,
     OurGoal,
     ProductPaymentMethod,
-    HeadingAndSubheading
+    HeadingAndSubheading,
+    ProductFunctionality,
+    AboutProduct
+    
 )
 from rest_framework import (
     status
@@ -82,3 +87,47 @@ class ProductPaymentMethodAPI(APIView):
                 "response":str(exception)
             }
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
+        
+class ProductFunctionalityAPI(APIView):
+    def get(self, request, product_url, *args, **kwargs):
+        try:
+            get_product_functionality_instance = ProductFunctionality.objects.filter(product__slug = product_url)
+            get_heading_and_subheading = list(ProductFunctionality.objects.filter().values_list("heading_id",flat=True).distinct())[0]
+            get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_and_subheading))
+            serializer = ProductPaymentMethodSerializer(get_product_functionality_instance,many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "heading_and_subheading":get_heading_and_subheading_serializer.data,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+
+class AboutProductAPI(APIView):
+    def get(self, request, product_url, *args, **kwargs):
+        try:
+            get_about_product_instance = AboutProduct.objects.get(product__slug = product_url)
+            serializer = AboutProductSerializer(get_about_product_instance)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+

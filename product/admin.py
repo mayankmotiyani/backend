@@ -6,10 +6,29 @@ from .models import (
     HeadingAndSubheading,
     OurGoal,
     ProductPaymentMethod,
-    ProductFunctionality
+    ProductFunctionality,
+    AboutProduct
 )
 
 # Register your models here.
+class AboutProductAdmin(admin.ModelAdmin):
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='content')
+    def display_content(self, obj):
+        return format_html(
+            '<textarea cols="60" rows="4" readonly>{}</textarea>',
+            obj.content)
+
+    list_display  = ['product','title','image','display_content','admin_created_at','admin_updated_at']
+
+
 class HeadingAndSubheadingAdmin(admin.ModelAdmin):
     @admin.display(description='CreationDate')
     def admin_created_at(self, obj):
@@ -112,3 +131,4 @@ admin.site.register(Product,ProductAdmin)
 admin.site.register(OurGoal,OurGoalAdmin)
 admin.site.register(ProductPaymentMethod,ProductPaymentMethodAdmin)
 admin.site.register(ProductFunctionality,ProductFunctionalityAdmin)
+admin.site.register(AboutProduct,AboutProductAdmin)

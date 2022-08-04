@@ -4,9 +4,16 @@ from product.models import (
     Organization,
     OurGoal,
     ProductPaymentMethod,
-    HeadingAndSubheading
+    HeadingAndSubheading,
+    ProductFunctionality,
+    AboutProduct
 
 )
+
+class AboutProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AboutProduct
+        fields = ['title','content','image']
 
 class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,6 +35,12 @@ class OurGoalSerializer(serializers.ModelSerializer):
 class ProductPaymentMethodSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductPaymentMethod
+        fields = ['title','content']
+
+
+class ProductFunctionalitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductFunctionality
         fields = ['title','content']
 
     # def to_representation(self, obj):
