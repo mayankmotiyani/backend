@@ -25,23 +25,23 @@ class CountryDailingCodeAPI(APIView):
             df_country.drop_duplicates(subset=['Dial'],inplace=True)
             df_country['Dial'] = df_country['Dial'].apply(lambda x : "+" + x)
             df_country['country_with_dialing_code'] = df_country['FIFA'] + " " + df_country['Dial']
+            df_country.dropna(inplace=True)
             df_country = df_country[['country_with_dialing_code','Dial']]
             country_list = list(df_country.to_dict('index').values())
+            print(country_list)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
-                "response":{
-                    "country_dialing_code":country_list
-                    }
+                "response":country_list
             }
-            return JsonResponse(context,status=status.HTTP_200_OK)
+            return Response(context)
         except Exception as exception:
             context = {
                 "status":status.HTTP_400_BAD_REQUEST,
                 "success":False,
                 "response":str(exception)
             }
-            return JsonResponse(context,status=status.HTTP_400_BAD_REQUEST)
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
 
 class ContactUsAPI(APIView):
     def post(self, request, *args, **kwargs):
