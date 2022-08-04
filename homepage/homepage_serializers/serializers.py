@@ -5,8 +5,14 @@ from homepage.models import (
     NotableBlockchainPlatforms,
     WhyChooseUs,
     DevelopmentProcess,
-    WhatWeDo
+    WhatWeDo,
+    HeadingAndSubheading
 )
+
+class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HeadingAndSubheading
+        fields = ['subheading','heading']
 
 class OurMasterySerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
@@ -16,6 +22,11 @@ class OurMasterySerializer(serializers.ModelSerializer):
 
     def get_image_url(self, obj):
         return obj.image.url
+    
+    # def to_representation(self, obj):
+    #     instance = super(OurMasterySerializer,self).to_representation(obj)
+    #     instance['bool']=True
+    #     return instance
 
 class HeroSectionSerializers(serializers.ModelSerializer):
     class Meta:
