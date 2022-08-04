@@ -28,7 +28,6 @@ class CountryDailingCodeAPI(APIView):
             df_country.dropna(inplace=True)
             df_country = df_country[['country_with_dialing_code','Dial']]
             country_list = list(df_country.to_dict('index').values())
-            print(country_list)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
