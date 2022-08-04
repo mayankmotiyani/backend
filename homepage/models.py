@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 class HeadingAndSubheading(models.Model):
     subheading = models.CharField(_('homepageSubheading'), max_length=500)
-    heading = models.TextField(_('homepageHeading'),null=True)
+    heading = models.TextField(_('homepageHeading'),null=True,blank=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
