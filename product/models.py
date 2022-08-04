@@ -4,7 +4,18 @@ from django.utils.text import slugify
 from django.urls import reverse 
 # Create your models here.
 
+class HeadingAndSubheading(models.Model):
+    subheading = models.CharField(_('homepageSubheading'), max_length=500)
+    heading = models.TextField(_('homepageHeading'),null=True,blank=True)
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
+
+    def __str__(self):
+        return "{}".format(self.subheading)
+    
+    class Meta:
+        verbose_name_plural = "Heading & Subheading"
 
 class Organization(models.Model):
     name = models.CharField(_("organizationName"),max_length=500)
@@ -22,6 +33,7 @@ class Organization(models.Model):
 
 class Product(models.Model):
     organization = models.ForeignKey(Organization,on_delete=models.CASCADE)
+    heading = models.ForeignKey(HeadingAndSubheading, on_delete=models.CASCADE,null=True)
     name = models.CharField(_("productName"),max_length=500)
     slug = models.SlugField(_("slug"),max_length=500,blank=True,null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
@@ -41,37 +53,45 @@ class Product(models.Model):
         return reverse("product",kwargs={'product_url':self.slug})
 
 
-# class Product_goal(models.Model):
-#     title = models.CharField(_("tiitle"), max_length=250)
-#     subheading = models.CharField(_("subHeading"),max_length=250)
-#     content = models.TextField(_("content"))
-#     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
-#     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+class OurGoal(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    heading = models.ForeignKey(HeadingAndSubheading, on_delete=models.CASCADE,null=True)
+    title = models.CharField(_("productGoalTitle"), max_length=250)
+    content = models.TextField(_("productGoalContent"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
     
-#     def __str__(self):
-#         return '{}'.format(self.title)
+    def __str__(self):
+        return '{}'.format(self.title)
     
-# class Product_method(models.Model):
-#     title = models.CharField(_("title"),max_length=250)
-#     subheading = models.CharField(_("subHeading"), max_length=250)
-#     content = models.TextFiled(_("content"))
-#     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
-#     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
-    
-#     def __str__(self):
-#         return '{}'.format(self.title)
+    class Meta:
+        verbose_name_plural = "Our Goal"
 
-# class Product_functionality(models.Model):
-#     title = models.CharField(_("title"),max_length=250)
-#     subheading = models.CharField(_("subHeading"),max_length=250)
-#     content = models.TextField(_("content"))
-#     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
-#     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+class ProductPaymentMethod(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    heading = models.ForeignKey(HeadingAndSubheading, on_delete=models.CASCADE,null=True)
+    title = models.CharField(_("productPaymentMethodTitle"),max_length=250)
+    content = models.TextField(_("productPaymentMethodContent"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
     
-#     def __str__(self):
-#         return '{}'.format(self.title)
+    def __str__(self):
+        return '{}'.format(self.title)
+
+class ProductFunctionality(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    heading = models.ForeignKey(HeadingAndSubheading, on_delete=models.CASCADE,null=True)
+    title = models.CharField(_("productFunctionalitytitle"),max_length=250)
+    content = models.TextField(_("productFunctionalitycontent"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+    
+    def __str__(self):
+        return '{}'.format(self.title)
 
 # class Conclusion_section(models.Model):
+#     product = models.ForeignKey(Product,on_delete=models.CASCADE)
 #     title = models.CharField(_("title"),max_length=250)
 #     content = models.TextField(_("content"))
 #     image = models.ImageField(_("image"), upload_to="productImages")
