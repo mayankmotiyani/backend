@@ -101,7 +101,7 @@ class ApplyForJob(models.Model):
     state = models.CharField(_("state"), max_length=200)
     city = models.CharField(_("city"), max_length=200)
     address = models.TextField(_("candidateAddress"))
-    skill_set = models.TextField(_("skillSet"))
+    job_profile = models.CharField(_("jobProfile"),max_length=250,null=True)
     resume = models.FileField(_("candidateResume"), upload_to='resume')    
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)

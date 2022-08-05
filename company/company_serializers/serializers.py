@@ -6,6 +6,7 @@ from company.models import (
     Team,
     Testimonial,
     Careers,
+    ApplyForJob
     
 )
 
@@ -43,4 +44,8 @@ class SingleCareerSerializer(serializers.ModelSerializer):
         instance['skills'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['skills'])
         instance['responsibilities'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['responsibilities'])
         return instance
-        
+
+class ApplyForJobSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ApplyForJob
+        fields = "__all__"

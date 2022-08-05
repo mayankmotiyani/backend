@@ -91,7 +91,7 @@ class ApplyForJobAdmin(admin.ModelAdmin):
     def admin_updated_at(self, obj):
         return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
     
-    list_display = ['name','email','contact','skill_set','admin_created_at','admin_updated_at']
+    list_display = ['name','email','contact','admin_created_at','admin_updated_at']
 
 admin.site.register(Team, TeamAdmin)
 admin.site.register(Testimonial,TestimonialAdmin)

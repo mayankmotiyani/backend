@@ -7,7 +7,8 @@ from django.apps import apps
 from company.models import (
     Team,
     Testimonial,
-    Careers
+    Careers,
+    ApplyForJob
     
     
 )
@@ -15,9 +16,11 @@ from .serializers import (
     TeamSerializer,
     TestimonialSerializer,
     CareerSerializer,
-    SingleCareerSerializer
+    SingleCareerSerializer,
+    ApplyForJobSerializer
    
 )
+from rest_framework import viewsets
 
 class GetCompanyModelsAPI(APIView):
     def get(self, request, *args, **kwargs):
@@ -119,4 +122,32 @@ class SingleCareerAPI(APIView):
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
 
             
-            
+class ApplyForJobViewSet(viewsets.ModelViewSet):
+    serializer_class = ApplyForJobSerializer
+
+    def create(self, request,career_slug,*args, **kwargs):
+        try:
+            serializer = self.get_serializer(data=request.data)
+            get_job_profile_instance = Careers.objects.get(slug=career_slug)
+            if serializer.is_valid():
+                serializer.save(job_profile=get_job_profile_instance.opening_designation)
+                content = {
+                    "status":status.HTTP_200_OK,
+                    "success":True,
+                    "response":"Thanks for applying!"
+                }
+                return Response(content, status=status.HTTP_201_CREATED)
+            else:
+                content = {
+                    "status": status.HTTP_400_BAD_REQUEST,
+                    "success":False,
+                    "response": serializer.errors,
+                }
+                return Response(custom_data, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
