@@ -143,7 +143,7 @@ class ApplyForJobViewSet(viewsets.ModelViewSet):
                     "success":False,
                     "response": serializer.errors,
                 }
-                return Response(custom_data, status=status.HTTP_400_BAD_REQUEST)
+                return Response(content, status=status.HTTP_400_BAD_REQUEST)
         except Exception as exception:
             context = {
                 "status":status.HTTP_400_BAD_REQUEST,

@@ -5,23 +5,58 @@ from django.utils.text import slugify
 
 # Create your models here.
 
-class About(models.Model):
-    name = models.CharField(_("name"), max_length=100)
-    image = models.ImageField(_("image"),upload_to="about")
-    slug = models.SlugField(_("aboutSlug"), max_length=100, blank=True)
+
+class HeadingAndSubheading(models.Model):
+    subheading = models.CharField(_('homepageSubheading'), max_length=500)
+    heading = models.TextField(_('homepageHeading'),null=True,blank=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
-    
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(About, self).save(*args, **kwargs)
-       
+
     def __str__(self):
-        return self.name
+        return "{}".format(self.subheading)
+    
+    class Meta:
+        verbose_name_plural = "Heading & Subheading"
+    
+class AboutCompany(models.Model):
+    heading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE)
+    description = models.TextField(_("aboutCompany"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "About Us"
 
     class Meta:
-        verbose_name_plural = "About"
+        verbose_name_plural = "About Company"
+
+class AboutCompanySection1(models.Model):
+    heading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE)
+    description = models.TextField(_("aboutCompany"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "About Us Section 1"
     
+    class Meta:
+        verbose_name_plural = "About Company Section 1"
+
+class AboutCompanySection3(models.Model):
+    heading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="about_section_3")
+    title = models.CharField(max_length=250,null=True,blank=True)
+    description = models.TextField(_("aboutCompany"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "About Us Section 3"
+    
+    class Meta:
+        verbose_name_plural = "About Company Section 3"
+
+
 class ContactAddress(models.Model):
     office = models.CharField(_("officeName"),max_length=250,unique=True)
     location = models.TextField(_("officeLocation"))

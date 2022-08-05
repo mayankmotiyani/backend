@@ -16,12 +16,12 @@ from rest_framework import (
 )
 from django.forms import model_to_dict
 from rest_framework.generics import ListAPIView
-from rest_framework.pagination import LimitOffsetPagination
+from rest_framework import pagination
 
 class blogListingAPI(ListAPIView):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
-    pagination_class = LimitOffsetPagination
+    pagination_class = pagination.LimitOffsetPagination
 
 
 class BlogAPI(APIView):

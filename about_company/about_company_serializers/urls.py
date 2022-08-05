@@ -4,13 +4,13 @@ from .views import (
     OfficeAddressAPI,
     HeaderOfficeAddressAPI,
     PrivacyPolicyAPI,
-    TermAndConditionAPI
-
+    TermAndConditionAPI,
+    AboutCompanySection1API
 )
 
 urlpatterns = [
-    
-    path('about_us_list/',AboutAPI.as_view(),name='About_us_list'),
+    path('',AboutAPI.as_view(),name='about-us'),
+    path('hero-section/',AboutCompanySection1API.as_view(),name='about-main-section'),
     path('office-address/',OfficeAddressAPI.as_view()),
     path('header-office-address/',HeaderOfficeAddressAPI.as_view()),
     path('privacy-policy/',PrivacyPolicyAPI.as_view()),

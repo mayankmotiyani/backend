@@ -2,22 +2,36 @@ import re
 from dataclasses import field
 from rest_framework import serializers
 from about_company.models import (
-    About,
     ContactAddress,
     PrivacyPolicy,
-    TermsAndCondition
+    TermsAndCondition,
+    AboutCompany,
+    HeadingAndSubheading,
+    AboutCompanySection1
 
 )
 
-
-class AboutUsSerializer(serializers.ModelSerializer):
+class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
     class Meta:
-        model = About
-        fields =  "__all__"
-        
-    def get_about_url(self,obj):
-         return obj.get_absolute_url()   
-        
+        model = HeadingAndSubheading
+        fields = ['subheading','heading']
+    
+    def to_representation(self, obj):
+        instance = super(HeadingAndSubheadingSerializer,self).to_representation(obj)
+        if instance['heading'] == "":
+            del instance['heading']
+        return instance
+
+class AboutCompanySection1Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = AboutCompanySection1
+        fields = "__all__"
+
+class AboutCompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AboutCompany
+        fields = ['description']
+
 
 class OfficeAddressSerializer(serializers.ModelSerializer):
     class Meta:
