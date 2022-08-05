@@ -3,11 +3,17 @@ from rest_framework import serializers
 from blockchain.models import (
     Blockchain,
     BlockchainCategory,
-    BlockchainService,
     OurUnparalleledService,
     DummySection2,
-    DummySection3
+    DummySection3,
+    HeadingAndSubheading
 )
+
+
+class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HeadingAndSubheading
+        fields = ['subheading','heading']
 
 class BlockChainSerializer(serializers.ModelSerializer):
     blockchain_api_url = serializers.SerializerMethodField()
@@ -38,17 +44,17 @@ class BlockChainCategorySerializer(serializers.ModelSerializer):
 class OurUnparalleledServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = OurUnparalleledService
-        fields = ['title','content']
+        fields = ['subheading','title','content']
 
 class DummySection2Serializer(serializers.ModelSerializer):
     class Meta:
         model = DummySection2
-        fields = ['title','content']
+        fields = ['subheading','title','content']
     
 class DummySection3Serializer(serializers.ModelSerializer):
     class Meta:
         model = DummySection3
-        fields = ['title','content']
+        fields = ['subheading','title','content']
 
 
 class SingleBlockchainSerializer(serializers.ModelSerializer):

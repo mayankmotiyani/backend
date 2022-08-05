@@ -6,6 +6,18 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 
+class HeadingAndSubheading(models.Model):
+    subheading = models.CharField(_('homepageSubheading'), max_length=500)
+    heading = models.TextField(_('homepageHeading'),null=True,blank=True)
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "{}".format(self.subheading)
+    
+    class Meta:
+        verbose_name_plural = "Heading & Subheading"
+
 class BlockchainCategory(models.Model):
     blockchain_category = models.CharField(_("blockchainCategory"), max_length=100)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
@@ -23,7 +35,7 @@ class Blockchain(models.Model):
     blockchain_name = models.CharField(_("blockchainName"),max_length=250,default="")
     blockchain_slug = models.SlugField(_("blockchainSlug"),max_length=250,blank=True,null=True,default="")
     blockchain_description = models.TextField(_("blockchainDescription"),blank=True,null=True)
-    blockchain_content = RichTextUploadingField(_("blockchainContent"),blank=True,null=True)
+    # blockchain_content = RichTextUploadingField(_("blockchainContent"),blank=True,null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
@@ -44,23 +56,23 @@ class Blockchain(models.Model):
         return reverse('blockchain',kwargs={'blockchain_slug':self.blockchain_slug})
 
 
-class BlockchainService(models.Model):
-    blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE)
-    blockchain_service_name = models.CharField(_("blockchainServiceName"),max_length=250)
-    blockchain_service_slug = models.SlugField(_("blockchainServiceSlug"),max_length=250,blank=True,null=True,default="")
-    blockchain_content = models.TextField(_("blockchainContent"),blank=True,null=True,default="")
-    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
-    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+# class BlockchainService(models.Model):
+#     blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE)
+#     blockchain_service_name = models.CharField(_("blockchainServiceName"),max_length=250)
+#     blockchain_service_slug = models.SlugField(_("blockchainServiceSlug"),max_length=250,blank=True,null=True,default="")
+#     blockchain_content = models.TextField(_("blockchainContent"),blank=True,null=True,default="")
+#     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+#     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
-    class Meta:
-        verbose_name_plural = "Blockchain Service"
+#     class Meta:
+#         verbose_name_plural = "Blockchain Service"
 
-    def save(self, *args, **kwargs):
-        self.blockchain_service_slug = slugify(self.blockchain_service_name)
-        super(BlockchainService, self).save(*args, **kwargs)
+#     def save(self, *args, **kwargs):
+#         self.blockchain_service_slug = slugify(self.blockchain_service_name)
+#         super(BlockchainService, self).save(*args, **kwargs)
     
-    def __str__(self):
-        return '{} -- {}'.format(self.blockchain,self.blockchain_service_name)
+#     def __str__(self):
+#         return '{} -- {}'.format(self.blockchain,self.blockchain_service_name)
 
 
 
@@ -77,6 +89,7 @@ class BlockchainService(models.Model):
 
 class OurUnparalleledService(models.Model):
     blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE,null=True,blank=True)
+    subheading = models.CharField(_("subHeading"),max_length=500,null=True,blank=True)
     title = models.CharField(_("UnparalleledServiceTitle"),max_length=500)
     content = models.TextField(_("UnparalleledServiceContent"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
@@ -90,6 +103,7 @@ class OurUnparalleledService(models.Model):
 
 class DummySection2(models.Model):
     blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE,null=True,blank=True)
+    subheading = models.CharField(_("subHeading"),max_length=500,null=True,blank=True)
     title = models.CharField(_("dummySectionTitle"),max_length=500)
     content = models.TextField(_("dummySectionContent"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
@@ -103,6 +117,7 @@ class DummySection2(models.Model):
 
 class DummySection3(models.Model):
     blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE,null=True,blank=True)
+    subheading = models.CharField(_("subHeading"),max_length=500,null=True,blank=True)
     title = models.CharField(_("dummySectionTitle"),max_length=500)
     content = models.TextField(_("dummySectionContent"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
