@@ -99,7 +99,7 @@ class ProductFunctionalityAPI(APIView):
     def get(self, request, product_url, *args, **kwargs):
         try:
             get_product_functionality_instance = ProductFunctionality.objects.filter(product__slug = product_url)
-            get_heading_and_subheading = list(ProductFunctionality.objects.filter().values_list("heading_id",flat=True).distinct())[0]
+            get_heading_and_subheading = list(ProductFunctionality.objects.filter(product__slug = product_url).values_list("heading_id",flat=True).distinct())[0]
             get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_and_subheading))
             serializer = ProductPaymentMethodSerializer(get_product_functionality_instance,many=True)
             context = {
@@ -142,11 +142,14 @@ class ProductSolutionContentAPI(APIView):
         try:
             get_product_instance = Product.objects.get(slug=product_url)
             get_product_solution_content_instance = ProductSolutionContent.objects.filter(product_id=get_product_instance.id)
+            get_heading_and_subheading = list(ProductSolutionContent.objects.filter(product_id = get_product_instance.id).values_list("heading_id",flat=True).distinct())[0]
+            get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_and_subheading))
             get_product_solution_image = ProductSolutionImage.objects.get(product_id=get_product_instance.id)
             serializer = ProductSolutionContentSerializer(get_product_solution_content_instance,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
+                "heading_and_subheading":get_heading_and_subheading_serializer.data,
                 "image":get_product_solution_image.image.url,
                 "response":serializer.data
             }
@@ -165,11 +168,14 @@ class ProductSolutionOutCometAPI(APIView):
         try:
             get_product_instance = Product.objects.get(slug=product_url)
             get_product_outcome_content_instance = ProductOutComeContent.objects.filter(product_id=get_product_instance.id)
+            get_heading_and_subheading = list(ProductOutComeContent.objects.filter(product_id = get_product_instance.id).values_list("heading_id",flat=True).distinct())[0]
+            get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_and_subheading))
             get_product_outcome_image = ProductOutComeImage.objects.get(product_id=get_product_instance.id)
             serializer = ProductOutComeContentSerializer(get_product_outcome_content_instance,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
+                "heading_and_subheading":get_heading_and_subheading_serializer.data,
                 "image":get_product_outcome_image.image.url,
                 "response":serializer.data
             }
