@@ -99,6 +99,46 @@ class AboutProduct(models.Model):
     def __str__(self):
         return '{}'.format(self.title)
 
+class ProductSolutionImage(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    image = models.ImageField(_("ProductImage"),upload_to='product_solution')
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+    
+    def __str__(self):
+        return "{}".format(self.product)
+
+class ProductSolutionContent(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    heading = models.ForeignKey(HeadingAndSubheading, on_delete=models.CASCADE,null=True)
+    title = models.CharField(_("producttitle"),max_length=250)
+    content = models.TextField(_("productcontent"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "{}".format(self.product)
+
+
+class ProductOutComeImage(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    image = models.ImageField(_("ProductImage"),upload_to='product_solution')
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+    
+    def __str__(self):
+        return "{}".format(self.product)
+
+class ProductOutComeContent(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    heading = models.ForeignKey(HeadingAndSubheading, on_delete=models.CASCADE,null=True)
+    title = models.CharField(_("producttitle"),max_length=250)
+    content = models.TextField(_("productcontent"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "{}".format(self.product)
 
 
 # class Conclusion_section(models.Model):

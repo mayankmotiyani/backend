@@ -5,7 +5,9 @@ from .views import (
     OurGoalAPI,
     ProductPaymentMethodAPI,
     ProductFunctionalityAPI,
-    AboutProductAPI
+    AboutProductAPI,
+    ProductSolutionContentAPI,
+    ProductSolutionOutCometAPI
 )
 
 urlpatterns = [
@@ -16,5 +18,7 @@ urlpatterns = [
     path('payment-method/<slug:product_url>/',ProductPaymentMethodAPI.as_view(),name='payment-method'),
     path('payment-functionality/<slug:product_url>/',ProductFunctionalityAPI.as_view(),name='payment-functionality'),
     path('about-product/<slug:product_url>/',AboutProductAPI.as_view(),name='about-product'),
+    path('product-solution/<slug:product_url>/',ProductSolutionContentAPI.as_view(),name='product-solution'),
+    path('product-outcome/<slug:product_url>/',ProductSolutionOutCometAPI.as_view(),name='product-outcome'),
 
 ] 

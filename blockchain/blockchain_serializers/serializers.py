@@ -6,7 +6,7 @@ from blockchain.models import (
     OurUnparalleledService,
     DummySection2,
     DummySection3,
-    HeadingAndSubheading
+    HeadingAndSubheading,
 )
 
 
@@ -44,17 +44,17 @@ class BlockChainCategorySerializer(serializers.ModelSerializer):
 class OurUnparalleledServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = OurUnparalleledService
-        fields = ['subheading','title','content']
+        fields = ['subheading','title','content','image']
 
 class DummySection2Serializer(serializers.ModelSerializer):
     class Meta:
         model = DummySection2
-        fields = ['subheading','title','content']
+        fields = ['subheading','title','content','image']
     
 class DummySection3Serializer(serializers.ModelSerializer):
     class Meta:
         model = DummySection3
-        fields = ['subheading','title','content']
+        fields = ['subheading','title','content','image']
 
 
 class SingleBlockchainSerializer(serializers.ModelSerializer):

@@ -6,9 +6,22 @@ from product.models import (
     ProductPaymentMethod,
     HeadingAndSubheading,
     ProductFunctionality,
-    AboutProduct
-
+    AboutProduct,
+    ProductSolutionImage,
+    ProductSolutionContent,
+    ProductOutComeImage,
+    ProductOutComeContent
 )
+
+class ProductSolutionContentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductSolutionContent
+        fields = ['title','content']
+
+class ProductOutComeContentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductSolutionContent
+        fields = ['title','content']
 
 class AboutProductSerializer(serializers.ModelSerializer):
     class Meta:

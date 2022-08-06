@@ -8,10 +8,8 @@ from .models import (
     DummySection3,
     HeadingAndSubheading
 )
+
 # Register your models here.
-
-
-
 class HeadingAndSubheadingAdmin(admin.ModelAdmin):
     @admin.display(description='CreationDate')
     def admin_created_at(self, obj):
