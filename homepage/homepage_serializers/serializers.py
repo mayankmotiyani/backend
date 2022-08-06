@@ -56,7 +56,7 @@ class WhyChooseUsSerializer(serializers.ModelSerializer):
 class BlockchainDevelopmentProcessSerializer(serializers.ModelSerializer):
     class Meta:
         model = DevelopmentProcess
-        fields = ["title","content"]
+        fields = ["title","content","image"]
 
 class WhatWeDoSerializer(serializers.ModelSerializer):
     class Meta:
