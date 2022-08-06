@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.core.validators import FileExtensionValidator
 # Create your models here.
 
 
@@ -48,7 +49,7 @@ class HeroSection(models.Model):
 class WhyChooseUs(models.Model):
     heading_and_subheading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE,null=True)
     service_name = models.CharField(_("chooseServiceName"), max_length=250)
-    icon = models.ImageField(_("icon"), upload_to="why_choose_us")
+    icon = models.FileField(_("icon"), upload_to="why_choose_us",validators=[FileExtensionValidator(['pdf', 'doc', 'svg'])])
     content = models.TextField(_("content"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
