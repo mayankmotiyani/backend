@@ -111,8 +111,8 @@ class ProductSolutionImage(models.Model):
 class ProductSolutionContent(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     heading = models.ForeignKey(HeadingAndSubheading, on_delete=models.CASCADE,null=True)
-    title = models.CharField(_("producttitle"),max_length=250)
-    content = models.TextField(_("productcontent"))
+    title = models.CharField(_("productTitle"),max_length=250)
+    content = models.TextField(_("productContent"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
@@ -132,8 +132,8 @@ class ProductOutComeImage(models.Model):
 class ProductOutComeContent(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     heading = models.ForeignKey(HeadingAndSubheading, on_delete=models.CASCADE,null=True)
-    title = models.CharField(_("producttitle"),max_length=250)
-    content = models.TextField(_("productcontent"))
+    title = models.CharField(_("productTitle"),max_length=250)
+    content = models.TextField(_("productContent"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 

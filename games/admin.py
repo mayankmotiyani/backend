@@ -30,7 +30,7 @@ class ModernSolutionForVariousPlatformAdmin(admin.ModelAdmin):
     def admin_updated_at(self, obj):
         return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
 
-    list_display  = ['game','title','content','admin_created_at','admin_updated_at']
+    list_display  = ['game','subheading','title','content','admin_created_at','admin_updated_at']
 
 class GameSection2Admin(admin.ModelAdmin):
     

@@ -28,7 +28,7 @@ class GameSection3Serializer(serializers.ModelSerializer):
 class ModernSolutionForVariousPlatformSerializer(serializers.ModelSerializer):
     class Meta:
         model = ModernSolutionForVariousPlatform
-        fields = ['title','content']
+        fields = ['subheading','title','content']
 
 
 class SingleGameSerializer(serializers.ModelSerializer):

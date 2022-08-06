@@ -25,8 +25,10 @@ class Game(models.Model):
     def get_absolute_url(self):
         return reverse("game",kwargs={"game_slug":self.slug})
 
+
 class ModernSolutionForVariousPlatform(models.Model):
     game = models.ForeignKey(Game,on_delete=models.CASCADE)
+    subheading = models.CharField(_("modernSolutionSubHeading"),max_length=500, default= "")
     title = models.CharField(_("modernSolutionGameTitle"),max_length=500)
     content = models.TextField(_("modernSolutionGameContent"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
