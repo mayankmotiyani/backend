@@ -6,7 +6,8 @@ from .views import (
     BlockchainDevelopmentProcessAPI,
     WhatWeDoAPI,
     BlogSectionAPI,
-    TestimonialSectionAPI
+    TestimonialSectionAPI,
+    StartSomethingUndeniablyAPI
 )
 
 urlpatterns = [
@@ -18,6 +19,7 @@ urlpatterns = [
     path('blockchain-development-process/',BlockchainDevelopmentProcessAPI.as_view()),
     path('what-we-do/',WhatWeDoAPI.as_view(),name='what-we-do'),
     path('blog-section/',BlogSectionAPI.as_view(),name='blog-section'),
-    path('testimonials-section/',TestimonialSectionAPI.as_view(),name='testimonials-section')
+    path('testimonials-section/',TestimonialSectionAPI.as_view(),name='testimonials-section'),
+    path('possible-solution/',StartSomethingUndeniablyAPI.as_view(),name='possible-solution'),
 
 ]
