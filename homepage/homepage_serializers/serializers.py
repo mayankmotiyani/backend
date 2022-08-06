@@ -5,8 +5,28 @@ from homepage.models import (
     WhyChooseUs,
     DevelopmentProcess,
     WhatWeDo,
-    HeadingAndSubheading
+    HeadingAndSubheading,
+    StartSomethingUndeniably,
+    BlogSection,
+    TestimonialSection
 )
+
+
+class StartSomethingUndeniablySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StartSomethingUndeniably
+        fields = "__all__"
+    
+class BlogSectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BlogSection
+        fields = "__all__"
+
+class TestimonialSectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TestimonialSection
+        fields = "__all__"
+
 
 class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
     class Meta:

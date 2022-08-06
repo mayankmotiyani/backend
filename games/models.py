@@ -5,6 +5,19 @@ from django.urls import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
+class HeadingAndSubheading(models.Model):
+    subheading = models.CharField(_('homepageSubheading'), max_length=500)
+    heading = models.TextField(_('homepageHeading'),null=True,blank=True)
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "{}".format(self.subheading)
+    
+    class Meta:
+        verbose_name_plural = "Heading & Subheading"
+
+        
 class Game(models.Model):
     name = models.CharField(_("gameName"),max_length=250)
     slug = models.SlugField(_("slug"),max_length=250,blank=True,null=True)

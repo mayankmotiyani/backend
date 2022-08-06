@@ -3,10 +3,22 @@ from .models import (
     Game,
     ModernSolutionForVariousPlatform,
     GameSection2,
-    GameSection3
+    GameSection3,
+    HeadingAndSubheading
 )
 
 # Register your models here.
+class HeadingAndSubheadingAdmin(admin.ModelAdmin):
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+
+    list_display  = ['subheading','heading','admin_created_at','admin_updated_at']
+
 class GameAdmin(admin.ModelAdmin):
     exclude = ('slug',)
     
@@ -61,3 +73,4 @@ admin.site.register(Game, GameAdmin)
 admin.site.register(ModernSolutionForVariousPlatform, ModernSolutionForVariousPlatformAdmin)
 admin.site.register(GameSection2, GameSection2Admin)
 admin.site.register(GameSection3, GameSection3Admin)
+admin.site.register(HeadingAndSubheading,HeadingAndSubheadingAdmin)

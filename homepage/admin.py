@@ -6,10 +6,67 @@ from .models import (
     WhyChooseUs,
     DevelopmentProcess,
     WhatWeDo,
-    HeadingAndSubheading
+    HeadingAndSubheading,
+    StartSomethingUndeniably,
+    BlogSection,
+    TestimonialSection
+
 )
 # Register your models here.
+class StartSomethingUndeniablyAdmin(admin.ModelAdmin):
 
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+
+    @admin.display(description='content')
+    def display_content(self, obj):
+        return format_html(
+            '<textarea cols="60" rows="4" readonly>{}</textarea>',
+            obj.content)
+
+    list_display  = ['subheading','heading','display_content','admin_created_at','admin_updated_at']
+
+
+class BlogSectionAdmin(admin.ModelAdmin):
+
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+
+    @admin.display(description='content')
+    def display_content(self, obj):
+        return format_html(
+            '<textarea cols="60" rows="4" readonly>{}</textarea>',
+            obj.content)
+
+    list_display  = ['subheading','content','display_content','admin_created_at','admin_updated_at']
+
+class TestimonialSectionAdmin(admin.ModelAdmin):
+
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+
+    @admin.display(description='content')
+    def display_content(self, obj):
+        return format_html(
+            '<textarea cols="60" rows="4" readonly>{}</textarea>',
+            obj.content)
+
+    list_display  = ['subheading','content','display_content','admin_created_at','admin_updated_at']
 
 class HeadingAndSubheadingAdmin(admin.ModelAdmin):
 
@@ -177,3 +234,7 @@ admin.site.register(HeroSection, HeroSectionAdmin)
 admin.site.register(WhyChooseUs,WhyChooseUsAdmin)
 admin.site.register(DevelopmentProcess, DevelopmentProcessAdmin)
 admin.site.register(WhatWeDo, WhatWeDoAdmin)
+
+admin.site.register(StartSomethingUndeniably,StartSomethingUndeniablyAdmin)
+admin.site.register(BlogSection, BlogSectionAdmin)
+admin.site.register(TestimonialSection, TestimonialSectionAdmin)

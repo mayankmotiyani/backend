@@ -4,7 +4,9 @@ from .views import (
     HeroSectionAPI,
     WhyChooseUsAPI,
     BlockchainDevelopmentProcessAPI,
-    WhatWeDoAPI
+    WhatWeDoAPI,
+    BlogSectionAPI,
+    TestimonialSectionAPI
 )
 
 urlpatterns = [
@@ -14,6 +16,8 @@ urlpatterns = [
     # path("notable-blockchain-platform/",NotableBlockchainPlatformsAPI.as_view(),name="notable-blockchain-platform"),
     path('why-we-choose/',WhyChooseUsAPI.as_view(),name='why-we-choose'),
     path('blockchain-development-process/',BlockchainDevelopmentProcessAPI.as_view()),
-    path('what-we-do/',WhatWeDoAPI.as_view(),name='what-we-do')
+    path('what-we-do/',WhatWeDoAPI.as_view(),name='what-we-do'),
+    path('blog-section/',BlogSectionAPI.as_view(),name='blog-section'),
+    path('testimonials-section/',TestimonialSectionAPI.as_view(),name='testimonials-section')
 
 ]

@@ -8,7 +8,10 @@ from homepage.models import (
     WhyChooseUs,
     DevelopmentProcess,
     WhatWeDo,
-    HeadingAndSubheading
+    HeadingAndSubheading,
+    StartSomethingUndeniably,
+    BlogSection,
+    TestimonialSection
 )
 
 from .serializers import (
@@ -17,9 +20,51 @@ from .serializers import (
     WhyChooseUsSerializer,
     BlockchainDevelopmentProcessSerializer,
     WhatWeDoSerializer,
-    HeadingAndSubheadingSerializer
+    HeadingAndSubheadingSerializer,
+    StartSomethingUndeniablySerializer,
+    BlogSectionSerializer,
+    TestimonialSectionSerializer
 
 )
+
+class BlogSectionAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            get_blog_section_instance = BlogSection.objects.first()
+            serializer = BlogSectionSerializer(get_blog_section_instance)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+class TestimonialSectionAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            get_testimonial_section_instance = TestimonialSection.objects.first()
+            serializer = TestimonialSectionSerializer(get_testimonial_section_instance)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
 
 
 class OurMasteryAPI(APIView):
