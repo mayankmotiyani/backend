@@ -108,7 +108,11 @@ class BlogSection(models.Model):
         return "{}".format(self.subheading)
 
 class TestimonialSection(models.Model):
-    subheading = models.CharField(_("blogSubheading"),max_length=500)
-    content = models.TextField(_("blogContent"))
+    subheading = models.CharField(_("testimonialSubheading"),max_length=500)
+    content = models.TextField(_("testimonialsContent"))
+    image = models.ImageField(_("clientImage"),null=True,upload_to="testimonials")
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "{}".format(self.subheading)

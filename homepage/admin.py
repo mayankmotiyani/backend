@@ -66,7 +66,7 @@ class TestimonialSectionAdmin(admin.ModelAdmin):
             '<textarea cols="60" rows="4" readonly>{}</textarea>',
             obj.content)
 
-    list_display  = ['subheading','content','display_content','admin_created_at','admin_updated_at']
+    list_display  = ['subheading','content','image','display_content','admin_created_at','admin_updated_at']
 
 class HeadingAndSubheadingAdmin(admin.ModelAdmin):
 
