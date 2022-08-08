@@ -1,9 +1,17 @@
+import re
 from rest_framework import serializers
 from nft.models import (
     NFT,
     NFTUseCases,
-    NFTMarketplaceDevelopmentService
+    NFTMarketplaceDevelopmentService,
+    HeadingAndSubheading,
+    NFTSection2
 )
+
+class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HeadingAndSubheading
+        fields = ['subheading','heading']
 
 class NftSerializer(serializers.ModelSerializer):
     nft_url = serializers.SerializerMethodField()
@@ -13,6 +21,15 @@ class NftSerializer(serializers.ModelSerializer):
     
     def get_nft_url(self,obj):
         return obj.get_absolute_url()
+
+class NFTSection2Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = NFTSection2
+        fields = "__all__"
+    
+    def to_representation(self, obj):
+        instance = super(NFTSection2Serializer, self).to_representation(obj)
+
         
 class NFTUseCasesSerializer(serializers.ModelSerializer):
     class Meta:
