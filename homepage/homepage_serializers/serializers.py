@@ -8,9 +8,9 @@ from homepage.models import (
     HeadingAndSubheading,
     StartSomethingUndeniably,
     BlogSection,
-    TestimonialSection
+    TestimonialSection,
+    Partner
 )
-
 
 class StartSomethingUndeniablySerializer(serializers.ModelSerializer):
     class Meta:

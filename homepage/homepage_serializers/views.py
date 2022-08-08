@@ -11,7 +11,8 @@ from homepage.models import (
     HeadingAndSubheading,
     StartSomethingUndeniably,
     BlogSection,
-    TestimonialSection
+    TestimonialSection,
+    Partner
 )
 
 from .serializers import (
@@ -129,28 +130,25 @@ class HeroSectionAPI(APIView):
             }
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
 
+class ProductAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            get_partner_instance = list(Partner.objects.all().values_list('image',flat=True))
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":Partner
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
 
-# class NotableBlockchainPlatformsAPI(APIView):
-#     def get(self, request, *args, **kwargs):
-#         try:
-#             get_notable_blockchain_platform = NotableBlockchainPlatforms.objects.all()
-#             get_heading_and_subheading = list(NotableBlockchainPlatforms.objects.all().values_list("heading_and_subheading_id",flat=True).distinct())[0]
-#             get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_and_subheading))
-#             serializer = NotableBlockchainPlatformsSerializer(get_notable_blockchain_platform,many=True)
-#             context = {
-#                 "status":status.HTTP_200_OK,
-#                 "success":True,
-#                 "heading_and_subheading":get_heading_and_subheading_serializer.data,
-#                 "response":serializer.data
-#             }
-#             return Response(context,status=status.HTTP_200_OK)
-#         except Exception as exception:
-#             context = {
-#                 "status":status.HTTP_400_BAD_REQUEST,
-#                 "success":False,
-#                 "response":str(exception)
-#             }
-#             return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
     
 
 class WhyChooseUsAPI(APIView):

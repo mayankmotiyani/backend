@@ -9,10 +9,23 @@ from .models import (
     HeadingAndSubheading,
     StartSomethingUndeniably,
     BlogSection,
-    TestimonialSection
+    TestimonialSection,
+    Partner
 
 )
 # Register your models here.
+
+class PartnerAdmin(admin.ModelAdmin):
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    list_display  = ['id','image','admin_created_at','admin_updated_at']
+
 class StartSomethingUndeniablyAdmin(admin.ModelAdmin):
 
     @admin.display(description='CreationDate')
@@ -238,3 +251,4 @@ admin.site.register(WhatWeDo, WhatWeDoAdmin)
 admin.site.register(StartSomethingUndeniably,StartSomethingUndeniablyAdmin)
 admin.site.register(BlogSection, BlogSectionAdmin)
 admin.site.register(TestimonialSection, TestimonialSectionAdmin)
+admin.site.register(Partner,PartnerAdmin)

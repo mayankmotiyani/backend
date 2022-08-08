@@ -7,7 +7,8 @@ from .views import (
     WhatWeDoAPI,
     BlogSectionAPI,
     TestimonialSectionAPI,
-    StartSomethingUndeniablyAPI
+    StartSomethingUndeniablyAPI,
+    ProductAPI
 )
 
 urlpatterns = [
@@ -21,5 +22,6 @@ urlpatterns = [
     path('blog-section/',BlogSectionAPI.as_view(),name='blog-section'),
     path('testimonials-section/',TestimonialSectionAPI.as_view(),name='testimonials-section'),
     path('possible-solution/',StartSomethingUndeniablyAPI.as_view(),name='possible-solution'),
+    path('partner/',ProductAPI.as_view(),name='partner')
 
 ]

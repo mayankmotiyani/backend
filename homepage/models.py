@@ -116,3 +116,14 @@ class TestimonialSection(models.Model):
 
     def __str__(self):
         return "{}".format(self.subheading)
+
+class Partner(models.Model):
+    image = models.ImageField(_("partnerImage"),upload_to="partner_images")
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def __str__(self):
+        return "Partners"
+    
+    class Meta:
+        verbose_name_plural = "Partners"
