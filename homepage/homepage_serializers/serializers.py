@@ -11,6 +11,10 @@ from homepage.models import (
     TestimonialSection,
     Partner
 )
+class PartnerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Partner
+        fields = ['id','image']
 
 class StartSomethingUndeniablySerializer(serializers.ModelSerializer):
     class Meta:

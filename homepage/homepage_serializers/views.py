@@ -24,7 +24,8 @@ from .serializers import (
     HeadingAndSubheadingSerializer,
     StartSomethingUndeniablySerializer,
     BlogSectionSerializer,
-    TestimonialSectionSerializer
+    TestimonialSectionSerializer,
+    PartnerSerializer
 
 )
 
@@ -133,11 +134,12 @@ class HeroSectionAPI(APIView):
 class ProductAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            get_partner_instance = list(Partner.objects.all().values_list('image',flat=True))
+            get_partner_instance = Partner.objects.all()
+            serializer = PartnerSerializer(get_partner_instance,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
-                "response":Partner
+                "response":serializer.data
             }
             return Response(context,status=status.HTTP_200_OK)
         except Exception as exception:

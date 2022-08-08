@@ -126,4 +126,4 @@ class Partner(models.Model):
         return "Partners"
     
     class Meta:
-        verbose_name_plural = "Partners"
+        verbose_name_plural = "Partner"
