@@ -3,9 +3,17 @@ from games.models import (
     Game,
     GameSection2,
     GameSection3,
-    ModernSolutionForVariousPlatform
+    ModernSolutionForVariousPlatform,
+    HeadingAndSubheading
 )
 
+
+class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HeadingAndSubheading
+        fields = ['subheading','heading']
+
+        
 class GameSerializer(serializers.ModelSerializer):
     game_slug = serializers.SerializerMethodField()
     class Meta:

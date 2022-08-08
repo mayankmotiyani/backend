@@ -56,6 +56,7 @@ class ModernSolutionForVariousPlatform(models.Model):
 
 class GameSection2(models.Model):
     game = models.ForeignKey(Game,on_delete=models.CASCADE)
+    heading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE,null=True,blank=True)
     title = models.CharField(_("GameTitle"),max_length=500)
     image = models.ImageField(_("image"),upload_to="game")
     content = models.TextField(_("GameContent"))
@@ -65,7 +66,6 @@ class GameSection2(models.Model):
     def __str__(self):
         return "{}".format(self.title)
     
-
 
 class GameSection3(models.Model):
     game = models.ForeignKey(Game,on_delete=models.CASCADE)

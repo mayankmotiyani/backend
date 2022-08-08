@@ -3,13 +3,21 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from games.models import (
-    Game
+    Game,
+    GameSection2,
+    HeadingAndSubheading,
+    ModernSolutionForVariousPlatform
 )
 
 from .serializers import (
     GameSerializer,
-    SingleGameSerializer
+    SingleGameSerializer,
+    GameSection2Serializer,
+    HeadingAndSubheadingSerializer,
+    ModernSolutionForVariousPlatformSerializer
 )
+
+
 
 
 class GameAPI(APIView):
@@ -50,4 +58,48 @@ class GameContentAPI(APIView):
                 "response":str(exception)
             }
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
-    
+
+            
+class GameSection1API(APIView):
+    def get(self, request,game_slug, *args, **kwargs):
+        try:
+            get_game_section_1_instance = ModernSolutionForVariousPlatform.objects.get(game__slug=game_slug)
+            serializer = ModernSolutionForVariousPlatformSerializer(get_game_section_1_instance)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response": serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+class GameSection2API(APIView):
+    def get(self, request,game_slug, *args, **kwargs):
+        try:
+            get_game_section_2_instance = GameSection2.objects.filter(game__slug=game_slug)
+            get_heading_and_subheading = list(GameSection2.objects.filter(game__slug=game_slug).values_list("heading_id",flat=True).distinct())[0]
+
+            get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_and_subheading))
+            serializer = GameSection2Serializer(get_game_section_2_instance,many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "heading_and_subheading":get_heading_and_subheading_serializer.data,
+                "response": serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+
