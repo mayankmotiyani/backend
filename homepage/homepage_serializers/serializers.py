@@ -9,8 +9,26 @@ from homepage.models import (
     StartSomethingUndeniably,
     BlogSection,
     TestimonialSection,
-    Partner
+    Partner,
+    ContactInformation,
+    GetInTouch
+
 )
+class ContactInformationAdminSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactInformation
+        fields = "__all__"
+
+class GetInTouchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GetInTouch
+        fields = ['heading','description']
+
+    def to_representation(self, obj):
+        instance = super(GetInTouchSerializer, self).to_representation(obj)
+        instance['contactInformation'] = ContactInformationAdminSerializer(ContactInformation.objects.first()).data
+        return instance
+
 class PartnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Partner

@@ -10,10 +10,51 @@ from .models import (
     StartSomethingUndeniably,
     BlogSection,
     TestimonialSection,
-    Partner
+    Partner,
+    GetInTouch,
+    ContactInformation
+
 
 )
 # Register your models here.
+
+class ContactInformationAdmin(admin.ModelAdmin):
+
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='description')
+    def display_description(self, obj):
+        return format_html(
+            '<textarea cols="60" rows="4" readonly>{}</textarea>',
+            obj.description)
+    
+    list_display  = ['email','phone','display_description','on_the_web','admin_created_at','admin_updated_at']
+
+
+
+class GetInTouchAdmin(admin.ModelAdmin):
+
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='description')
+    def display_description(self, obj):
+        return format_html(
+            '<textarea cols="60" rows="4" readonly>{}</textarea>',
+            obj.description)
+    
+    list_display  = ['heading','display_description','admin_created_at','admin_updated_at']
 
 class PartnerAdmin(admin.ModelAdmin):
     @admin.display(description='CreationDate')
@@ -252,3 +293,5 @@ admin.site.register(StartSomethingUndeniably,StartSomethingUndeniablyAdmin)
 admin.site.register(BlogSection, BlogSectionAdmin)
 admin.site.register(TestimonialSection, TestimonialSectionAdmin)
 admin.site.register(Partner,PartnerAdmin)
+admin.site.register(GetInTouch,GetInTouchAdmin)
+admin.site.register(ContactInformation,ContactInformationAdmin)

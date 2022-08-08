@@ -129,9 +129,20 @@ class Partner(models.Model):
         verbose_name_plural = "Partner"
 
 class GetInTouch(models.Model):
-    pass
+    heading = models.CharField(_("heading"),max_length=100)
+    description = models.TextField(_("description"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
 
 class ContactInformation(models.Model):
-    # description = models.CharField(_("getInTouchDescription"),max_length=)
-    pass
+    description = models.TextField(_("description"))
+    email = models.EmailField(_("email"))
+    phone = models.CharField(_("phone"),max_length=100)
+    on_the_web = models.EmailField(_("on-the-web"))
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+
+    def __str__(self):
+        return "{}".format(self.email)

@@ -12,7 +12,8 @@ from homepage.models import (
     StartSomethingUndeniably,
     BlogSection,
     TestimonialSection,
-    Partner
+    Partner,
+    GetInTouch
 )
 
 from .serializers import (
@@ -25,7 +26,8 @@ from .serializers import (
     StartSomethingUndeniablySerializer,
     BlogSectionSerializer,
     TestimonialSectionSerializer,
-    PartnerSerializer
+    PartnerSerializer,
+    GetInTouchSerializer 
 
 )
 
@@ -202,6 +204,25 @@ class WhatWeDoAPI(APIView):
         try:
             get_what_we_do_instance = WhatWeDo.objects.all()
             serializer = WhatWeDoSerializer(get_what_we_do_instance,many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+class GetInTouchAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            get_get_in_touch_instance = GetInTouch.objects.first()
+            serializer = GetInTouchSerializer(get_get_in_touch_instance)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
