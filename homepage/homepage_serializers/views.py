@@ -13,7 +13,8 @@ from homepage.models import (
     BlogSection,
     TestimonialSection,
     Partner,
-    GetInTouch
+    GetInTouch,
+    Testimonial
 )
 
 from .serializers import (
@@ -27,7 +28,8 @@ from .serializers import (
     BlogSectionSerializer,
     TestimonialSectionSerializer,
     PartnerSerializer,
-    GetInTouchSerializer 
+    GetInTouchSerializer ,
+    TestimonialSerializer
 
 )
 
@@ -223,6 +225,25 @@ class GetInTouchAPI(APIView):
         try:
             get_get_in_touch_instance = GetInTouch.objects.first()
             serializer = GetInTouchSerializer(get_get_in_touch_instance)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+class TestimonialAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            get_testimonial = Testimonial.objects.all()
+            serializer = TestimonialSerializer(get_testimonial,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,

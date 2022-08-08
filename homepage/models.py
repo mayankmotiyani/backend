@@ -146,3 +146,17 @@ class ContactInformation(models.Model):
 
     def __str__(self):
         return "{}".format(self.email)
+
+class Testimonial(models.Model):
+    client_name = models.CharField(_("clientName"),max_length=250,default="")
+    client_feedback = models.TextField(_("clientFeedback"),default="")
+    image = models.ImageField(_("clientImage"),null=True,upload_to="testimonials")
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    class Meta:
+        ordering = ['id']
+        verbose_name_plural = "Testimonials"
+    
+    def __str__(self):
+        return "{}".format(self.client_name)

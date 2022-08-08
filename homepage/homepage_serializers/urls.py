@@ -9,7 +9,8 @@ from .views import (
     TestimonialSectionAPI,
     StartSomethingUndeniablyAPI,
     ProductAPI,
-    GetInTouchAPI
+    GetInTouchAPI,
+    TestimonialAPI
 )
 
 urlpatterns = [
@@ -22,6 +23,7 @@ urlpatterns = [
     path('what-we-do/',WhatWeDoAPI.as_view(),name='what-we-do'),
     path('blog-section/',BlogSectionAPI.as_view(),name='blog-section'),
     path('testimonials-section/',TestimonialSectionAPI.as_view(),name='testimonials-section'),
+    path('testimonial/',TestimonialAPI.as_view(),name='testimonials'),
     path('possible-solution/',StartSomethingUndeniablyAPI.as_view(),name='possible-solution'),
     path('partner/',ProductAPI.as_view(),name='partner'),
     path('get-in-touch/',GetInTouchAPI.as_view(),name='get-in-touch')

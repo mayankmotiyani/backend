@@ -11,9 +11,16 @@ from homepage.models import (
     TestimonialSection,
     Partner,
     ContactInformation,
-    GetInTouch
+    GetInTouch,
+    Testimonial
 
 )
+
+class TestimonialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Testimonial
+        fields = ['client_name','client_feedback','image']
+
 class ContactInformationAdminSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactInformation

@@ -4,7 +4,6 @@ from rest_framework import serializers
 from django.utils.text import Truncator
 from company.models import (
     Team,
-    Testimonial,
     Careers,
     ApplyForJob
     
@@ -15,10 +14,6 @@ class TeamSerializer(serializers.ModelSerializer):
         model = Team
         fields = ['member_name','member_avatar','member_profile','member_bio']
 
-class TestimonialSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Testimonial
-        fields = ['client_name','client_feedback']
 
 class CareerSerializer(serializers.ModelSerializer):
     career_url = serializers.SerializerMethodField()

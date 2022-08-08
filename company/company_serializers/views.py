@@ -6,7 +6,6 @@ from django.http import JsonResponse
 from django.apps import apps
 from company.models import (
     Team,
-    Testimonial,
     Careers,
     ApplyForJob
     
@@ -14,7 +13,6 @@ from company.models import (
 )
 from .serializers import (
     TeamSerializer,
-    TestimonialSerializer,
     CareerSerializer,
     SingleCareerSerializer,
     ApplyForJobSerializer
@@ -49,25 +47,6 @@ class TeamAPI(APIView):
         try:
             get_team_members = Team.objects.all().order_by('member_unique_id')
             serializer = TeamSerializer(get_team_members,many=True)
-            context = {
-                "status":status.HTTP_200_OK,
-                "success":True,
-                "response":serializer.data
-            }
-            return Response(context,status=status.HTTP_200_OK)
-        except Exception as exception:
-            context = {
-                "status":status.HTTP_400_BAD_REQUEST,
-                "success":False,
-                "response":str(exception)
-            }
-            return Response(context,status=status.HTTP_400_BAD_REQUEST)
-
-class TestimonialAPI(APIView):
-    def get(self, request, *args, **kwargs):
-        try:
-            get_testimonial = Testimonial.objects.all()
-            serializer = TestimonialSerializer(get_testimonial,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,

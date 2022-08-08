@@ -12,11 +12,30 @@ from .models import (
     TestimonialSection,
     Partner,
     GetInTouch,
-    ContactInformation
+    ContactInformation,
+    Testimonial
 
 
 )
 # Register your models here.
+
+class TestimonialAdmin(admin.ModelAdmin):
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='content')
+    def display_client_feedback(self, obj):
+        return format_html(
+            '<textarea cols="60" rows="4" readonly>{}</textarea>',
+            obj.client_feedback)
+
+    list_display  = ['client_name','display_client_feedback','admin_created_at','admin_updated_at']
+
 
 class ContactInformationAdmin(admin.ModelAdmin):
 
@@ -295,3 +314,4 @@ admin.site.register(TestimonialSection, TestimonialSectionAdmin)
 admin.site.register(Partner,PartnerAdmin)
 admin.site.register(GetInTouch,GetInTouchAdmin)
 admin.site.register(ContactInformation,ContactInformationAdmin)
+admin.site.register(Testimonial,TestimonialAdmin)
