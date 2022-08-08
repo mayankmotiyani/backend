@@ -6,7 +6,8 @@ from games.models import (
     Game,
     GameSection2,
     HeadingAndSubheading,
-    ModernSolutionForVariousPlatform
+    ModernSolutionForVariousPlatform,
+    GameSection3
 )
 
 from .serializers import (
@@ -14,7 +15,8 @@ from .serializers import (
     SingleGameSerializer,
     GameSection2Serializer,
     HeadingAndSubheadingSerializer,
-    ModernSolutionForVariousPlatformSerializer
+    ModernSolutionForVariousPlatformSerializer,
+    GameSection3Serializer
 )
 
 
@@ -102,4 +104,21 @@ class GameSection2API(APIView):
             }
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
 
-
+class GameSection3API(APIView):
+    def get(self, request,game_slug, *args, **kwargs):
+        try:
+            get_game_section_3_instance = GameSection3.objects.filter(game__slug=game_slug)
+            serializer = GameSection3Serializer(get_game_section_3_instance,many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response": serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
