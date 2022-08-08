@@ -52,6 +52,19 @@ class HeaderOfficeAddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactAddress
         fields = ['office','phone']
+
+    def to_representation(self, obj):
+        instance = super(HeaderOfficeAddressSerializer, self).to_representation(obj)
+        instance['phone1']  = instance['phone']
+        del instance['phone']
+        instance['phone1'] = instance['phone1'].replace(" ","")
+        take_phone = instance['phone1'].split(",")
+        if len(take_phone) > 1:
+            instance['phone2'] =  take_phone[1]
+            instance['phone1'] = take_phone[0]
+        else:
+            instance['phone2'] = ""
+        return instance
     
 class PrivacyPolicySerializer(serializers.ModelSerializer):
     class Meta:

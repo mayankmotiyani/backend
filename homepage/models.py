@@ -127,3 +127,11 @@ class Partner(models.Model):
     
     class Meta:
         verbose_name_plural = "Partner"
+
+class GetInTouch(models.Model):
+    pass
+
+
+class ContactInformation(models.Model):
+    # description = models.CharField(_("getInTouchDescription"),max_length=)
+    pass
