@@ -82,8 +82,8 @@ class NftSection1API(APIView):
 class NftSection2API(APIView):
     def get(self, request,nft_slug, *args, **kwargs):
         try:
-            get_nft = NFTSection2.objects.filter(nft__slug=nft_slug)
-            serializer = NFTSection2Serializer(get_nft,many=True)
+            get_nft = NFTSection2.objects.get(nft__slug=nft_slug)
+            serializer = NFTSection2Serializer(get_nft)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,

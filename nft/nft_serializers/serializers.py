@@ -27,8 +27,8 @@ class NFTSection2Serializer(serializers.ModelSerializer):
         model = NFTSection2
         fields = "__all__"
     
-    def to_representation(self, obj):
-        instance = super(NFTSection2Serializer, self).to_representation(obj)
+    # def to_representation(self, obj):
+    #     instance = super(NFTSection2Serializer, self).to_representation(obj)
 
         
 class NFTUseCasesSerializer(serializers.ModelSerializer):
