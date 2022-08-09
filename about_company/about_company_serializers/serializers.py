@@ -16,11 +16,11 @@ class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
         model = HeadingAndSubheading
         fields = ['subheading','heading']
     
-    def to_representation(self, obj):
-        instance = super(HeadingAndSubheadingSerializer,self).to_representation(obj)
-        if instance['heading'] == "":
-            del instance['heading']
-        return instance
+    # def to_representation(self, obj):
+    #     instance = super(HeadingAndSubheadingSerializer,self).to_representation(obj)
+    #     if instance['heading'] == "":
+    #         del instance['heading']
+    #     return instance
 
 class AboutCompanySection1Serializer(serializers.ModelSerializer):
     class Meta:
@@ -30,7 +30,7 @@ class AboutCompanySection1Serializer(serializers.ModelSerializer):
 class AboutCompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = AboutCompany
-        fields = ['description']
+        fields = ['heading','description']
 
 
 class OfficeAddressSerializer(serializers.ModelSerializer):

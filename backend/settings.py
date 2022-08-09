@@ -117,7 +117,7 @@ ADMIN_ORDERING = {
         "WhyChooseUs",
         "BlogSection",
         "TestimonialSection",
-        "Testimonial",
+        "Testimonial", 
         "GetInTouch",
         "ContactInformation",
     ],

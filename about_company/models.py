@@ -9,6 +9,7 @@ from django.utils.text import slugify
 class HeadingAndSubheading(models.Model):
     subheading = models.CharField(_('homepageSubheading'), max_length=500)
     heading = models.TextField(_('homepageHeading'),null=True,blank=True)
+    description = models.TextField(_('description'),default="")
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
@@ -19,7 +20,7 @@ class HeadingAndSubheading(models.Model):
         verbose_name_plural = "Heading & Subheading"
     
 class AboutCompany(models.Model):
-    heading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE)
+    heading = models.CharField(max_length=100,null=True,blank=True,default="")
     description = models.TextField(_("aboutCompany"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)

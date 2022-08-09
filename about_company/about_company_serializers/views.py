@@ -24,12 +24,10 @@ class AboutCompanySection1API(APIView):
     def get(self, request, *args, **kwargs):
         try:
             get_about_section_instance = AboutCompanySection1.objects.first()
-            get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_about_section_instance.heading.id))
             serializer = AboutCompanySerializer(get_about_section_instance)
             context ={
                 "status":status.HTTP_200_OK,
                 "success":True,
-                "heading_and_subheading":get_heading_and_subheading_serializer.data,
                 "response":serializer.data
             }
             return Response(context,status=status.HTTP_200_OK)
@@ -68,12 +66,10 @@ class AboutAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
             get_about_instance = AboutCompany.objects.first()
-            get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_about_instance.heading.id))
             serializer = AboutCompanySerializer(get_about_instance)
             context ={
                 "status":status.HTTP_200_OK,
                 "success":True,
-                "heading_and_subheading":get_heading_and_subheading_serializer.data,
                 "response":serializer.data
             }
             return Response(context,status=status.HTTP_200_OK)
