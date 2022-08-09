@@ -10,8 +10,8 @@ from product.models import (
 # Create your models here.
 
 class HeadingAndSubheading(models.Model):
-    subheading = models.CharField(_('homepageSubheading'), max_length=500)
-    heading = models.TextField(_('homepageHeading'),null=True,blank=True)
+    subheading = models.CharField(_('homepageSubheading'), max_length=500,default="")
+    heading = models.TextField(_('homepageHeading'),null=True,blank=True,default="")
     description = models.TextField(_('description'),default="")
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
@@ -91,7 +91,7 @@ class DevelopmentProcess(models.Model):
         return "{}".format(self.title)
 
 class WhatWeDo(models.Model):
-    heading = models.CharField(_("whatWeDoHeading"),max_length=250,null=True)
+    heading = models.CharField(_("whatWeDoHeading"),max_length=250,null=True,blank=True,default="")
     title = models.CharField(_("whatWeDoTitle"),max_length=500)
     content = models.TextField(_("whatWeDoContent"))
     image = models.ImageField(_("whatWeDoImage"),upload_to="what_we_do")
@@ -105,7 +105,7 @@ class WhatWeDo(models.Model):
         return "{}".format(self.title)
 
 class StartSomethingUndeniably(models.Model):
-    subheading = models.CharField(_("subHeading"),max_length=500,null=True,blank=True)
+    subheading = models.CharField(_("subHeading"),max_length=500,null=True,blank=True,default="")
     heading = models.CharField(_("heading"),max_length=500)
     content = models.TextField(_("content"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
@@ -115,7 +115,7 @@ class StartSomethingUndeniably(models.Model):
         return "{}".format(self.subheading)
 
 class BlogSection(models.Model):
-    subheading = models.CharField(_("blogSubheading"),max_length=500,null=True,blank=True)
+    subheading = models.CharField(_("blogSubheading"),max_length=500,null=True,blank=True,default="")
     content = models.TextField(_("blogContent"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
@@ -124,7 +124,7 @@ class BlogSection(models.Model):
         return "{}".format(self.subheading)
 
 class TestimonialSection(models.Model):
-    subheading = models.CharField(_("testimonialSubheading"),max_length=500)
+    subheading = models.CharField(_("testimonialSubheading"),max_length=500,default="")
     content = models.TextField(_("testimonialsContent"))
     image = models.ImageField(_("clientImage"),null=True,upload_to="testimonials")
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
