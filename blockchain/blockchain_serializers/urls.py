@@ -4,8 +4,7 @@ from .views import (
     BlockChainContentAPI,
     BlockchainSectionOneAPI,
     BlockchainSectionTwoAPI,
-    BlockchainSectionThreeAPI
-    
+    BlockchainSectionThreeAPI   
 )
 
 urlpatterns = [

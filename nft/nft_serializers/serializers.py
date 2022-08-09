@@ -45,7 +45,7 @@ class NFTMarketplaceDevelopmentServiceSerializer(serializers.ModelSerializer):
 class SingleNFTSerializer(serializers.ModelSerializer):
     class Meta:
         model = NFT
-        fields = ['id','description']
+        fields = ['id','name','description']
     
     def to_representation(self, obj):
         instance = super(SingleNFTSerializer, self).to_representation(obj)
