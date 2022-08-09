@@ -83,9 +83,13 @@ class OurMasterySerializer(serializers.ModelSerializer):
     #     return instance
 
 class HeroSectionSerializers(serializers.ModelSerializer):
+    product_url = serializers.SerializerMethodField()
     class Meta:
         model = HeroSection
-        fields = ["id","title","content","image"]
+        fields = ["id","product","title","content","official_link","product_url","image"]
+    
+    def get_product_url(self,obj):
+        return obj.get_absolute_url()
     
     def to_representation(self,obj):
         instance = super(HeroSectionSerializers,self).to_representation(obj)

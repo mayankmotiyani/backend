@@ -1,8 +1,13 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import FileExtensionValidator
-# Create your models here.
+from django.utils.text import slugify
+from django.urls import reverse 
+from product.models import (
+    Product,
+)
 
+# Create your models here.
 
 class HeadingAndSubheading(models.Model):
     subheading = models.CharField(_('homepageSubheading'), max_length=500)
@@ -33,17 +38,27 @@ class OurMastery(models.Model):
         return "{}".format(self.name)
 
 class HeroSection(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
     title = models.CharField(_("title"),max_length=500)
     content = models.TextField(_("content"))
     image = models.ImageField(_("image"),upload_to='hero_section_images')
+    official_link = models.URLField(_("official_link"),null=True,blank=True,max_length=500)
+    slug = models.SlugField(_("slug"),max_length=200,null=True,blank=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.product.name)
+        super(HeroSection, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = "Hero Section"
     
     def __str__(self):
         return "{}".format(self.title)
+
+    def get_absolute_url(self):
+        return reverse('product',kwargs={'product_url':self.slug})
        
 
 class WhyChooseUs(models.Model):
