@@ -105,6 +105,23 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'backend.urls'
 
+ADMIN_ORDERING = {
+    "homepage": [
+        "Banner",
+        "Partner",
+        "WhatWeDo",
+        "StartSomethingUndeniably",
+        "HeadingAndSubheading",
+        "OurMastery",
+        "DevelopmentProcess",
+        "WhyChooseUs",
+        "BlogSection",
+        "TestimonialSection",
+        "Testimonial",
+        "GetInTouch",
+        "ContactInformation",
+    ],
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',

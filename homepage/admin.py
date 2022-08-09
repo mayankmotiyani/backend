@@ -1,8 +1,9 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from django.conf import settings
 from .models import (
     OurMastery,
-    HeroSection,
+    Banner,
     WhyChooseUs,
     DevelopmentProcess,
     WhatWeDo,
@@ -15,9 +16,21 @@ from .models import (
     ContactInformation,
     Testimonial
 
-
 )
+
 # Register your models here.
+def get_app_list(self, request):
+    app_dict = self._build_app_dict(request)
+    for app_name, object_list in app_dict.items():
+        if app_name in settings.ADMIN_ORDERING:
+            app = app_dict[app_name]
+            app["models"].sort(
+                key=lambda x: settings.ADMIN_ORDERING[app_name].index(x["object_name"])
+            )
+            app_dict[app_name]
+            yield app
+        else:
+            yield app_dict[app_name]
 
 class TestimonialAdmin(admin.ModelAdmin):
     @admin.display(description='CreationDate')
@@ -153,7 +166,7 @@ class HeadingAndSubheadingAdmin(admin.ModelAdmin):
 
     list_display  = ['subheading','heading','admin_created_at','admin_updated_at']
 
-class HeroSectionAdmin(admin.ModelAdmin):
+class BannerAdmin(admin.ModelAdmin):
 
     @admin.display(description='CreationDate')
     def admin_created_at(self, obj):
@@ -303,7 +316,7 @@ class WhatWeDoAdmin(admin.ModelAdmin):
 admin.site.register(HeadingAndSubheading, HeadingAndSubheadingAdmin)
 admin.site.register(OurMastery, OurMasteryAdmin)
 # admin.site.register(NotableBlockchainPlatforms, NotableBlockchainPlatformsAdmin)
-admin.site.register(HeroSection, HeroSectionAdmin)
+admin.site.register(Banner, BannerAdmin)
 admin.site.register(WhyChooseUs,WhyChooseUsAdmin)
 admin.site.register(DevelopmentProcess, DevelopmentProcessAdmin)
 admin.site.register(WhatWeDo, WhatWeDoAdmin)
@@ -315,3 +328,5 @@ admin.site.register(Partner,PartnerAdmin)
 admin.site.register(GetInTouch,GetInTouchAdmin)
 admin.site.register(ContactInformation,ContactInformationAdmin)
 admin.site.register(Testimonial,TestimonialAdmin)
+
+admin.AdminSite.get_app_list = get_app_list

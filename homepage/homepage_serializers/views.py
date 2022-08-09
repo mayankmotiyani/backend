@@ -4,7 +4,7 @@ from rest_framework import status
 from django.db.models import F
 from homepage.models import (
     OurMastery,
-    HeroSection,
+    Banner,
     WhyChooseUs,
     DevelopmentProcess,
     WhatWeDo,
@@ -19,7 +19,7 @@ from homepage.models import (
 
 from .serializers import (
     OurMasterySerializer,
-    HeroSectionSerializers,
+    BannerSerializers,
     WhyChooseUsSerializer,
     BlockchainDevelopmentProcessSerializer,
     WhatWeDoSerializer,
@@ -116,10 +116,10 @@ class OurMasteryAPI(APIView):
 class HeroSectionAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            get_hero_section_instance = HeroSection.objects.all()
+            get_hero_section_instance = Banner.objects.all()
             # get_heading_and_subheading = list(HeroSection.objects.all().values_list("heading_and_subheading_id",flat=True).distinct())[0]
             # get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_and_subheading))
-            serializer = HeroSectionSerializers(get_hero_section_instance,many=True)
+            serializer = BannerSerializers(get_hero_section_instance,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,

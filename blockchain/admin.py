@@ -9,6 +9,9 @@ from .models import (
     HeadingAndSubheading
 )
 
+
+
+
 # Register your models here.
 class HeadingAndSubheadingAdmin(admin.ModelAdmin):
     @admin.display(description='CreationDate')

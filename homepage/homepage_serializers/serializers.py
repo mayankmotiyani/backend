@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from homepage.models import (
     OurMastery,
-    HeroSection,
+    Banner,
     WhyChooseUs,
     DevelopmentProcess,
     WhatWeDo,
@@ -82,17 +82,17 @@ class OurMasterySerializer(serializers.ModelSerializer):
     #     instance['bool']=True
     #     return instance
 
-class HeroSectionSerializers(serializers.ModelSerializer):
+class BannerSerializers(serializers.ModelSerializer):
     product_url = serializers.SerializerMethodField()
     class Meta:
-        model = HeroSection
+        model = Banner
         fields = ["id","product","title","content","official_link","product_url","image"]
     
     def get_product_url(self,obj):
         return obj.get_absolute_url()
     
     def to_representation(self,obj):
-        instance = super(HeroSectionSerializers,self).to_representation(obj)
+        instance = super(BannerSerializers,self).to_representation(obj)
         instance['title'] = instance['title'].title()
         return instance
 

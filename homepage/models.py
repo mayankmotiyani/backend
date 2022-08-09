@@ -38,7 +38,7 @@ class OurMastery(models.Model):
     def __str__(self):
         return "{}".format(self.name)
 
-class HeroSection(models.Model):
+class Banner(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
     title = models.CharField(_("title"),max_length=500)
     content = models.TextField(_("content"))
@@ -53,7 +53,7 @@ class HeroSection(models.Model):
         super(HeroSection, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name_plural = "Hero Section"
+        verbose_name_plural = "Banner"
     
     def __str__(self):
         return "{}".format(self.title)
@@ -142,7 +142,7 @@ class Partner(models.Model):
         return "Partners"
     
     class Meta:
-        verbose_name_plural = "Partner"
+        verbose_name_plural = "Our Partners"
 
 class GetInTouch(models.Model):
     heading = models.CharField(_("heading"),max_length=100)
