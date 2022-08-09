@@ -60,13 +60,13 @@ class TestimonialSectionSerializer(serializers.ModelSerializer):
 class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
     class Meta:
         model = HeadingAndSubheading
-        fields = ['subheading','heading']
+        fields = ['subheading','heading','description']
 
-    def to_representation(self, obj):
-        instance = super(HeadingAndSubheadingSerializer,self).to_representation(obj)
-        if instance['heading'] == "":
-            del instance['heading']
-        return instance
+    # def to_representation(self, obj):
+    #     instance = super(HeadingAndSubheadingSerializer,self).to_representation(obj)
+    #     if instance['heading'] == "":
+    #         del instance['heading']
+    #     return instance
 
 class OurMasterySerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()

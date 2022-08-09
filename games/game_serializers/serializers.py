@@ -11,7 +11,7 @@ from games.models import (
 class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
     class Meta:
         model = HeadingAndSubheading
-        fields = ['subheading','heading']
+        fields = ['subheading','heading','description']
 
         
 class GameSerializer(serializers.ModelSerializer):
