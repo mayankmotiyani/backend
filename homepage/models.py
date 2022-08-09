@@ -105,7 +105,7 @@ class WhatWeDo(models.Model):
         return "{}".format(self.title)
 
 class StartSomethingUndeniably(models.Model):
-    subheading = models.CharField(_("subHeading"),max_length=500)
+    subheading = models.CharField(_("subHeading"),max_length=500,null=True,blank=True)
     heading = models.CharField(_("heading"),max_length=500)
     content = models.TextField(_("content"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
@@ -115,7 +115,7 @@ class StartSomethingUndeniably(models.Model):
         return "{}".format(self.subheading)
 
 class BlogSection(models.Model):
-    subheading = models.CharField(_("blogSubheading"),max_length=500)
+    subheading = models.CharField(_("blogSubheading"),max_length=500,null=True,blank=True)
     content = models.TextField(_("blogContent"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
