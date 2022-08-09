@@ -149,6 +149,11 @@ class GetInTouch(models.Model):
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
+    def __str__(self):
+        return "Get In Touch"
+
+
+
 
 class ContactInformation(models.Model):
     description = models.TextField(_("description"))

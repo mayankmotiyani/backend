@@ -16,4 +16,5 @@ gunicorn
 django-heroku
 python-decouple
 drf-api-logger
+django-admin-logs
 django-cloudinary-storage
