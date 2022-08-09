@@ -1,12 +1,12 @@
 from rest_framework import serializers
 from homepage.models import (
-    OurMastery,
+    ProfessionalBlockchainDevelopmentCompany,
     Banner,
     WhyChooseUs,
     DevelopmentProcess,
     WhatWeDo,
     HeadingAndSubheading,
-    StartSomethingUndeniably,
+    BlockchainTechnology,
     BlogSection,
     TestimonialSection,
     Partner,
@@ -41,9 +41,9 @@ class PartnerSerializer(serializers.ModelSerializer):
         model = Partner
         fields = ['id','image']
 
-class StartSomethingUndeniablySerializer(serializers.ModelSerializer):
+class BlockchainTechnologySerializer(serializers.ModelSerializer):
     class Meta:
-        model = StartSomethingUndeniably
+        model = BlockchainTechnology
         fields = "__all__"
     
 class BlogSectionSerializer(serializers.ModelSerializer):
@@ -68,10 +68,10 @@ class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
     #         del instance['heading']
     #     return instance
 
-class OurMasterySerializer(serializers.ModelSerializer):
+class ProfessionalBlockchainDevelopmentCompanySerializer(serializers.ModelSerializer):
     image_url = serializers.SerializerMethodField()
     class Meta:
-        model = OurMastery
+        model = ProfessionalBlockchainDevelopmentCompany
         fields = ["name","content","image_url"]
 
     def get_image_url(self, obj):

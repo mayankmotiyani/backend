@@ -24,7 +24,7 @@ class HeadingAndSubheading(models.Model):
         verbose_name_plural = "Heading & Subheading"
 
 
-class OurMastery(models.Model):
+class ProfessionalBlockchainDevelopmentCompany(models.Model):
     heading_and_subheading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE,null=True)
     name = models.CharField(_("nichesName"),max_length=250)
     image = models.ImageField(_("nicheImages"),upload_to='niche_images')
@@ -33,7 +33,7 @@ class OurMastery(models.Model):
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
     class Meta:
-        verbose_name_plural = "Our Mastery"
+        verbose_name_plural = "Professional Blockchain Development Company"
 
     def __str__(self):
         return "{}".format(self.name)
@@ -104,7 +104,7 @@ class WhatWeDo(models.Model):
     def __str__(self):
         return "{}".format(self.title)
 
-class StartSomethingUndeniably(models.Model):
+class BlockchainTechnology(models.Model):
     subheading = models.CharField(_("subHeading"),max_length=500,null=True,blank=True,default="")
     heading = models.CharField(_("heading"),max_length=500)
     content = models.TextField(_("content"))
@@ -113,6 +113,9 @@ class StartSomethingUndeniably(models.Model):
 
     def __str__(self):
         return "{}".format(self.subheading)
+
+    class Meta:
+        verbose_name_plural = "Blockchain Technology"
 
 class BlogSection(models.Model):
     subheading = models.CharField(_("blogSubheading"),max_length=500,null=True,blank=True,default="")
@@ -123,6 +126,10 @@ class BlogSection(models.Model):
     def __str__(self):
         return "{}".format(self.subheading)
 
+    class Meta:
+        verbose_name_plural = "Our Blogs"
+
+
 class TestimonialSection(models.Model):
     subheading = models.CharField(_("testimonialSubheading"),max_length=500,default="")
     content = models.TextField(_("testimonialsContent"))
@@ -132,6 +139,9 @@ class TestimonialSection(models.Model):
 
     def __str__(self):
         return "{}".format(self.subheading)
+    
+    class Meta:
+        verbose_name_plural = "Testimonial Section"
 
 class Partner(models.Model):
     image = models.ImageField(_("partnerImage"),upload_to="partner_images")
@@ -152,6 +162,9 @@ class GetInTouch(models.Model):
 
     def __str__(self):
         return "Get In Touch"
+    
+    class Meta:
+        verbose_name_plural = "Get In Touch"
 
 
 
@@ -168,6 +181,9 @@ class ContactInformation(models.Model):
     def __str__(self):
         return "{}".format(self.email)
 
+    class Meta:
+        verbose_name_plural = "Contact Information"
+
 class Testimonial(models.Model):
     client_name = models.CharField(_("clientName"),max_length=250,default="")
     client_feedback = models.TextField(_("clientFeedback"),default="")
@@ -177,7 +193,7 @@ class Testimonial(models.Model):
 
     class Meta:
         ordering = ['id']
-        verbose_name_plural = "Testimonials"
+        verbose_name_plural = "Testimonial"
     
     def __str__(self):
         return "{}".format(self.client_name)

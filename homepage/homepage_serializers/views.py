@@ -3,13 +3,13 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.db.models import F
 from homepage.models import (
-    OurMastery,
+    ProfessionalBlockchainDevelopmentCompany,
     Banner,
     WhyChooseUs,
     DevelopmentProcess,
     WhatWeDo,
     HeadingAndSubheading,
-    StartSomethingUndeniably,
+    BlockchainTechnology,
     BlogSection,
     TestimonialSection,
     Partner,
@@ -18,13 +18,13 @@ from homepage.models import (
 )
 
 from .serializers import (
-    OurMasterySerializer,
+    ProfessionalBlockchainDevelopmentCompanySerializer,
     BannerSerializers,
     WhyChooseUsSerializer,
     BlockchainDevelopmentProcessSerializer,
     WhatWeDoSerializer,
     HeadingAndSubheadingSerializer,
-    StartSomethingUndeniablySerializer,
+    BlockchainTechnologySerializer,
     BlogSectionSerializer,
     TestimonialSectionSerializer,
     PartnerSerializer,
@@ -71,11 +71,11 @@ class TestimonialSectionAPI(APIView):
             }
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
 
-class StartSomethingUndeniablyAPI(APIView):
+class BlockchainTechnologySerializerAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            get_undeniable_section_instance = StartSomethingUndeniably.objects.first()
-            serializer = StartSomethingUndeniablySerializer(get_undeniable_section_instance)
+            get_undeniable_section_instance = BlockchainTechnology.objects.first()
+            serializer = BlockchainTechnologySerializer(get_undeniable_section_instance)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
@@ -91,13 +91,13 @@ class StartSomethingUndeniablyAPI(APIView):
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
 
 
-class OurMasteryAPI(APIView):
+class ProfessionalBlockchainDevelopmentCompanyAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            get_dashboard_niches_instance = OurMastery.objects.all()
-            get_heading_and_subheading = list(OurMastery.objects.all().values_list("heading_and_subheading_id",flat=True).distinct())[0]
+            get_dashboard_niches_instance = ProfessionalBlockchainDevelopmentCompany.objects.all()
+            get_heading_and_subheading = list(ProfessionalBlockchainDevelopmentCompany.objects.all().values_list("heading_and_subheading_id",flat=True).distinct())[0]
             get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_and_subheading))
-            serializer = OurMasterySerializer(get_dashboard_niches_instance,many=True)
+            serializer = ProfessionalBlockchainDevelopmentCompanySerializer(get_dashboard_niches_instance,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
