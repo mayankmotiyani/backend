@@ -19,7 +19,7 @@ class HeadingAndSubheadingAdmin(admin.ModelAdmin):
     def admin_updated_at(self, obj):
         return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
 
-    list_display  = ['subheading','heading','admin_created_at','admin_updated_at']
+    list_display  = ['subheading','heading','description','admin_created_at','admin_updated_at']
 
 
 class NFTSection2Admin(admin.ModelAdmin):
@@ -72,7 +72,7 @@ class NFTUseCasesAdmin(admin.ModelAdmin):
             '<textarea cols="60" rows="4" readonly>{}</textarea>',
             obj.content)
 
-    list_display  = ['nft','title','display_content','admin_created_at','admin_updated_at']
+    list_display  = ['nft','heading','title','display_content','admin_created_at','admin_updated_at']
 
 class NFTMarketplaceDevelopmentServiceAdmin(admin.ModelAdmin):
     @admin.display(description='CreationDate')
@@ -89,7 +89,7 @@ class NFTMarketplaceDevelopmentServiceAdmin(admin.ModelAdmin):
             '<textarea cols="60" rows="4" readonly>{}</textarea>',
             obj.content)
 
-    list_display  = ['nft','title','display_content','admin_created_at','admin_updated_at']
+    list_display  = ['nft','heading','title','display_content','admin_created_at','admin_updated_at']
 
 admin.site.register(NFT, NFTAdmin)
 admin.site.register(NFTSection2, NFTSection2Admin)

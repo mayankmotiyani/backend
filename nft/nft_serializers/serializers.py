@@ -11,7 +11,7 @@ from nft.models import (
 class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
     class Meta:
         model = HeadingAndSubheading
-        fields = ['subheading','heading']
+        fields = ['subheading','heading','description']
 
 class NftSerializer(serializers.ModelSerializer):
     nft_url = serializers.SerializerMethodField()
