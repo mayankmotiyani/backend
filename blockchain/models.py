@@ -91,8 +91,8 @@ class Blockchain(models.Model):
 class OurUnparalleledService(models.Model):
     blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE,null=True,blank=True)
     subheading = models.CharField(_("subHeading"),max_length=500,null=True,blank=True)
-    title = models.CharField(_("UnparalleledServiceTitle"),max_length=500)
-    content = models.TextField(_("UnparalleledServiceContent"))
+    title = models.CharField(_("UnparalleledServiceTitle"),max_length=500,null=True,blank=True)
+    content = RichTextUploadingField(_("dummySectionContent"))
     image = models.ImageField(upload_to="blockchain_section_1",null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
@@ -106,8 +106,8 @@ class OurUnparalleledService(models.Model):
 class DummySection2(models.Model):
     blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE,null=True,blank=True)
     subheading = models.CharField(_("subHeading"),max_length=500,null=True,blank=True)
-    title = models.CharField(_("dummySectionTitle"),max_length=500)
-    content = models.TextField(_("dummySectionContent"))
+    title = models.CharField(_("dummySectionTitle"),max_length=500,null=True,blank=True)
+    content = RichTextUploadingField(_("dummySectionContent"))
     image = models.ImageField(upload_to="blockchain_section_1",null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
@@ -121,8 +121,8 @@ class DummySection2(models.Model):
 class DummySection3(models.Model):
     blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE,null=True,blank=True)
     subheading = models.CharField(_("subHeading"),max_length=500,null=True,blank=True)
-    title = models.CharField(_("dummySectionTitle"),max_length=500)
-    content = models.TextField(_("dummySectionContent"))
+    title = models.CharField(_("dummySectionTitle"),max_length=500,null=True,blank=True)
+    content = RichTextUploadingField(_("dummySectionContent"))
     image = models.ImageField(upload_to="blockchain_section_1",null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
