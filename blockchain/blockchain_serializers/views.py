@@ -8,7 +8,8 @@ from blockchain.models import(
     BlockchainCategory,
     OurUnparalleledService,
     DummySection2,
-    DummySection3
+    DummySection3,
+    BlockchainService
 )
 
 from .serializers import (
@@ -17,7 +18,8 @@ from .serializers import (
     SingleBlockchainSerializer,
     OurUnparalleledServiceSerializer,
     DummySection2Serializer,
-    DummySection3Serializer
+    DummySection3Serializer,
+    BlockchainServiceSerializer
 )
 
 class BlockchainAPI(APIView):
