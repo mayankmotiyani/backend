@@ -152,4 +152,7 @@ class FAQs(models.Model):
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
     
     def __str__(self):
-        return "FAQs"
+        return "{}".format(self.question)
+    
+    class Meta:
+        verbose_name_plural = "FAQ"

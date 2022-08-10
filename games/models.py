@@ -6,9 +6,9 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class HeadingAndSubheading(models.Model):
-    subheading = models.CharField(_('homepageSubheading'), max_length=500)
+    subheading = models.CharField(_('homepageSubheading'), max_length=500,null=True,blank=True)
     heading = models.TextField(_('homepageHeading'),null=True,blank=True)
-    description = models.TextField(_('description'),default="")
+    description = models.TextField(_('description'),default="",null=True,blank=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
