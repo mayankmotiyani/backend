@@ -7,7 +7,8 @@ from .views import (
     TermAndConditionAPI,
     BlockchainForBusinessAPI,
     UnmatchedServicesAPI,
-    VisionAndMissionAPI
+    VisionAndMissionAPI,
+    FrequentAskQuestionAPI
 )
 
 urlpatterns = [
@@ -19,6 +20,7 @@ urlpatterns = [
     path('term-and-condition/',TermAndConditionAPI.as_view()),
     path('blockchain-for-business/',BlockchainForBusinessAPI.as_view(),name='blockchain-for-business'),
     path('vision-and-mission/',VisionAndMissionAPI.as_view(),name='vision-and-mission'),
+    path('faq/',FrequentAskQuestionAPI.as_view(),name='faq'),
     
     
 

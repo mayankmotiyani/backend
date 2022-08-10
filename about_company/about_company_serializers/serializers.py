@@ -9,7 +9,8 @@ from about_company.models import (
     HeadingAndSubheading,
     UnmatchedServices,
     BlockchainForBusiness,
-    VisionAndMission
+    VisionAndMission,
+    FAQs
 
 )
 
@@ -92,3 +93,8 @@ class TermsAndConditionSerializer(serializers.ModelSerializer):
         instance = super(TermsAndConditionSerializer, self).to_representation(obj)
         instance['content'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['content'])
         return instance
+
+class FAQsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FAQs
+        fields = "__all__"

@@ -150,7 +150,6 @@ class BlockchainForBusinessAPI(APIView):
         try:
             get_data = BlockchainForBusiness.objects.all()
             get_heading_subheading_instance = list(BlockchainForBusiness.objects.all().values_list("heading",flat=True).distinct())[0]
-            print(get_heading_subheading_instance)
             get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_subheading_instance))
             serializer = BlockchainForBusinessSerializer(get_data, many=True)
             context = {
@@ -178,6 +177,26 @@ class VisionAndMissionAPI(APIView):
                 "status":status.HTTP_200_OK,
                 "success":True,
                 "heading_and_subheading":get_heading_and_subheading_serializer.data,
+                "response":serializer.data
+            }
+            return Response(context, status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+                }
+            return Response(context, status=status.HTTP_400_BAD_REQUEST)
+        
+
+class FrequentAskQuestionAPI(APIView):
+    def get(self, request , *args, **kwargs):
+        try:
+            get_data = FAQs.objects.all()
+            serializer = FAQsSerializer(get_data)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
                 "response":serializer.data
             }
             return Response(context, status=status.HTTP_200_OK)
