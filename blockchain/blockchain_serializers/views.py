@@ -19,7 +19,8 @@ from .serializers import (
     OurUnparalleledServiceSerializer,
     DummySection2Serializer,
     DummySection3Serializer,
-    BlockchainServiceSerializer
+    BlockchainServiceSerializer,
+    HeadingAndSubheadingSerializer
 )
 
 class BlockchainAPI(APIView):
