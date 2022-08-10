@@ -217,7 +217,7 @@ class BuildConnectionAPI(APIView):
     def get(self, request , *args, **kwargs):
         try:
             get_data = BuildConnection.objects.all()
-            serializer = BuildConnectionSerializer(get_data)
+            serializer = BuildConnectionSerializer(get_data,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
