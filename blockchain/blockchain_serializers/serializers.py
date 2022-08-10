@@ -45,17 +45,31 @@ class OurUnparalleledServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = OurUnparalleledService
         fields = ['subheading','title','content','image']
+    
+     def to_representation(self, obj):
+        instance = super(SingleBlockchainSerializer, self).to_representation(obj)
+        instance['content'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['content'])
+        return instance
 
 class DummySection2Serializer(serializers.ModelSerializer):
     class Meta:
         model = DummySection2
         fields = ['subheading','title','content','image']
     
+     def to_representation(self, obj):
+        instance = super(SingleBlockchainSerializer, self).to_representation(obj)
+        instance['content'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['content'])
+        return instance
+    
 class DummySection3Serializer(serializers.ModelSerializer):
     class Meta:
         model = DummySection3
         fields = ['subheading','title','content','image']
-
+    
+     def to_representation(self, obj):
+        instance = super(SingleBlockchainSerializer, self).to_representation(obj)
+        instance['content'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['content'])
+        return instance
 
 class SingleBlockchainSerializer(serializers.ModelSerializer):
     class Meta:
@@ -64,10 +78,6 @@ class SingleBlockchainSerializer(serializers.ModelSerializer):
 
     def to_representation(self, obj):
         instance = super(SingleBlockchainSerializer, self).to_representation(obj)
-        instance['Section1'] = OurUnparalleledServiceSerializer(OurUnparalleledService.objects.get(blockchain_id=instance['id'])).data
-        instance['Section2'] = DummySection2Serializer(DummySection2.objects.get(blockchain_id=instance['id'])).data
-        instance['Section3'] = DummySection3Serializer(DummySection3.objects.get(blockchain_id=instance['id'])).data
-        del instance['id']
         return instance
 
 
