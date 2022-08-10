@@ -195,7 +195,7 @@ class FrequentAskQuestionAPI(APIView):
     def get(self, request , *args, **kwargs):
         try:
             get_data = FAQs.objects.all()
-            serializer = FAQsSerializer(get_data)
+            serializer = FAQsSerializer(get_data,many=True)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
