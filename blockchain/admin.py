@@ -67,7 +67,7 @@ class OurUnparalleledServiceAdmin(admin.ModelAdmin):
             '<textarea cols="60" rows="4" readonly>{}</textarea>',
             obj.content)
 
-    list_display = ['blockchain','subheading','title','display_content','admin_created_at','admin_updated_at']
+    list_display = ['blockchain','subheading','title','admin_created_at','admin_updated_at']
 
 
 class DummySection2Admin(admin.ModelAdmin):
@@ -85,7 +85,7 @@ class DummySection2Admin(admin.ModelAdmin):
             '<textarea cols="60" rows="4" readonly>{}</textarea>',
             obj.content)
 
-    list_display = ['blockchain','subheading','title','display_content','admin_created_at','admin_updated_at']
+    list_display = ['blockchain','subheading','title','admin_created_at','admin_updated_at']
 
 
 class DummySection3Admin(admin.ModelAdmin):
@@ -103,7 +103,7 @@ class DummySection3Admin(admin.ModelAdmin):
             '<textarea cols="60" rows="4" readonly>{}</textarea>',
             obj.content)
 
-    list_display = ['blockchain','subheading','title','display_content','admin_created_at','admin_updated_at']
+    list_display = ['blockchain','subheading','title','admin_created_at','admin_updated_at']
 
 
 admin.site.register(BlockchainCategory, BlockchainCategoryAdmin)

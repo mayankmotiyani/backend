@@ -8,24 +8,28 @@ from about_company.models import(
     TermsAndCondition,
     AboutCompany,
     HeadingAndSubheading,
-    AboutCompanySection1
+    UnmatchedServices,
+    BlockchainForBusiness,
+    VisionAndMission
 )
 
 from .serializers import (
-    AboutCompanySerializer,
+    UnmatchedServicesSerializer,
     OfficeAddressSerializer,
     HeaderOfficeAddressSerializer,
     PrivacyPolicySerializer,
     TermsAndConditionSerializer,
-    HeadingAndSubheadingSerializer
+    HeadingAndSubheadingSerializer,
+    BlockchainForBusinessSerializer,
+    VisionAndMissionSerializer
 )
 
-class AboutCompanySection1API(APIView):
+class UnmatchedServicesAPI(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            get_about_section_instance = AboutCompanySection1.objects.first()
+            get_about_section_instance = UnmatchedServices.objects.first()
             get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_about_section_instance.heading.id))
-            serializer = AboutCompanySerializer(get_about_section_instance)
+            serializer = UnmatchedServicesSerializer(get_about_section_instance)
             context ={
                 "status":status.HTTP_200_OK,
                 "success":True,
@@ -139,3 +143,48 @@ class TermAndConditionAPI(APIView):
                 "response":str(exception)
             }
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+
+class BlockchainForBusinessAPI(APIView):
+    def get(self, request , *args, **kwargs):
+        try:
+            get_data = BlockchainForBusiness.objects.all()
+            get_heading_subheading_instance = list(BlockchainForBusiness.objects.all().values_list("heading",flat=True).distinct())[0]
+            print(get_heading_subheading_instance)
+            get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_subheading_instance))
+            serializer = BlockchainForBusinessSerializer(get_data, many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "heading_and_subheading":get_heading_and_subheading_serializer.data,
+                "response":serializer.data
+            }
+            return Response(context, status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+                }
+            return Response(context, status=status.HTTP_400_BAD_REQUEST)
+
+class VisionAndMissionAPI(APIView):
+    def get(self, request , *args, **kwargs):
+        try:
+            get_data = VisionAndMission.objects.first()
+            get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_data.heading.id))
+            serializer = VisionAndMissionSerializer(get_data)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "heading_and_subheading":get_heading_and_subheading_serializer.data,
+                "response":serializer.data
+            }
+            return Response(context, status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+                }
+            return Response(context, status=status.HTTP_400_BAD_REQUEST)

@@ -7,8 +7,10 @@ from .models import (
     TermsAndCondition,
     HeadingAndSubheading,
     AboutCompany,
-    AboutCompanySection1,
-    AboutCompanySection3,
+    UnmatchedServices,
+    BlockchainForBusiness,
+    VisionAndMission,
+    Partners
 
 )
 
@@ -38,7 +40,7 @@ class AboutCompanyAdmin(admin.ModelAdmin):
     list_display  = ['heading','description','admin_created_at','admin_updated_at']
 
 
-class AboutCompanySection1Admin(admin.ModelAdmin):
+class UnmatchedServicesAdmin(admin.ModelAdmin):
     @admin.display(description='CreationDate')
     def admin_created_at(self, obj):
         return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
@@ -50,7 +52,7 @@ class AboutCompanySection1Admin(admin.ModelAdmin):
     list_display  = ['heading','description','admin_created_at','admin_updated_at']
 
 
-class AboutCompanySection3Admin(admin.ModelAdmin):
+class BlockchainForBusinessAdmin(admin.ModelAdmin):
     @admin.display(description='CreationDate')
     def admin_created_at(self, obj):
         return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
@@ -116,14 +118,42 @@ class TermsAndConditionAdmin(admin.ModelAdmin):
         return False
 
 
+class VisionAndMissionAdmin(admin.ModelAdmin):
+
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    list_display  = ['heading','image','admin_created_at','admin_updated_at']
+
+
+class PartnersAdmin(admin.ModelAdmin):
+
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    list_display  = ['heading','image','admin_created_at','admin_updated_at']
+
+
 admin.site.register(ContactAddress, ContactAddressAdmin)
 admin.site.register(BecomeOurPartner, BecomeOurPartnerAdmin)
 admin.site.register(PrivacyPolicy,PrivacyPolicyAdmin) 
 admin.site.register(TermsAndCondition,TermsAndConditionAdmin)   
 admin.site.register(HeadingAndSubheading,HeadingAndSubheadingAdmin) 
 admin.site.register(AboutCompany,AboutCompanyAdmin)  
-admin.site.register(AboutCompanySection1,AboutCompanySection1Admin)    
-admin.site.register(AboutCompanySection3,AboutCompanySection3Admin)
+admin.site.register(UnmatchedServices,UnmatchedServicesAdmin)    
+admin.site.register(BlockchainForBusiness,BlockchainForBusinessAdmin)
+admin.site.register(VisionAndMission,VisionAndMissionAdmin)    
+admin.site.register(Partners,PartnersAdmin)
 
 
 

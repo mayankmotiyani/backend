@@ -7,7 +7,9 @@ from about_company.models import (
     TermsAndCondition,
     AboutCompany,
     HeadingAndSubheading,
-    AboutCompanySection1
+    UnmatchedServices,
+    BlockchainForBusiness,
+    VisionAndMission
 
 )
 
@@ -15,21 +17,25 @@ class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
     class Meta:
         model = HeadingAndSubheading
         fields = ['subheading','heading']
-    
-    # def to_representation(self, obj):
-    #     instance = super(HeadingAndSubheadingSerializer,self).to_representation(obj)
-    #     if instance['heading'] == "":
-    #         del instance['heading']
-    #     return instance
 
-class AboutCompanySection1Serializer(serializers.ModelSerializer):
+class BlockchainForBusinessSerializer(serializers.ModelSerializer):
     class Meta:
-        model = AboutCompanySection1
+        model = BlockchainForBusiness
         fields = "__all__"
 
-class AboutCompanySerializer(serializers.ModelSerializer):
+class VisionAndMissionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = AboutCompany
+        model = VisionAndMission
+        fields = "__all__"
+
+class UnmatchedServicesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UnmatchedServices
+        fields = "__all__"
+
+class UnmatchedServicesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UnmatchedServices
         fields = ['heading','description']
 
 

@@ -7,9 +7,9 @@ from django.utils.text import slugify
 
 
 class HeadingAndSubheading(models.Model):
-    subheading = models.CharField(_('homepageSubheading'), max_length=500)
+    subheading = models.CharField(_('homepageSubheading'), max_length=500,null=True,blank=True)
     heading = models.TextField(_('homepageHeading'),null=True,blank=True)
-    description = models.TextField(_('description'),default="")
+    description = models.TextField(_('description'),default="",null=True,blank=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
@@ -31,7 +31,7 @@ class AboutCompany(models.Model):
     class Meta:
         verbose_name_plural = "About Company"
 
-class AboutCompanySection1(models.Model):
+class UnmatchedServices(models.Model):
     heading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE)
     description = models.TextField(_("aboutCompany"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
@@ -41,21 +41,18 @@ class AboutCompanySection1(models.Model):
         return "About Us Section 1"
     
     class Meta:
-        verbose_name_plural = "About Company Section 1"
+        verbose_name_plural = "8+ Years of unmatched Services"
 
-class AboutCompanySection3(models.Model):
+class BlockchainForBusiness(models.Model):
     heading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="about_section_3")
+    image = models.ImageField(upload_to="blockchain_for_business")
     title = models.CharField(max_length=250,null=True,blank=True)
     description = models.TextField(_("aboutCompany"))
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
-
-    def __str__(self):
-        return "About Us Section 3"
     
     class Meta:
-        verbose_name_plural = "About Company Section 3"
+        verbose_name_plural = "Blockchain For Business"
 
 
 class ContactAddress(models.Model):
@@ -120,4 +117,29 @@ class TermsAndCondition(models.Model):
     class Meta:
         verbose_name_plural = "Terms & Condition"
 
+class VisionAndMission(models.Model):
+    heading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="vision_and_mission")
+    description = RichTextUploadingField(_("mission&vision"),blank=True,null=True)
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
+    def __str__(self):
+        return "Vision And Mission"
+    
+    class Meta:
+        verbose_name_plural = "Vision And Mission"
+    
+    
+class Partners(models.Model):
+    heading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="Partners")
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+    
+   
+    def __str__(self):
+        return "Partners"
+
+    class Meta:
+        verbose_name_plural = "Partner"
