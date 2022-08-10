@@ -9,7 +9,8 @@ from blockchain.models import(
     OurUnparalleledService,
     DummySection2,
     DummySection3,
-    BlockchainService
+    BlockchainService,
+    HeadingAndSubheading
 )
 
 from .serializers import (
