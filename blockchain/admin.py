@@ -131,4 +131,5 @@ admin.site.register(OurUnparalleledService, OurUnparalleledServiceAdmin)
 admin.site.register(Blockchain, BlockchainAdmin)
 admin.site.register(DummySection2, DummySection2Admin)
 admin.site.register(DummySection3, DummySection3Admin)
+admin.site.register(HeadingAndSubheading,HeadingAndSubheadingAdmin)
 

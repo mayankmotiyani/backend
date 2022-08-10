@@ -142,3 +142,26 @@ class BlockchainSectionThreeAPI(APIView):
                 "response":str(exception)
             }
             return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+
+class BlockchainServiceAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            get_data = BlockchainService.objects.all()
+            get_heading_subheading_instance = list(BlockchainService.objects.all().values_list("heading",flat=True).distinct())[0]
+            get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_subheading_instance))
+            serializer = BlockchainServiceSerializer(get_data,many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "heading_and_subheading":get_heading_and_subheading_serializer.data,
+                "response":serializer.data
+            }
+            return Response(context, status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+                }
+            return Response(context, status=status.HTTP_400_BAD_REQUEST)

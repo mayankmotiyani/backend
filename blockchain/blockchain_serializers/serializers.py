@@ -12,10 +12,9 @@ from blockchain.models import (
 
 class BlockchainServiceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ModelSerializer
+        model = BlockchainService
         fields = "__all__"
 
-        
 class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
     class Meta:
         model = HeadingAndSubheading
