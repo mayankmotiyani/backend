@@ -161,7 +161,7 @@ class BuildConnection(models.Model):
     heading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE)
     image = models.ImageField(upload_to="build_connection")
     title = models.CharField(max_length=250,null=True,blank=True)
-    content = RichTextUploadingField(_("BuildConnectionContent"),blank=True,null=True)
+    content = models.TextField(_("BuildConnectionContent"),blank=True,null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
     
