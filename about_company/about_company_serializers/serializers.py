@@ -19,6 +19,11 @@ class BuildConnectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = BuildConnection
         fields = "__all__"
+    
+    def to_representation(self, obj):
+        instance = super(BuildConnectionSerializer, self).to_representation(obj)
+        instance['content'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['content'])
+        return instance
 
 
 class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
