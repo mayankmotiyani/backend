@@ -6,7 +6,8 @@ from .models import (
     OurUnparalleledService,
     DummySection2,
     DummySection3,
-    HeadingAndSubheading
+    HeadingAndSubheading,
+    BlockchainService
 )
 
 
@@ -106,6 +107,25 @@ class DummySection3Admin(admin.ModelAdmin):
     list_display = ['blockchain','subheading','title','admin_created_at','admin_updated_at']
 
 
+class BlockchainServiceAdmin(admin.ModelAdmin):
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='content')
+    def display_blockchain_content(self, obj):
+        return format_html(
+            '<textarea cols="60" rows="4" readonly>{}</textarea>',
+            obj.blockchain_content)
+
+    list_display = ['blockchain','heading','blockchain_service_name','display_blockchain_content','admin_created_at','admin_updated_at']
+
+
+admin.site.register(BlockchainService,BlockchainServiceAdmin)
 admin.site.register(BlockchainCategory, BlockchainCategoryAdmin)
 admin.site.register(OurUnparalleledService, OurUnparalleledServiceAdmin)
 admin.site.register(Blockchain, BlockchainAdmin)

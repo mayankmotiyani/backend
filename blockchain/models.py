@@ -7,9 +7,9 @@ from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 class HeadingAndSubheading(models.Model):
-    subheading = models.CharField(_('homepageSubheading'), max_length=500)
+    subheading = models.CharField(_('homepageSubheading'), max_length=500,null=True,blank=True)
     heading = models.TextField(_('homepageHeading'),null=True,blank=True)
-    description = models.TextField(_('description'),default="")
+    description = models.TextField(_('description'),default="",null=True,blank=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
@@ -57,36 +57,20 @@ class Blockchain(models.Model):
         return reverse('blockchain',kwargs={'blockchain_slug':self.blockchain_slug})
 
 
-# class BlockchainService(models.Model):
-#     blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE)
-#     blockchain_service_name = models.CharField(_("blockchainServiceName"),max_length=250)
-#     blockchain_service_slug = models.SlugField(_("blockchainServiceSlug"),max_length=250,blank=True,null=True,default="")
-#     blockchain_content = models.TextField(_("blockchainContent"),blank=True,null=True,default="")
-#     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
-#     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+class BlockchainService(models.Model):
+    blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE)
+    heading = models.ForeignKey(HeadingAndSubheading, on_delete=models.CASCADE)
+    blockchain_service_name = models.CharField(_("blockchainServiceName"),max_length=250)
+    blockchain_content = models.TextField(_("blockchainContent"),blank=True,null=True,default="")
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
 
-#     class Meta:
-#         verbose_name_plural = "Blockchain Service"
-
-#     def save(self, *args, **kwargs):
-#         self.blockchain_service_slug = slugify(self.blockchain_service_name)
-#         super(BlockchainService, self).save(*args, **kwargs)
+    class Meta:
+        verbose_name_plural = "Blockchain Service"
     
-#     def __str__(self):
-#         return '{} -- {}'.format(self.blockchain,self.blockchain_service_name)
+    def __str__(self):
+        return '{} -- {}'.format(self.blockchain,self.blockchain_service_name)
 
-
-
-# class WhatWeOffer(models.Model):
-#     blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE)
-#     blockchain_name = models.CharField(_("blockchainName"), max_length=250)
-#     icon = models.ImageField(_("icon"), upload_to="icon")
-#     content = models.TextField(_("content"))
-#     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
-#     updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
-    
-#     def __str__(self) :
-#         return self.blockchain_name
 
 class OurUnparalleledService(models.Model):
     blockchain = models.ForeignKey(Blockchain,on_delete=models.CASCADE,null=True,blank=True)

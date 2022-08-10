@@ -145,7 +145,6 @@ class Partners(models.Model):
         verbose_name_plural = "Partner"
 
 class FAQs(models.Model):
-    title = models.CharField(max_length=250,null=True,blank=True)
     question= models.TextField(_("question"),blank=True,null=True)
     answer= models.TextField(_("answer"),blank=True,null=True)
     created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)

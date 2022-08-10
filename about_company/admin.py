@@ -153,7 +153,7 @@ class FAQsAdmin(admin.ModelAdmin):
     def admin_updated_at(self, obj):
         return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
         
-    list_display  = ['title','question','answer','admin_created_at','admin_updated_at']
+    list_display  = ['question','answer','admin_created_at','admin_updated_at']
 
 
 admin.site.register(ContactAddress, ContactAddressAdmin)
