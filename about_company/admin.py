@@ -11,7 +11,8 @@ from .models import (
     BlockchainForBusiness,
     VisionAndMission,
     Partners,
-    FAQs
+    FAQs,
+    BuildConnection
 
 )
 
@@ -156,6 +157,18 @@ class FAQsAdmin(admin.ModelAdmin):
     list_display  = ['question','answer','admin_created_at','admin_updated_at']
 
 
+class BuildConnectionAdmin(admin.ModelAdmin):
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+        
+    list_display  = ['heading','image','title','admin_created_at','admin_updated_at']
+
+
 admin.site.register(ContactAddress, ContactAddressAdmin)
 admin.site.register(BecomeOurPartner, BecomeOurPartnerAdmin)
 admin.site.register(PrivacyPolicy,PrivacyPolicyAdmin) 
@@ -167,6 +180,7 @@ admin.site.register(BlockchainForBusiness,BlockchainForBusinessAdmin)
 admin.site.register(VisionAndMission,VisionAndMissionAdmin)    
 admin.site.register(Partners,PartnersAdmin)
 admin.site.register(FAQs,FAQsAdmin)
+admin.site.register(BuildConnection,BuildConnectionAdmin)
 
 
 

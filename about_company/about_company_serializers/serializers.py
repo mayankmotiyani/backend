@@ -10,9 +10,16 @@ from about_company.models import (
     UnmatchedServices,
     BlockchainForBusiness,
     VisionAndMission,
-    FAQs
+    FAQs,
+    BuildConnection
 
 )
+
+class BuildConnectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BuildConnection
+        fields = "__all__"
+
 
 class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
     class Meta:

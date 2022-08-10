@@ -8,7 +8,8 @@ from .views import (
     BlockchainForBusinessAPI,
     UnmatchedServicesAPI,
     VisionAndMissionAPI,
-    FrequentAskQuestionAPI
+    FrequentAskQuestionAPI,
+    BuildConnectionAPI
 )
 
 urlpatterns = [
@@ -21,6 +22,7 @@ urlpatterns = [
     path('blockchain-for-business/',BlockchainForBusinessAPI.as_view(),name='blockchain-for-business'),
     path('vision-and-mission/',VisionAndMissionAPI.as_view(),name='vision-and-mission'),
     path('faq/',FrequentAskQuestionAPI.as_view(),name='faq'),
+    path('build-connection/',BuildConnectionAPI.as_view(),name='build-connection'),
     
     
 

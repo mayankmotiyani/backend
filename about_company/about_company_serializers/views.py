@@ -11,7 +11,8 @@ from about_company.models import(
     UnmatchedServices,
     BlockchainForBusiness,
     VisionAndMission,
-    FAQs
+    FAQs,
+    BuildConnection
 )
 
 from .serializers import (
@@ -23,7 +24,8 @@ from .serializers import (
     HeadingAndSubheadingSerializer,
     BlockchainForBusinessSerializer,
     VisionAndMissionSerializer,
-    FAQsSerializer
+    FAQsSerializer,
+    BuildConnectionSerializer
 )
 
 class UnmatchedServicesAPI(APIView):
@@ -196,6 +198,26 @@ class FrequentAskQuestionAPI(APIView):
         try:
             get_data = FAQs.objects.all()
             serializer = FAQsSerializer(get_data,many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "response":serializer.data
+            }
+            return Response(context, status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+                }
+            return Response(context, status=status.HTTP_400_BAD_REQUEST)
+
+
+class BuildConnectionAPI(APIView):
+    def get(self, request , *args, **kwargs):
+        try:
+            get_data = BuildConnection.objects.first()
+            serializer = BuildConnectionSerializer(get_data)
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
