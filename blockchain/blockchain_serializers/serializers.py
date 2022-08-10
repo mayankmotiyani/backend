@@ -46,17 +46,17 @@ class OurUnparalleledServiceSerializer(serializers.ModelSerializer):
         model = OurUnparalleledService
         fields = ['subheading','title','content','image']
     
-     def to_representation(self, obj):
+    def to_representation(self, obj):
         instance = super(SingleBlockchainSerializer, self).to_representation(obj)
-        instance['content'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['content'])
         return instance
+    
 
 class DummySection2Serializer(serializers.ModelSerializer):
     class Meta:
         model = DummySection2
         fields = ['subheading','title','content','image']
     
-     def to_representation(self, obj):
+    def to_representation(self, obj):
         instance = super(SingleBlockchainSerializer, self).to_representation(obj)
         instance['content'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['content'])
         return instance
@@ -66,11 +66,10 @@ class DummySection3Serializer(serializers.ModelSerializer):
         model = DummySection3
         fields = ['subheading','title','content','image']
     
-     def to_representation(self, obj):
+    def to_representation(self, obj):
         instance = super(SingleBlockchainSerializer, self).to_representation(obj)
-        instance['content'] = re.sub('\\t*\\r*\\n*\\\\*', '', instance['content'])
         return instance
-
+    
 class SingleBlockchainSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blockchain
