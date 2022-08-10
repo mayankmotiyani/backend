@@ -10,7 +10,8 @@ from about_company.models import(
     HeadingAndSubheading,
     UnmatchedServices,
     BlockchainForBusiness,
-    VisionAndMission
+    VisionAndMission,
+    FAQs
 )
 
 from .serializers import (
@@ -21,7 +22,8 @@ from .serializers import (
     TermsAndConditionSerializer,
     HeadingAndSubheadingSerializer,
     BlockchainForBusinessSerializer,
-    VisionAndMissionSerializer
+    VisionAndMissionSerializer,
+    FAQsSerializer
 )
 
 class UnmatchedServicesAPI(APIView):
