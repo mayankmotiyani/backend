@@ -7,9 +7,15 @@ from blockchain.models import (
     DummySection2,
     DummySection3,
     HeadingAndSubheading,
+    BlockchainService
 )
 
+class BlockchainServiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ModelSerializer
+        fields = "__all__"
 
+        
 class HeadingAndSubheadingSerializer(serializers.ModelSerializer):
     class Meta:
         model = HeadingAndSubheading

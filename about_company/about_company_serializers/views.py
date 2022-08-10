@@ -216,7 +216,7 @@ class FrequentAskQuestionAPI(APIView):
 class BuildConnectionAPI(APIView):
     def get(self, request , *args, **kwargs):
         try:
-            get_data = BuildConnection.objects.first()
+            get_data = BuildConnection.objects.all()
             serializer = BuildConnectionSerializer(get_data)
             context = {
                 "status":status.HTTP_200_OK,
