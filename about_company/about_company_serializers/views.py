@@ -25,7 +25,8 @@ from .serializers import (
     BlockchainForBusinessSerializer,
     VisionAndMissionSerializer,
     FAQsSerializer,
-    BuildConnectionSerializer
+    BuildConnectionSerializer,
+    AboutCompanySerializer
 )
 
 class UnmatchedServicesAPI(APIView):

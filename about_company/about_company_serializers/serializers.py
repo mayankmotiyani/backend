@@ -15,6 +15,11 @@ from about_company.models import (
 
 )
 
+class AboutCompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AboutCompany
+        fields = "__all__"
+
 class BuildConnectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = BuildConnection
