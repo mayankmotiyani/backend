@@ -4,7 +4,8 @@ from games.models import (
     GameSection2,
     GameSection3,
     ModernSolutionForVariousPlatform,
-    HeadingAndSubheading
+    HeadingAndSubheading,
+    GamePartner
 )
 
 
@@ -51,5 +52,8 @@ class SingleGameSerializer(serializers.ModelSerializer):
         instance['Section3'] = GameSection3Serializer(GameSection3.objects.filter(game_id=instance['id']),many=True).data
         return instance
     
-
+class GamePartnerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GamePartner
+        fields = "__all__"
 

@@ -7,7 +7,8 @@ from games.models import (
     GameSection2,
     HeadingAndSubheading,
     ModernSolutionForVariousPlatform,
-    GameSection3
+    GameSection3,
+    GamePartner
 )
 
 from .serializers import (
@@ -16,7 +17,8 @@ from .serializers import (
     GameSection2Serializer,
     HeadingAndSubheadingSerializer,
     ModernSolutionForVariousPlatformSerializer,
-    GameSection3Serializer
+    GameSection3Serializer,
+    GamePartnerSerializer
 )
 
 
@@ -112,6 +114,29 @@ class GameSection3API(APIView):
             context = {
                 "status":status.HTTP_200_OK,
                 "success":True,
+                "response": serializer.data
+            }
+            return Response(context,status=status.HTTP_200_OK)
+        except Exception as exception:
+            context = {
+                "status":status.HTTP_400_BAD_REQUEST,
+                "success":False,
+                "response":str(exception)
+            }
+            return Response(context,status=status.HTTP_400_BAD_REQUEST)
+
+class GamePartnerAPI(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            get_game_partners_instance = GamePartner.objects.all()
+            get_heading_and_subheading = list(GamePartner.objects.all().values_list("heading_id",flat=True).distinct())[0]
+
+            get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_and_subheading))
+            serializer = GamePartnerSerializer(get_game_partners_instance,many=True)
+            context = {
+                "status":status.HTTP_200_OK,
+                "success":True,
+                "heading_and_subheading":get_heading_and_subheading_serializer.data,
                 "response": serializer.data
             }
             return Response(context,status=status.HTTP_200_OK)

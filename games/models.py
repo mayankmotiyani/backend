@@ -78,4 +78,14 @@ class GameSection3(models.Model):
 
     def __str__(self):
         return "{}".format(self.title) 
-   
+
+
+class GamePartner(models.Model):
+    heading = models.ForeignKey(HeadingAndSubheading,on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="game_partners")
+    created_at = models.DateTimeField(_("creationDate"),auto_now_add=True)
+    updated_at = models.DateTimeField(_("updatedDate"),auto_now=True)
+
+
+    class Meta:
+        verbose_name_plural = "Game Partners"
