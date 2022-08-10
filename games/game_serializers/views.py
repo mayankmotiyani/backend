@@ -130,7 +130,6 @@ class GamePartnerAPI(APIView):
         try:
             get_game_partners_instance = GamePartner.objects.all()
             get_heading_and_subheading = list(GamePartner.objects.all().values_list("heading_id",flat=True).distinct())[0]
-
             get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_and_subheading))
             serializer = GamePartnerSerializer(get_game_partners_instance,many=True)
             context = {
