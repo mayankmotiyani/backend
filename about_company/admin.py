@@ -10,7 +10,8 @@ from .models import (
     UnmatchedServices,
     BlockchainForBusiness,
     VisionAndMission,
-    Partners
+    Partners,
+    FAQs
 
 )
 
@@ -143,17 +144,29 @@ class PartnersAdmin(admin.ModelAdmin):
     
     list_display  = ['heading','image','admin_created_at','admin_updated_at']
 
+class FAQsAdmin(admin.ModelAdmin):
+    @admin.display(description='CreationDate')
+    def admin_created_at(self, obj):
+        return obj.created_at.strftime('%Y-%m-%d %I:%M %p')
+    
+    @admin.display(description='UpdatedDate')
+    def admin_updated_at(self, obj):
+        return obj.updated_at.strftime('%Y-%m-%d %I:%M %p')
+        
+    list_display  = ['title','question','answer','admin_created_at','admin_updated_at']
+
 
 admin.site.register(ContactAddress, ContactAddressAdmin)
 admin.site.register(BecomeOurPartner, BecomeOurPartnerAdmin)
 admin.site.register(PrivacyPolicy,PrivacyPolicyAdmin) 
 admin.site.register(TermsAndCondition,TermsAndConditionAdmin)   
 admin.site.register(HeadingAndSubheading,HeadingAndSubheadingAdmin) 
-admin.site.register(AboutCompany,AboutCompanyAdmin)  
+admin.site.register(AboutCompany,AboutCompanyAdmin)
 admin.site.register(UnmatchedServices,UnmatchedServicesAdmin)    
 admin.site.register(BlockchainForBusiness,BlockchainForBusinessAdmin)
 admin.site.register(VisionAndMission,VisionAndMissionAdmin)    
 admin.site.register(Partners,PartnersAdmin)
+admin.site.register(FAQs,FAQsAdmin)
 
 
 
