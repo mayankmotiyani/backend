@@ -70,13 +70,12 @@ INSTALLED_APPS = [
     'corsheaders',
     'ckeditor',
     'ckeditor_uploader',
-    'drf_api_logger',
+    # 'drf_api_logger',
     'whitenoise.runserver_nostatic',
-    'django_admin_logs',
+    # 'django_admin_logs',
     # Media Cloudinary
     'cloudinary',
     'cloudinary_storage',
-
 ]
 
 

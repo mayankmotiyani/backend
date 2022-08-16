@@ -17,4 +17,4 @@ class ResourceAdmin(admin.ModelAdmin):
 
     list_display  = ['name','image','admin_created_at','admin_updated_at']
 
-admin.site.register(Resource,ResourceAdmin)
+admin.site.register(Resource,ResourceAdmin) 
