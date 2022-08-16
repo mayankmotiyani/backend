@@ -149,10 +149,10 @@ class BlockchainSectionThreeAPI(APIView):
 
 
 class BlockchainServiceAPI(APIView):
-    def get(self, request, *args, **kwargs):
+    def get(self, request, *args, blockchain_slug, **kwargs):
         try:
-            get_data = BlockchainService.objects.all()
-            get_heading_subheading_instance = list(BlockchainService.objects.all().values_list("heading",flat=True).distinct())[0]
+            get_data = BlockchainService.objects.filter(blockchain__blockchain_slug = blockchain_slug)
+            get_heading_subheading_instance = list(BlockchainService.objects.filter(blockchain__blockchain_slug = blockchain_slug).values_list("heading",flat=True).distinct())[0]
             get_heading_and_subheading_serializer = HeadingAndSubheadingSerializer(HeadingAndSubheading.objects.get(id=get_heading_subheading_instance))
             serializer = BlockchainServiceSerializer(get_data,many=True)
             context = {

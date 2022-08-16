@@ -11,7 +11,7 @@ from .views import (
 urlpatterns = [
     
     path('blockchain_list/',BlockchainAPI.as_view(),name='blockchain-list'),
-    path('blockchain_service/',BlockchainServiceAPI.as_view(),name='blockchain-service'),
+    path('blockchain_service/<slug:blockchain_slug>/',BlockchainServiceAPI.as_view(),name='blockchain-service'),
     path('<slug:blockchain_slug>/',BlockChainContentAPI.as_view(),name='blockchain'),
     path('blockchain-section-one/<slug:blockchain_slug>/',BlockchainSectionOneAPI.as_view(),name='blockchain-section-one'),
     path('blockchain-section-two/<slug:blockchain_slug>/',BlockchainSectionTwoAPI.as_view(),name='blockchain-section-two'),
